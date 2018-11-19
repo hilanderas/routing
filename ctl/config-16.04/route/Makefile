@@ -1,4 +1,4 @@
-include $(CURDIR)/env
+include /etc/routing/setting.env
 
 
 start:
