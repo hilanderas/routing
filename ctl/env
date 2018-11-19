@@ -3,4 +3,6 @@ CONFIG = $(CURDIR)/config-$(ARCH)
 SYS_NET = /etc/network
 SYS_ROUTE = /etc/routing
 SYSD = /etc/systemd/system
+IFACE_CONFIG = $(CONFIG)/iface
+ROUTER_CONFIG = $(CONFIG)/route
 
