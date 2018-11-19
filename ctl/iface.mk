@@ -50,5 +50,5 @@ test-unset:
 	tree $(SYS_NET)/interfaces.d
 	cat $(SYS_NET)/interfaces
 
-uninstall: unset-iface stop-iface
-test-uninstall: test-stop-iface test-unset-iface
+uninstall: unset stop
+test-uninstall: test-stop test-unset
