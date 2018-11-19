@@ -1,0 +1,6 @@
+ARCH = 16.04
+CONFIG = $(CURDIR)/config-$(ARCH)
+SYS_NET = /etc/network
+SYS_ROUTE = /etc/routing
+SYSD = /etc/systemd/system
+

@@ -1,51 +1,60 @@
-# SRC
-CONF=$(CURDIR)
-ENV_FILE= $(CURDIR)/env
-include $(ENV_FILE)
+include $(CURDIR)/env
+.PHONY: install install-iface install-route config set-iface set-route start-iface start-route
+config:
+	echo "config OS version, lan, wan"
+	sed -i "/ARCH =/c ARCH = $(ARCH)" $(CURDIR)/env
 
-# FN stands for FILENAME
-# DN stands for DIRNAME
-NP_ETH1_FN=01-eth1-static.yaml
-ROUTING_CONF_DN=routing
-ROUTING_SYSD_FN=routing.service
+set-iface:
+	echo "set-wan"
+	echo "set-lan"
+	cp $(SYS_NET)/interfaces $(SYS_NET)/interfaces.bk
+	cp -r $(SYS_NET)/interfaces.d $(SYS_NET)/interfaces.d.bk
+	cp -r $(IFACE_CONFIG)/* $(SYS_NET)/
 
-# DST
-NPDIR=/etc/netplan
-SYSDDIR=/etc/systemd/system
+set-route:
+	echo "set-route"
+	mkdir $(SYS_ROUTE)
+	cp $(ROUTE_CONFIG)/Makefile $(ROUTE_CONFIG)/env $(SYS_ROUTE)/
+	cp $(ROUTE_CONFIG)/routing.service $(SYSD)/
 
+start-iface:
+	echo "You need to reboot to make it work"
 
+start-route:
+	systemctl enable routing.service
+	systemctl start routing.service
+	systemctl status routing.service
 
-.PHONY: start-lan-18.04 start-routing start
-start-lan-18.04: $(CONF)/$(NP_ETH1_FN) $(NPDIR)
-	sudo cp $(CONF)/$(NP_ETH1_FN) $(NPDIR)
-	sudo netplan apply
+install-iface: set-iface start-iface
+install-route: set-route start-route
 
-start-routing: $(CONF)/$(ROUTING_CONF_DN) $(CONF)/$(ROUTING_SYSD_FN) $(SYSDDIR)
-	sudo cp -r $(CONF)/$(ROUTING_CONF_DN) /etc/
-	sudo cp $(CONF)/$(ROUTING_SYSD_FN) $(SYSDDIR)
-	sudo systemctl enable $(ROUTING_SYSD_FN) 
-	sudo systemctl start $(ROUTING_SYSD_FN)
-
-start-18.04: start-lan-18.04 start-routing
-
-.PHONY: stop-lan-18.04 stop-routing stop
-stop-eth1: $(NPDIR)/$(NP_ETH1_FN)
-	sudo rm $(NPDIR)/$(NP_ETH1_FN)
-	sudo netplan apply
-
-stop-routing: /etc/$(ROUTING_CONF_DN) $(SYSDDIR)/$(ROUTING_SYSD_FN) 
-	sudo systemctl disable $(ROUTING_SYSD_FN) 
-	sudo systemctl stop $(ROUTING_SYSD_FN)
-	sudo rm -r /etc/$(ROUTING_CONF_DN)
-	sudo rm $(SYSDDIR)/$(ROUTING_SYSD_FN)
+install: config install-iface install-route
 
 
-stop: stop-lan-18.04 stop-routing
+.PHONY: uninstall restore uninstall-iface uninstall-route stop-iface stop-route unset-iface unset-route
+restore:
+	echo "remove configuration"	
 
-status:
-	sudo iptables -L -nv
-	sudo iptables -L -nv -t nat
-	ifconfig $(WAN) 
-	ifconfig $(LAN)
-	ip route
-	sudo systemctl status $(ROUTING_SYSD_FN)
+stop-iface:
+	echo "You need to reboot to make it work"
+
+stop-route:
+	systemctl disable routing.service
+	systemctl stop routing.service
+	systemctl status routing.service
+
+unset-iface:
+	echo "unset-wan"
+	echo "unset-lan"
+	cp $(SYS_NET)/interfaces.bk $(SYS_NET)/interfaces
+	cp -r $(SYS_NET)/interfaces.d.bk $(SYS_NET)/interfaces.d
+
+unset-route:
+	echo "unset-route"
+	rm -rf $(SYS_ROUTE)
+	rm $(SYSD)/routing.service
+
+uninstall-iface: stop-iface unset-iface
+uninstall-route: stop-route unset-route
+
+uninstall: uninstall-route uninstall-iface restore
