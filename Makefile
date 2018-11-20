@@ -6,13 +6,14 @@ DEV=$(CURDIR)/dev
 
 .PHONY: create-dev clean-dev
 create-dev:
-	mkdir $(CURDIR)/dev/iface $(CURDIR)/dev/route
 	make -C $(CURDIR)/iface -f $(CURDIR)/iface/Makefile set 
-	cp -r $(CURDIR)/iface/ctl/* $(DEV)/iface
-	cp -r $(CURDIR)/route/* $(DEV)/route
+	mkdir $(DEV)-$(OS_VERSION)-$(WAN_MODE) $(DEV)-$(OS_VERSION)-$(WAN_MODE)/iface $(DEV)-$(OS_VERSION)-$(WAN_MODE)/route
+	cp $(DEV)/Makefile $(DEV)-$(OS_VERSION)-$(WAN_MODE)/
+	cp -r $(CURDIR)/iface/ctl/* $(DEV)-$(OS_VERSION)-$(WAN_MODE)/iface
+	cp -r $(CURDIR)/route/* $(DEV)-$(OS_VERSION)-$(WAN_MODE)/route
 	make -C $(CURDIR)/iface -f $(CURDIR)/iface/Makefile clean 
 clean-dev:
-	rm -rf $(CURDIR)/dev/iface $(CURDIR)/dev/route
+	rm -rf $(DEV)-$(OS_VERSION)-$(WAN_MODE)
 		
 .PHONY: build_book
 build-book: $(GITBOOK)
@@ -20,7 +21,7 @@ build-book: $(GITBOOK)
 
 .PHONY: build
 build: create-dev
-	cp -r dev $(project)
+	cp -r $(DEV)-$(OS_VERSION)-$(WAN_MODE) $(CURDIR)/$(project)
 	cd $(project)/; find . -type f -exec md5sum {} \; > $(CURDIR)/$(project)-$(version).md5; cd -
 	mv $(project)-$(version).md5 $(project)
 	zip -r $(project)-$(OS_VERSION)-$(WAN_MODE)-$(version).zip $(project)
