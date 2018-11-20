@@ -7,7 +7,7 @@ set:
 	mkdir $(SYS_NET).bk
 	mv $(SYS_NET)/* $(SYS_NET).bk/
 	cp -r $(CONFIG)/01-lan.yaml $(SYS_NET)/
-#	cp -r $(CONFIG)/02-wan.yaml $(SYS_NET)/
+	cp -r $(CONFIG)/02-wan.yaml $(SYS_NET)/
 
 test-set:
 	echo "test set-iface"
