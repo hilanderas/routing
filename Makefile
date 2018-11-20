@@ -13,7 +13,7 @@ create-dev:
 	cp -r $(CURDIR)/route/* $(DEV)-$(OS_VERSION)-$(WAN_MODE)/route
 	make -C $(CURDIR)/iface -f $(CURDIR)/iface/Makefile clean 
 clean-dev:
-	rm -rf $(DEV)-$(OS_VERSION)-$(WAN_MODE)
+	rm -rf $(DEV)-*
 		
 .PHONY: build_book
 build-book: $(GITBOOK)
@@ -26,5 +26,5 @@ build: create-dev
 	mv $(project)-$(version).md5 $(project)
 	zip -r $(project)-$(OS_VERSION)-$(WAN_MODE)-$(version).zip $(project)
 	rm -rf $(project)
-clean: clean-dev
+clean:
 	rm -rf *.zip
