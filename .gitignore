@@ -1,5 +1,5 @@
 iface/ctl/api
 iface/ctl/confgen
 config
-dev/iface
-dev/route
+dev-*
+*.zip
