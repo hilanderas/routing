@@ -1,12 +1,11 @@
-SETTING = $(CURDIR)/setting.env
-include $(SETTING) 
-
+SYS_ROUTE = /etc/routing
+SYSD = /etc/systemd/system
 .PHONY: install test-install set test-set start test-start
 set:
 	echo "set-route"
 	mkdir $(SYS_ROUTE)
-	cp $(ROUTE_CONFIG)/Makefile $(ROUTE_CONFIG)/setting.env $(SYS_ROUTE)/
-	cp $(ROUTE_CONFIG)/routing.service $(SYSD)/
+	cp $(CONFIG)/Makefile $(CONFIG)/setting.env $(SYS_ROUTE)/
+	cp $(CONFIG)/routing.service $(SYSD)/
 
 test-set:
 	echo "test set-route"

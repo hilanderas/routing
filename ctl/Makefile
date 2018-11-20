@@ -12,18 +12,18 @@ choose:
 config:
 	make -f config.mk config-$(OS_VERSION)-$(WAN_MODE)
 start:
-	make -f iface.mk install
+	make -f iface-$(OS_VERSION)-$(WAN_MODE).mk install
 	make -f route.mk install
 stop:
 	make -f route.mk uninstall 
-	make -f iface.mk uninstall
+	make -f iface-$(OS_VERSION)-$(WAN_MODE).mk uninstall
 restore:
 	echo "remove configuration"	
 	rm -rf $(CONFIG)
 
 test-start:
-	make -f iface.mk test-install
+	make -f iface-$(OS_VERSION)-$(WAN_MODE).mk test-install
 	make -f route.mk test-install
 test-stop:
-	make -f iface.mk test-uninstall
+	make -f iface-$(OS_VERSION)-$(WAN_MODE).mk test-uninstall
 	make -f route.mk test-uninstall

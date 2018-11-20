@@ -1,14 +1,11 @@
-SETTING = $(CURDIR)/setting.env
-include $(SETTING) 
-
-
+SYS_NET = /etc/netplan
 .PHONY: install test_uninstall set test_set start test_start
 set:
 	echo "set-wan"
 	echo "set-lan"
 	mv $(SYS_NET)/interfaces $(SYS_NET)/interfaces.bk
 	mv $(SYS_NET)/interfaces.d $(SYS_NET)/interfaces.d.bk
-	cp -r $(IFACE_CONFIG)/* $(SYS_NET)/
+	cp -r $(CONFIG)/* $(SYS_NET)/
 
 test-set:
 	echo "test set-iface"
