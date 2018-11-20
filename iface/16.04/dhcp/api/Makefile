@@ -1,4 +1,4 @@
-SYS_NET = /etc/netplan
+SYS_NET = /etc/network
 .PHONY: install test_uninstall set test_set start test_start
 set:
 	echo "set-wan"
