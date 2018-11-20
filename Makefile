@@ -21,10 +21,8 @@ build-book: $(GITBOOK)
 
 .PHONY: build
 build: create-dev
-	cp -r $(DEV)-$(OS_VERSION)-$(WAN_MODE) $(CURDIR)/$(project)
-	cd $(project)/; find . -type f -exec md5sum {} \; > $(CURDIR)/$(project)-$(version).md5; cd -
-	mv $(project)-$(version).md5 $(project)
-	zip -r $(project)-$(OS_VERSION)-$(WAN_MODE)-$(version).zip $(project)
-	rm -rf $(project)
+	cd $(DEV)-$(OS_VERSION)-$(WAN_MODE)/; find . -type f -exec md5sum {} \; > $(CURDIR)/$(project)-$(version).md5; cd -
+	mv $(project)-$(version).md5 $(DEV)-$(OS_VERSION)-$(WAN_MODE)
+	zip -r $(project)-$(OS_VERSION)-$(WAN_MODE)-$(version).zip dev-$(OS_VERSION)-$(WAN_MODE)
 clean:
 	rm -rf *.zip

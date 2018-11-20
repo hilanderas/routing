@@ -3,19 +3,20 @@ language: generic
 sudo: false
 dist: trusty
 
+
 branches:
   only:
     - /^\d+(\.\d+){2}$/
 
 env:
-  global:
-    - PROJECT="routing"
-    - VERSION="$TRAVIS_TAG"
+  - OS_VERSION=18.04
+  - OS_VERSION=16.04
+  - WAN_MODE=dhcp
 
 install: true
 
 script:
-  - make build version=${VERSION}
+  - make build OS_VERSION=${OS_VERSION} WAN_MODE=${WAN_MODE} version=$TRAVIS_TAG
 
 deploy:
   provider: releases
@@ -23,7 +24,8 @@ deploy:
   skip_cleanup: true
   api_key:
     secure: vB0S7F78dDiG7M2PH9YClVgeFcIXZknTMwoBugorMFqkCqlRY/LTiBMnpVIPiQtJpolputvcT77L+AqO7awPZrnkiflC7SuUzOiv8lEzznOkS31h2kMGTTb/+ES641x0zZQaaNEt1+kmxA/nx7bKH5to7NHXsr685onJZ6KTiQaAE7C3gxX3c0dLPlkXAS/kzg8CBP1V22r+HzOV7QV/t3Z7mZ2ZKHxXM02t3PKq927pA+bmTKg7UOy2WKrWMyXeOhfhjNNG4i6jq+BSnM2yGvUsi82ylqGZEbBufuAZCdQZPw9TYNSc+9oPTBqEmTmjpTNRcfcIgXeBQxRLXZZ5ifyVqYqsolPCdF9JlUFfySgAr7FBqkncdWID35f7r3gX27EWGOHWV25dGtQnLlZ4rcxevcJkNGkMIB3uiA4d5fo6I3n0dwu/2DZgn8D4DodISQEnKz41NYp/AUwg9pn8xnvW+Pycv7ns6yI4avqeQF4TMrai8jR3msKHgsZ+ypNJdylv22Zy/eWAW5FEOMfpN7/WnHYV7g/tXXzfa37ZpYzic7KSMQlqryXKKWblfuhRgbpbNCu1ULpaDBuCfzUZv6yEj+GI72apG2Ak6JvmSdbToTFXOrxVcCg4kNwurBQsHus/4nDDjBGM+QyeFrsbqenkj5Fb+2Vzz8Qg5HaNX5M=
-  file: "${PROJECT}-${VERSION}.zip"
+  file_glob: true
+  file: "routing-*-${TRAVIS_TAG}.zip"
   on:
     tags: true
     all_branches: true
