@@ -9,9 +9,9 @@ branches:
     - /^\d+(\.\d+){2}$/
 
 env:
-  - OS_VERSION=18.04
-  - OS_VERSION=16.04
-  - WAN_MODE=dhcp
+    matrix:
+      - OS_VERSION=18.04 WAN_MODE=dhcp
+      - OS_VERSION=16.04 WAN_MODE=dhcp
 
 install: true
 
