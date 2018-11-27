@@ -37,7 +37,7 @@ start:
 test-start:
 	ifconfig br0
 	ifconfig ppp1
-	plog
+	plog || true
 
 .PHONY: install test-install
 install: set_iface set_ppp start
@@ -71,4 +71,4 @@ test-unset_ppp:
 
 .PHONY: uninstall test-uninstall
 uninstall: unset_iface unset_ppp stop
-test-uninstall: test-stop test-unset
+test-uninstall: test-stop test-unset_iface test-unset_ppp
