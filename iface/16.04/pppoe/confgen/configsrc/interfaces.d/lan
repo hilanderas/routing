@@ -1,0 +1,26 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+auto br0
+
+# Set up interfaces manually, avoiding conflicts with, e.g., network manager
+iface enp4s0 inet manual
+
+iface enp5s0 inet manual
+
+iface enp6s0 inet manual
+
+iface enp7s0 inet manual
+
+# Bridge setup
+iface br0 inet static
+	bridge_ports enp4s0 enp5s0 enp6s0 enp7s0
+	address 192.168.0.1
+	broadcast 192.168.0.255
+	netmask 255.255.255.0
+	gateway 192.168.0.1
+	dns-nameservers 192.168.0.1
