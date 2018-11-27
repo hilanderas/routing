@@ -1,0 +1,9 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+
+auto enp2s0
+iface enp2s0 inet ppp
+    pre-up /sbin/ip link set dev enp2s0 up
+    provider dsl-provider
+    post-down /sbin/ip link set dev enp2s0 down
