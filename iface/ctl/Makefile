@@ -20,6 +20,6 @@ test-config: $(CONFIG)
 test-restore:
 	ls $(CONFIG) || true
 test-start:
-	make -C $(API) -f $(API)/Makefile test-install
+	make -C $(API) -f $(API)/Makefile test-install CONFIG=$(CONFIG)
 test-stop:
-	make -C $(API) -f $(API)/Makefile test-uninstall
+	make -C $(API) -f $(API)/Makefile test-uninstall CONFIG=$(CONFIG)
