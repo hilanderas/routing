@@ -1,8 +1,7 @@
 
 unit 1
-enp2s0
 user ""
-plugin rp-pppoe.so 
+plugin rp-pppoe.so enp2s0
 noipdefault
 defaultroute
 replacedefaultroute
@@ -10,5 +9,4 @@ hide-password
 noauth
 persist
 usepeerdns
-endpoint enp2s0
 
