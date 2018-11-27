@@ -12,6 +12,7 @@ env:
     matrix:
       - OS_VERSION=18.04 WAN_MODE=dhcp
       - OS_VERSION=16.04 WAN_MODE=dhcp
+      - OS_VERSION=16.04 WAN_MODE=pppoe
 
 install: true
 
