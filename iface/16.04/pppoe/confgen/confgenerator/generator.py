@@ -15,8 +15,8 @@ class PPP_Generator():
         """
         self.dest = dest
         self.NIF = info["NIF"]
-        self.user = info["user"]
-        self.passwd = info["pass"]
+        self.user = str(info["user"])
+        self.passwd = str(info["pass"])
         self.unit = str(info["unit"])
 
     def gen_wan(self, NIF, unit, dest):
