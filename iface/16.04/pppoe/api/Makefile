@@ -21,9 +21,9 @@ set_ppp:
 	echo "set-ppp"
 	sudo mv $(SYS_PPP)/chap-secrets $(SYS_PPP)/chap-secrets.ppp.bk
 	sudo mv $(SYS_PPP)/pap-secrets $(SYS_PPP)/pap-secrets.ppp.bk
-	sudo cp $(CONFIG)/secrets $(SYS_PPP)/chap-secrets
-	sudo cp $(CONFIG)/secrets $(SYS_PPP)/pap-secrets
-	sudo cp $(CONFIG)/dsl-provider $(SYS_PPP)/peers/
+	sudo cp $(CONFIG)/secrets/* $(SYS_PPP)/
+	sudo mv $(SYS_PPP)/peers $(SYS_PPP)/peers.bk
+	sudo cp -r $(CONFIG)/peers $(SYS_PPP)/
 test-set_ppp:
 	diff $(SYS_PPP)/peers/dsl-provider $(CONFIG)/dsl-provider || true
 	diff $(SYS_PPP)/chap-secrets $(CONFIG)/secrets || true
@@ -62,7 +62,8 @@ test-unset_iface:
 
 .PHONY: unset_ppp test-unset_ppp
 unset_ppp:
-	sudo rm $(SYS_PPP)/peers/dsl-provider
+	sudo rm -r $(SYS_PPP)/peers
+	sudo mv $(SYS_PPP)/peers.bk $(SYS_PPP)/peers
 	sudo mv $(SYS_PPP)/chap-secrets.ppp.bk $(SYS_PPP)/chap-secrets
 	sudo mv $(SYS_PPP)/pap-secrets.ppp.bk $(SYS_PPP)/pap-secrets 
 test-unset_ppp:
