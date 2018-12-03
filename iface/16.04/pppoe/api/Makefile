@@ -25,9 +25,9 @@ set_ppp:
 	sudo mv $(SYS_PPP)/peers $(SYS_PPP)/peers.bk
 	sudo cp -r $(CONFIG)/peers $(SYS_PPP)/
 test-set_ppp:
-	diff $(SYS_PPP)/peers/dsl-provider $(CONFIG)/dsl-provider || true
-	diff $(SYS_PPP)/chap-secrets $(CONFIG)/secrets || true
-	diff $(SYS_PPP)/pap-secrets $(CONFIG)/secrets || true
+	diff -r $(SYS_PPP)/peers $(CONFIG)/peers || true
+	diff $(SYS_PPP)/chap-secrets $(CONFIG)/secrets/chap-secrets || true
+	diff $(SYS_PPP)/pap-secrets $(CONFIG)/secrets/pap-secrets || true
 	test -e $(SYS_PPP)/chap-secrets.ppp.bk && echo "chap-secrets.ppp.bk exists." || echo "chap-secrets.ppp.bk does not exists."
 	test -e $(SYS_PPP)/pap-secrets.ppp.bk && echo "pap-secrets.ppp.bk exists." || echo "pap-secrets.ppp.bk does not exists."
 
