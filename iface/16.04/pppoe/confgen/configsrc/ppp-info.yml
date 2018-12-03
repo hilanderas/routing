@@ -1,0 +1,14 @@
+# This is a info file for pppoe configuration generation.
+#
+# Explanation:
+#   NIF: The network interface name.
+#   user: The user for pppoe authority.
+#   pass: The password for pppoe authority.
+
+- NIF: enp2s0
+  user: sdsdf
+  pass: sdfsf
+
+- NIF: enp3s0
+  user: sdfsdf
+  pass: sdfsf
