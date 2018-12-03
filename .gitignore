@@ -3,3 +3,4 @@ iface/ctl/confgen
 config
 dev-*
 *.zip
+.vscode
