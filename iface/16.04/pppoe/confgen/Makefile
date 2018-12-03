@@ -1,9 +1,13 @@
 .PHONY: config
 config:
 	echo "TODO: make conf"
+	# config interface
 	cp -r $(CURDIR)/configsrc/* $(CONFIG)
-	vim $(CONFIG)/interfaces
 	vim $(CONFIG)/interfaces.d/lan
-	vim $(CONFIG)/interfaces.d/wan
-	vim $(CONFIG)/dsl-provider
-	vim $(CONFIG)/secrets
+
+	# according to the ppp-info.yml, generate wan interface, peer files and secrets.
+	cp $(CURDIR)/configsrc/ppp-info.yml $(CONFIG)
+	vim $(CONFIG)/ppp-info.yml
+
+	python3 -m confgenerator.cli -f $(CONFIG)/ppp-info.yml -d $(CONFIG)
+	
