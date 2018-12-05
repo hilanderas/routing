@@ -3,9 +3,9 @@ SYS_NET = /etc/network
 set:
 	echo "set-wan"
 	echo "set-lan"
-	mv $(SYS_NET)/interfaces $(SYS_NET)/interfaces.bk
-	mv $(SYS_NET)/interfaces.d $(SYS_NET)/interfaces.d.bk
-	cp -r $(CONFIG)/* $(SYS_NET)/
+	sudo mv $(SYS_NET)/interfaces $(SYS_NET)/interfaces.bk
+	sudo mv $(SYS_NET)/interfaces.d $(SYS_NET)/interfaces.d.bk
+	sudo cp -r $(CONFIG)/* $(SYS_NET)/
 
 test-set:
 	echo "test set-iface"
@@ -37,9 +37,9 @@ test-stop:
 unset:
 	echo "unset-wan"
 	echo "unset-lan"
-	mv $(SYS_NET)/interfaces.bk $(SYS_NET)/interfaces
-	rm -rf $(SYS_NET)/interfaces.d
-	mv $(SYS_NET)/interfaces.d.bk $(SYS_NET)/interfaces.d
+	sudo mv $(SYS_NET)/interfaces.bk $(SYS_NET)/interfaces
+	sudo rm -rf $(SYS_NET)/interfaces.d
+	sudo mv $(SYS_NET)/interfaces.d.bk $(SYS_NET)/interfaces.d
 
 test-unset:
 	echo "test unset iface"
