@@ -1,0 +1,13 @@
+[Unit]
+Description=Routing
+After=network.target docker.service
+Requires=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/usr/bin/make -f /etc/routing/Makefile start
+ExecStop=/usr/bin/make -f /etc/routing/Makefile stop
+
+[Install]
+WantedBy=default.target
