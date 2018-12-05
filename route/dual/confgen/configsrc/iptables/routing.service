@@ -6,8 +6,8 @@ Requires=network.target
 [Service]
 Type=oneshot
 RemainAfterExit=true
-ExecStart=/usr/bin/make -f /etc/routing/Makefile start
-ExecStop=/usr/bin/make -f /etc/routing/Makefile stop
+ExecStart=/usr/bin/make -f /etc/routing/iptables/Makefile start
+ExecStop=/usr/bin/make -f /etc/routing/iptables/Makefile stop
 
 [Install]
 WantedBy=default.target
