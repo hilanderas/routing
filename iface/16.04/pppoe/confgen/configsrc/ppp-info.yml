@@ -6,9 +6,9 @@
 #   pass: The password for pppoe authority.
 
 - NIF: enp2s0
-  user: sdsdf
-  pass: sdfsf
+  user: "user1"
+  pass: "password1"
 
 - NIF: enp3s0
-  user: sdfsdf
-  pass: sdfsf
+  user: "user2"
+  pass: "password2"
