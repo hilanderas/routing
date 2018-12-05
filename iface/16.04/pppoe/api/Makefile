@@ -35,8 +35,7 @@ test-set_ppp:
 start:
 	echo "You need to reboot to make it work"
 test-start:
-	ifconfig br0
-	ifconfig ppp1
+	ifconfig
 	plog || true
 
 .PHONY: install test-install
