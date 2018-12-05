@@ -9,15 +9,15 @@ branches:
     - /^\d+(\.\d+){2}$/
 
 env:
-    matrix:
-      - OS_VERSION=18.04 WAN_MODE=dhcp
-      - OS_VERSION=16.04 WAN_MODE=dhcp
-      - OS_VERSION=16.04 WAN_MODE=pppoe
+  matrix:
+    - OS_VERSION=18.04 WAN_MODE=dhcp ROUTE_NUM=single
+    - OS_VERSION=16.04 WAN_MODE=dhcp ROUTE_NUM=single
+    - OS_VERSION=16.04 WAN_MODE=pppoe ROUTE_NUM=single
 
 install: true
 
 script:
-  - make build OS_VERSION=${OS_VERSION} WAN_MODE=${WAN_MODE} version=$TRAVIS_TAG
+  - make build OS_VERSION=${OS_VERSION} WAN_MODE=${WAN_MODE} ROUTE_NUM=${ROUTE_NUM} version=$TRAVIS_TAG 
 
 deploy:
   provider: releases
