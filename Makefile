@@ -15,7 +15,7 @@ create-dev:
 clean-dev:
 	rm -rf $(DEV)-*
 
-.PHONY: build_book
+.PHONY: build-book
 build-book: $(GITBOOK)
 	gitbook build $(GITBOOK) $(DOCS)
 
