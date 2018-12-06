@@ -1,3 +1,5 @@
+
+.PHONY: set test clean
 set:
 	cp -r $(CURDIR)/$(OS_VERSION)/$(WAN_MODE)/* ./ctl/
 test:
