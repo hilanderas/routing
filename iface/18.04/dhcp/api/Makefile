@@ -5,7 +5,7 @@ set:
 	echo "set-wan"
 	echo "set-lan"
 	mkdir $(SYS_NET).bk
-	mv $(SYS_NET)/* $(SYS_NET).bk/
+	mv $(SYS_NET)/* $(SYS_NET).bk/ || true
 	cp -r $(CONFIG)/01-lan.yaml $(SYS_NET)/
 	cp -r $(CONFIG)/02-wan.yaml $(SYS_NET)/
 
@@ -37,8 +37,8 @@ test-stop:
 unset:
 	echo "unset-wan"
 	echo "unset-lan"
-	rm $(SYS_NET)/*
-	cp $(SYS_NET).bk/* $(SYS_NET)/
+	rm $(SYS_NET)/* || true
+	cp $(SYS_NET).bk/* $(SYS_NET)/ || true
 	rm -rf $(SYS_NET).bk
 
 test-unset:
