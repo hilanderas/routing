@@ -3,7 +3,7 @@ include $(SETTING)
 
 .PHONY: config start stop restore 
 config:
-	mkdir $(CONFIG)
+	mkdir -p $(CONFIG)
 	make -C $(CONFGEN) -f $(CONFGEN)/Makefile config CONFIG=$(CONFIG)
 start:
 	make -C $(API) -f $(API)/Makefile install CONFIG=$(CONFIG)
