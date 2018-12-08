@@ -13,12 +13,5 @@ restore:
 	echo "remove configuration"	
 	rm -rf $(CONFIG)
 
-.PHONY: test-config test-restore test-start test-stop
-test-config: $(CONFIG)
-	tree $(CONFIG)
-test-restore:
-	ls $(CONFIG) || true
-test-start:
-	make -C $(API) -f $(API)/Makefile test-install CONFIG=$(CONFIG)
-test-stop:
-	make -C $(API) -f $(API)/Makefile test-uninstall CONFIG=$(CONFIG)
+.PHONY: status
+	make -C $(API) -f $(API)/Makefile status 

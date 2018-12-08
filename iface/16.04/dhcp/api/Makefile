@@ -1,51 +1,43 @@
 SYS_NET = /etc/network
-.PHONY: set test-set
+
+.PHONY: set
 set:
 	echo "set-wan"
 	echo "set-lan"
 	sudo mv $(SYS_NET)/interfaces $(SYS_NET)/interfaces.bk
 	sudo mv $(SYS_NET)/interfaces.d $(SYS_NET)/interfaces.d.bk
 	sudo cp -r $(CONFIG)/* $(SYS_NET)/
-test-set:
-	echo "test set-iface"
-	ls $(SYS_NET)/inter*
-	tree $(SYS_NET)/interfaces.d
-	cat $(SYS_NET)/interfaces.d/lan
-	cat $(SYS_NET)/interfaces.d/wan
-	cat $(SYS_NET)/interfaces
-	tree $(SYS_NET)/interfaces.d.bk
-	cat $(SYS_NET)/interfaces.bk
 
-.PHONY: start test-start
+.PHONY: start
 start:
 	echo "You need to reboot to make it work"
-test-start:
-	ifconfig
 
-.PHONY: install test-install
+.PHONY: install
 install: set start
-test-install: test-set test-start
 
 
-.PHONY: stop test-stop
+.PHONY: stop
 stop:
 	echo "You need to reboot to make it work"
-test-stop:
-	ifconfig
 
-.PHONY: unset test-unset
+.PHONY: unset
 unset:
 	echo "unset-wan"
 	echo "unset-lan"
 	sudo mv $(SYS_NET)/interfaces.bk $(SYS_NET)/interfaces
 	sudo rm -rf $(SYS_NET)/interfaces.d
 	sudo mv $(SYS_NET)/interfaces.d.bk $(SYS_NET)/interfaces.d
-test-unset:
-	echo "test unset iface"
-	ls $(SYS_NET)/inter*
-	tree $(SYS_NET)/interfaces.d
-	cat $(SYS_NET)/interfaces
 
-.PHONY: uninstall test-uninstall
+.PHONY: uninstall
 uninstall: unset stop
-test-uninstall: test-stop test-unset
+
+.PHONY: status
+status:
+	./existed.sh $(SYS_NET)/interfaces.d
+	./existed.sh $(SYS_NET)/interfaces.d/lan
+	./existed.sh $(SYS_NET)/interfaces.d/wan
+	./existed.sh $(SYS_NET)/interfaces
+	./existed.sh $(SYS_NET)/interfaces.d.bk
+	./existed.sh $(SYS_NET)/interfaces.bk
+	ifconfig
+
