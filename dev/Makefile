@@ -4,35 +4,24 @@ CONF = $(CURDIR)/config
 
 .PHONY: config restore start stop
 config:
-	make -C $(IFACE) -f $(IFACE)/Makefile config CONFIG=$(CONF)/iface
-	make -C $(ROUTE) -f $(ROUTE)/Makefile config CONFIG=$(CONF)/route
+	make -s -f sm.mk is_INIT && make -C $(IFACE) config CONFIG=$(CONF)/iface && make -C $(ROUTE) config CONFIG=$(CONF)/route && make -s -f sm.mk set_CONFGENED
 
 restore:
-	make -C $(IFACE) -f $(IFACE)/Makefile restore CONFIG=$(CONF)/iface
-	make -C $(ROUTE) -f $(ROUTE)/Makefile restore CONFIG=$(CONF)/route
-	rm -rf $(CONF)
+	make -s -f sm.mk is_CONFGENED && make -C $(IFACE) restore CONFIG=$(CONF)/iface && make -C $(ROUTE) restore CONFIG=$(CONF)/route && rm -rf $(CONF) && make -s -f sm.mk set_INIT
 
 start:
-	make -C $(IFACE) -f $(IFACE)/Makefile start CONFIG=$(CONF)/iface
-	make -C $(ROUTE) -f $(ROUTE)/Makefile start CONFIG=$(CONF)/route
+	make -s -f sm.mk is_CONFGENED && make -C $(IFACE) start CONFIG=$(CONF)/iface && make -C $(ROUTE) start CONFIG=$(CONF)/route && make -s -f sm.mk set_RUNNING
 
 stop:
-	make -C $(IFACE) -f $(IFACE)/Makefile stop
-	make -C $(ROUTE) -f $(ROUTE)/Makefile stop
+	make -s -f sm.mk is_RUNNING && make -C $(IFACE) stop && make -C $(ROUTE) stop && make -s -f sm.mk set_CONFGENED
 
-.PHONY: test-config test-restore test-start test-stop
-test-config:
-	make -C $(IFACE) -f $(IFACE)/Makefile test-config
-	make -C $(ROUTE) -f $(ROUTE)/Makefile test-config
+restart: stop start
 
-test-restore:
-	make -C $(IFACE) -f $(IFACE)/Makefile test-restore
-	make -C $(ROUTE) -f $(ROUTE)/Makefile test-restore
+.PHONY: test_state get_state
+test_state: get_state
+	tree $(CONF) || true
+	make -s -C $(IFACE) status
+	make -s -C $(ROUTE) status 
 
-test-start:
-	make -C $(IFACE) -f $(IFACE)/Makefile test-start
-	make -C $(ROUTE) -f $(ROUTE)/Makefile test-start
-
-test-stop:
-	make -C $(IFACE) -f $(IFACE)/Makefile test-stop
-	make -C $(ROUTE) -f $(ROUTE)/Makefile test-stop
+get_state:
+	make -s -f sm.mk get_state

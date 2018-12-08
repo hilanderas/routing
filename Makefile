@@ -8,7 +8,7 @@ DEV=$(CURDIR)/dev
 create-dev:
 	make -C $(CURDIR)/iface -f $(CURDIR)/iface/Makefile set 
 	mkdir $(DEV)-$(OS_VERSION)-$(WAN_MODE)-$(ROUTE_NUM) $(DEV)-$(OS_VERSION)-$(WAN_MODE)-$(ROUTE_NUM)/iface $(DEV)-$(OS_VERSION)-$(WAN_MODE)-$(ROUTE_NUM)/route
-	cp $(DEV)/Makefile $(DEV)-$(OS_VERSION)-$(WAN_MODE)-$(ROUTE_NUM)/
+	cp $(DEV)/Makefile $(DEV)/sm.mk $(DEV)/is.sh $(DEV)/.state.conf $(DEV)-$(OS_VERSION)-$(WAN_MODE)-$(ROUTE_NUM)/
 	cp -r $(CURDIR)/iface/ctl/* $(DEV)-$(OS_VERSION)-$(WAN_MODE)-$(ROUTE_NUM)/iface
 	cp -r $(CURDIR)/route/$(ROUTE_NUM)/* $(DEV)-$(OS_VERSION)-$(WAN_MODE)-$(ROUTE_NUM)/route
 	make -C $(CURDIR)/iface -f $(CURDIR)/iface/Makefile clean 
