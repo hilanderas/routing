@@ -19,7 +19,7 @@ install: true
 
 script:
   - make build OS_VERSION=${OS_VERSION} WAN_MODE=${WAN_MODE} ROUTE_NUM=${ROUTE_NUM} version=$TRAVIS_TAG 
-
+  - make build-testflow version=$TRAVIS_TAG
 deploy:
   provider: releases
   prerelease: true
