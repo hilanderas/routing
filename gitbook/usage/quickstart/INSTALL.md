@@ -10,8 +10,8 @@ ssh [USER]@[IP/HOSTNAME]
 ### Download package and unzip
 Download the routing package:
 ```bash
-wget https://github.com/hilanderas/routing/releases/download/0.0.10/routing-16.04-dhcp-single-0.0.10.zip
-unzip routing-16.04-dhcp-single-0.0.10.zip
+wget https://github.com/hilanderas/routing/releases/download/0.0.11/routing-16.04-dhcp-single-0.0.11.zip
+unzip routing-16.04-dhcp-single-0.0.11.zip
 ```
 
 > Check all available packages in [release page](https://github.com/elespejo/routing/releases).
