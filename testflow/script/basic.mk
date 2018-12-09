@@ -11,7 +11,7 @@ rm_download:
 	rm -rf ${PROJECT}*
 
 
-.PHONY: config read_config init_config 
+.PHONY: config read_config  
 config: 
 	sed -i '/TEST_PROJ/c\export TEST_PROJ=${TEST_PROJ}' ${LIB}
 
@@ -19,9 +19,9 @@ config:
 read_config:
 	cat ${LIB} | grep "TEST_PROJ"
 
-.PHONY: reset_env
+.PHONY: reset_config
 reset_config:
-	sed -i '/TEST_PROJ/c\export TEST_PROJ=../../ctl' ${LIB}
+	sed -i '/TEST_PROJ/c\export TEST_PROJ=../' ${LIB}
 	sed -i '/TESTMODE/c\export TESTMODE=dev' ${LIB}
 	cat ${LIB}
 
