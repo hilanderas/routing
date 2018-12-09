@@ -36,7 +36,7 @@ status:
 	ls $(SYS_NET)/
 	./existed.sh $(SYS_NET).bk
 	ls $(SYS_NET).bk/
-	ifconfig
+#	ifconfig
 
 .PHONY: showconf
 showconf: $(SYS_NET)/01-lan.yaml $(SYS_NET)/02-wan.yaml
