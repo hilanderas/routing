@@ -10,7 +10,6 @@ test_remove:
 test_install:
 	make -f basic.mk hint CONTENT="test install"
 	make -C ${TEST_PROJ} install INFO=${TEST_INFO} || true
-	make test_status
 	make test_test_state
 	
 
@@ -69,10 +68,10 @@ test_restart:
 	make test_test_state
 
 
-.PHONY: test_status test_state
+.PHONY:  test_state
 test_test_state:
 	make -f basic.mk hint CONTENT="test test state"
-	make -C ${TEST_PROJ} test_state
+	make -C ${TEST_PROJ} test_state || true
 	make -f basic.mk confirm 
 
 .PHONY: test_showconf test_show_queued_conf
