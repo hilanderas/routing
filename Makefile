@@ -3,6 +3,7 @@ project=routing
 GITBOOK=$(CURDIR)/gitbook
 DOCS=$(CURDIR)/docs
 DEV=$(CURDIR)/dev
+TESTFLOW=$(project)-testflow
 
 .PHONY: create-dev clean-dev
 create-dev:
@@ -26,3 +27,23 @@ build: create-dev
 	zip -r $(project)-$(OS_VERSION)-$(WAN_MODE)-$(ROUTE_NUM)-$(version).zip dev-$(OS_VERSION)-$(WAN_MODE)-$(ROUTE_NUM)
 clean:
 	rm -rf *.zip
+
+
+.PHONY: build-testflow
+build-testflow:
+	cp -r testflow/script $(TESTFLOW)
+	cd $(TESTFLOW)/; find . -type f -exec md5sum {} \; > $(CURDIR)/$(TESTFLOW)-$(version).md5; cd -
+	mv $(TESTFLOW)-$(version).md5 $(TESTFLOW)
+	cd $(TESTFLOW) && make -f basic.mk set_mod TESTMODE=prod
+	sed -i '/PROJ_VERSION/c\export PROJ_VERSION=${version}' $(TESTFLOW)/.env 
+	zip -r $(TESTFLOW)-$(version).zip $(TESTFLOW)
+	rm -rf $(TESTFLOW)
+
+.PHONY: update-gitbook
+update-gitbook: $(GITBOOK)
+	sed -i s/[0-9][.][0-9][.][0-9]/$(CUR)/g $(CURDIR)/gitbook/en/usage/testflow/PRODUCTIONMODE.md
+	sed -i s/[0-9][.][0-9][.][0-9]/$(CUR)/g $(CURDIR)/gitbook/en/SUMMARY.md
+	sed -i s/[0-9][.][0-9][.][0-9]/$(CUR)/g $(CURDIR)/gitbook/en/usage/quickstart/INSTALL.md
+
+
+
