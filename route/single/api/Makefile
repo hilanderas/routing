@@ -35,8 +35,8 @@ status:
 	./existed.sh $(SYS_ROUTE)/Makefile
 	./existed.sh $(SYS_ROUTE)/setting.env
 	./existed.sh $(SYSD)/routing.service
-	sudo iptables -L -nv -t nat
-	sudo iptables -L -nv -t filter
+#	sudo iptables -L -nv -t nat
+#	sudo iptables -L -nv -t filter
 
 .PHONY: showconf
 showconf: $(SYS_ROUTE)
