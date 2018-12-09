@@ -13,6 +13,9 @@ set_%:
 get_state:
 	echo "Current state is $(STATE)"
 
+is_INIT_CONFGENED:
+	make -f sm.mk is_INIT || make -f sm.mk is_CONFGENED 
+
 is_RUNNING_CONFQUEUED:
 	make -f sm.mk is_RUNNING || make -f sm.mk is_CONFQUEUED 
 
