@@ -41,9 +41,9 @@ build-testflow:
 
 .PHONY: update-gitbook
 update-gitbook: $(GITBOOK)
-	sed -i s/[0-9][.][0-9][.][0-9]/$(CUR)/g $(CURDIR)/gitbook/en/usage/testflow/PRODUCTIONMODE.md
-	sed -i s/[0-9][.][0-9][.][0-9]/$(CUR)/g $(CURDIR)/gitbook/en/SUMMARY.md
-	sed -i s/[0-9][.][0-9][.][0-9]/$(CUR)/g $(CURDIR)/gitbook/en/usage/quickstart/INSTALL.md
+	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(CUR)/g $(CURDIR)/gitbook/usage/testflow/PRODUCTIONMODE.md
+	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(CUR)/g $(CURDIR)/gitbook/SUMMARY.md
+	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(CUR)/g $(CURDIR)/gitbook/usage/quickstart/INSTALL.md
 
 
 
