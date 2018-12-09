@@ -1,11 +1,13 @@
 #!make 
 include .env
 LIB=".env"
+PAK_SEQ=routing-16.04-dhcp-single-${PROJ_VERSION} routing-18.04-dhcp-single-${PROJ_VERSION} 
 
 .PHONY: download rm_download
-download:
-	wget https://github.com/hilanderas/${PROJECT}/releases/download/${PROJ_VERSION}/${PROJECT}-${PROJ_VERSION}.zip
-	unzip ${PROJECT}-${PROJ_VERSION}.zip
+download: $(addprefix download-, $(PAK_SEQ))
+download-%:
+	wget https://github.com/hilanderas/${PROJECT}/releases/download/${PROJ_VERSION}/$*.zip
+	unzip $*.zip
 
 rm_download:
 	rm -rf ${PROJECT}*
