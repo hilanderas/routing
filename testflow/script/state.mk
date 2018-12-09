@@ -15,6 +15,7 @@ test_confgened:
 	make test_restart || true
 	make test_revertconf || true
 	make test_updateconf || true
+	make test_rmconf || true
 test_confqueued_pop_branch: 
 	make test_genconf || true
 	make test_start || true
