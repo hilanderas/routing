@@ -50,21 +50,24 @@ install uninstall installafteruninstall reinstall reuninstall:
 endif
 
 
-.PHONY: test_reboot_p1 
+.PHONY: reboot_p1 poweroff_p1 
 ifeq ($(TESTMODE), $(filter $(TESTMODE),dev prod))
 reboot_p1: 
 	make  test_install
-	make  re_boot
+	make  -f basic.mk re_boot
+poweroff_p1:
+	make test_install
+	make -s -f basic.mk hint CONTENT="Please power off the machine!"
 else
-reboot_p1 : 
+reboot_p1 poweroff_p1: 
 	make -s -f basic.mk hint CONTENT="Please set test mode to either dev or prod!"
 endif
 
 
 
-.PHONY: test_reboot_p2 test_restartall 
+.PHONY: reboot_p2 poweroff_p2 restartall 
 ifeq ($(TESTMODE),dev)
-reboot_p2: 
+reboot_p2 poweroff_p2: 
 	make test_test_state
 	make test_uninstall
 restartall:
@@ -73,7 +76,7 @@ restartall:
 	make test_test_state
 	make test_uninstall
 else ifeq ($(TESTMODE),prod)
-reboot_p2: 
+reboot_p2 poweroff_p2: 
 	make test_test_state
 	make -f basic.mk hint CONTENT="Please ping lan, wan, 114.114.114.114 of router in your pc!"
 	make test_uninstall
@@ -83,8 +86,17 @@ restartall:
 	make test_test_state
 	make -f basic.mk hint CONTENT="Please ping lan, wan, 114.114.114.114 of router in your pc!"
 	make test_uninstall
+isprestart:
+	make test_install
+	make -f basic.mk hint CONTENT="Please restart isp!"
+	sleep 120	
+	make test_test_state
+	make -f basic.mk hint CONTENT="Please ping lan, wan, 114.114.114.114 of router in your pc!"
+	make test_uninstall
+
+
 else
-reboot_p2 restartall : 
+reboot_p2 restartall poweroff_p2 isprestart: 
 	make -s -f basic.mk hint CONTENT="Please set test mode to either dev or prod!"
 endif
 
