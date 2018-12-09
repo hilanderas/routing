@@ -33,10 +33,10 @@ status:
 	./existed.sh $(SYS_NET)
 	./existed.sh $(SYS_NET)/01-lan.yaml
 	./existed.sh $(SYS_NET)/02-wan.yaml
-	ls $(SYS_NET)/*
+	ls $(SYS_NET)/
 	./existed.sh $(SYS_NET).bk
-	ls $(SYS_NET).bk/*
-	ifconfig
+	ls $(SYS_NET).bk/
+#	ifconfig
 
 .PHONY: showconf
 showconf: $(SYS_NET)/01-lan.yaml $(SYS_NET)/02-wan.yaml
