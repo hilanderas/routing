@@ -60,7 +60,7 @@
     <link rel="next" href="PRODUCTIONMODE.html" />
     
     
-    <link rel="prev" href="../DEPLOYMENT.html" />
+    <link rel="prev" href="../morescenarios/SERVICE.html" />
     
 
     </head>
@@ -197,13 +197,13 @@
 
     
         
-        <li class="header">Deployment</li>
+        <li class="header">Quick start</li>
         
         
     
-        <li class="chapter " data-level="4.1" data-path="../DEPENDENCY.html">
+        <li class="chapter " data-level="4.1" data-path="../quickstart/DEPENDENCY.html">
             
-                <a href="../DEPENDENCY.html">
+                <a href="../quickstart/DEPENDENCY.html">
             
                     
                     Dependency
@@ -214,12 +214,38 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2" data-path="../DEPLOYMENT.html">
+        <li class="chapter " data-level="4.2" data-path="../quickstart/INSTALL.html">
             
-                <a href="../DEPLOYMENT.html">
+                <a href="../quickstart/INSTALL.html">
             
                     
-                    Deployment
+                    Install
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../quickstart/UNINSTALL.html">
+            
+                <a href="../quickstart/UNINSTALL.html">
+            
+                    
+                    Uninstall
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../quickstart/UPDATE.html">
+            
+                <a href="../quickstart/UPDATE.html">
+            
+                    
+                    Update
             
                 </a>
             
@@ -233,6 +259,45 @@
         <li class="header">More scenarios</li>
         
         
+    
+        <li class="chapter " data-level="5.1" data-path="../morescenarios/CONFIG.html">
+            
+                <a href="../morescenarios/CONFIG.html">
+            
+                    
+                    How to check conf
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../morescenarios/STATE.html">
+            
+                <a href="../morescenarios/STATE.html">
+            
+                    
+                    How to check state
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../morescenarios/SERVICE.html">
+            
+                <a href="../morescenarios/SERVICE.html">
+            
+                    
+                    How to manipulate the service
+            
+                </a>
+            
+
+            
+        </li>
     
 
     
@@ -372,7 +437,50 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h1 id="develop-mod">Develop mod</h1>
+<h3 id="generate-a-project">Generate a project</h3>
+<pre><code class="lang-bash">make <span class="hljs-_">-f</span> routing.mk create-proj-18<span class="hljs-_">-s</span>-dhcp
+make <span class="hljs-_">-f</span> routing.mk create-proj-16<span class="hljs-_">-s</span>-dhcp
+</code></pre>
+<h3 id="run-test-flow">Run test flow</h3>
+<ul>
+<li><p>Abnormal state test</p>
+<pre><code class="lang-bash">make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_init
+make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_confgened
+make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_running
+make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_confqueued
+</code></pre>
+</li>
+<li><p>Normal state test</p>
+<pre><code class="lang-bash">make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_init_norm
+make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_confgened_norm
+make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_running_norm
+make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_confqueued_norm
+</code></pre>
+</li>
+<li><p>Functionality test</p>
+<pre><code class="lang-bash">make <span class="hljs-_">-f</span> function.mk <span class="hljs-built_in">test</span>_install
+make <span class="hljs-_">-f</span> function.mk <span class="hljs-built_in">test</span>_uninstall
+make <span class="hljs-_">-f</span> function.mk <span class="hljs-built_in">test</span>_installafteruninstall
+make <span class="hljs-_">-f</span> function.mk <span class="hljs-built_in">test</span>_reinstall
+make <span class="hljs-_">-f</span> function.mk <span class="hljs-built_in">test</span>_reuninstall
+make <span class="hljs-_">-f</span> function.mk <span class="hljs-built_in">test</span>_checkconf
+</code></pre>
+</li>
+<li><p>Run restart test case</p>
+<pre><code class="lang-bash">make <span class="hljs-_">-f</span> restart.mk <span class="hljs-built_in">test</span>_reboot_p1
+make <span class="hljs-_">-f</span> restart.mk <span class="hljs-built_in">test</span>_reboot_p2
+make <span class="hljs-_">-f</span> restart.mk <span class="hljs-built_in">test</span>_poweroff_p1
+make <span class="hljs-_">-f</span> restart.mk <span class="hljs-built_in">test</span>_poweroff_p2
+make <span class="hljs-_">-f</span> restart.mk <span class="hljs-built_in">test</span>_isprestart
+make <span class="hljs-_">-f</span> restart.mk <span class="hljs-built_in">test</span>_restartall
+</code></pre>
+</li>
+<li>Run update test cases<pre><code class="lang-bash">make <span class="hljs-_">-f</span> update.mk
+</code></pre>
+</li>
+</ul>
+
                                 
                                 </section>
                             
@@ -399,7 +507,7 @@
 
             
                 
-                <a href="../DEPLOYMENT.html" class="navigation navigation-prev " aria-label="Previous page: Deployment">
+                <a href="../morescenarios/SERVICE.html" class="navigation navigation-prev " aria-label="Previous page: How to manipulate the service">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -415,7 +523,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Develop mode","level":"6.1","depth":1,"next":{"title":"Production mode","level":"6.2","depth":1,"path":"usage/testflow/PRODUCTIONMODE.md","ref":"usage/testflow/PRODUCTIONMODE.md","articles":[]},"previous":{"title":"Deployment","level":"4.2","depth":1,"path":"usage/DEPLOYMENT.md","ref":"usage/DEPLOYMENT.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/testflow/DEVELOPMODE.md","mtime":"2018-12-06T03:13:08.433Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-06T03:30:31.128Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Develop mode","level":"6.1","depth":1,"next":{"title":"Production mode","level":"6.2","depth":1,"path":"usage/testflow/PRODUCTIONMODE.md","ref":"usage/testflow/PRODUCTIONMODE.md","articles":[]},"previous":{"title":"How to manipulate the service","level":"5.3","depth":1,"path":"usage/morescenarios/SERVICE.md","ref":"usage/morescenarios/SERVICE.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/testflow/DEVELOPMODE.md","mtime":"2018-12-09T05:55:15.643Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-09T08:27:28.765Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

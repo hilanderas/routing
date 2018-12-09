@@ -12,12 +12,16 @@
 * [pppoe](topology/pppoe.md)
 * [pppoe with balance](topology/pppoe_balance.md)
 
-### Deployment
-* [Dependency](usage/DEPENDENCY.md)
-* [Deployment](usage/DEPLOYMENT.md)
+### Quick start
+* [Dependency](usage/quickstart/DEPENDENCY.md)
+* [Install](usage/quickstart/INSTALL.md)
+* [Uninstall](usage/quickstart/UNINSTALL.md)
+* [Update](usage/quickstart/UPDATE.md)
 
 ### More scenarios
-
+* [How to check conf](usage/morescenarios/CONFIG.md)
+* [How to check state](usage/morescenarios/STATE.md)
+* [How to manipulate the service](usage/morescenarios/SERVICE.md)
 
 ### QA usage
 * [Develop mode](usage/testflow/DEVELOPMODE.md)
