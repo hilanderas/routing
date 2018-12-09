@@ -41,3 +41,7 @@ status:
 	./existed.sh $(SYS_NET)/interfaces.bk
 	ifconfig
 
+.PHONY: showconf
+showconf:
+	cat $(SYS_NET)/interfaces.d/lan
+	cat $(SYS_NET)/interfaces.d/wan

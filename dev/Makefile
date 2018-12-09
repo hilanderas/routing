@@ -38,3 +38,12 @@ test_state: get_state
 
 get_state:
 	make -s -f sm.mk get_state
+
+.PHONY: showconf show_queued_conf
+showconf:
+	make -s -C $(IFACE) show_running_conf
+	make -s -C $(ROUTE) show_running_conf
+
+show_queued_conf: $(CONFQ)
+	make -s -C $(IFACE) show_conf CONFIG=$(CONFQ)/iface
+	make -s -C $(ROUTE) show_conf CONFIG=$(CONFQ)/route
