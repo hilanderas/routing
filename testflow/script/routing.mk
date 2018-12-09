@@ -18,6 +18,7 @@ create-proj-16-s-dhcp:
 	cat .env
 del-proj-18-s-dhcp:
 	rm -rf ${ROUTING_PROJ}/dev-18.04-dhcp-single
+	make -f basic.mk reset_config
 del-proj-16-s-dhcp:
 	rm -rf ${ROUTING_PROJ}/dev-16.04-dhcp-single
-
+	make -f basic.mk reset_config
