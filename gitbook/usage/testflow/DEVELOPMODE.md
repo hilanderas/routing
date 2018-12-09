@@ -35,18 +35,18 @@ make -s -f function.mk test_reuninstall
 make -s -f function.mk test_checkconf
 ```
 
+
 * Run restart test case
 ```bash
-make -s -f restart.mk test_reboot_p1
-make -s -f restart.mk test_reboot_p2
-make -s -f restart.mk test_poweroff_p1
-make -s -f restart.mk test_poweroff_p2
-make -s -f restart.mk test_isprestart
-make -s -f restart.mk test_restartall
+make -s -f function.mk reboot_p1
+make -s -f function.mk reboot_p2
+make -s -f function.mk poweroff_p1
+make -s -f function.mk poweroff_p2
+make -s -f function.mk isprestart
+make -s -f function.mk restartall
 ```
 * Run update test cases
 ```bash
-make -s -f update.mk
+make -s -f function.mk updateconf
 ```
-
 

@@ -33,16 +33,16 @@ make -s -f function.mk checkconf
 
 * Run restart test case
 ```bash
-make -s -f restart.mk reboot_p1
-make -s -f restart.mk reboot_p2
-make -s -f restart.mk poweroff_p1
-make -s -f restart.mk poweroff_p2
-make -s -f restart.mk isprestart
-make -s -f restart.mk restartall
+make -s -f function.mk reboot_p1
+make -s -f function.mk reboot_p2
+make -s -f function.mk poweroff_p1
+make -s -f function.mk poweroff_p2
+make -s -f function.mk isprestart
+make -s -f function.mk restartall
 ```
 * Run update test cases
 ```bash
-make -s -f update.mk
+make -s -f function.mk updateconf
 ```
 
 
