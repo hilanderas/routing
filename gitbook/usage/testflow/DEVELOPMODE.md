@@ -2,6 +2,7 @@
 
 ### Generate a project
 ```bash
+cd routing/testflow/script
 make -s -f routing.mk create-proj-18-s-dhcp
 make -s -f routing.mk create-proj-16-s-dhcp
 ```
@@ -12,7 +13,8 @@ make -s -f routing.mk create-proj-16-s-dhcp
 make -s -f state.mk test_init
 make -s -f state.mk test_confgened
 make -s -f state.mk test_running
-make -s -f state.mk test_confqueued
+make -s -f state.mk test_confqueued_pop_branch
+make -s -f state.mk test_confqueued_rm_branch
 ```
 
 * Normal state test
