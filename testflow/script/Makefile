@@ -1,15 +1,10 @@
 #!make
 include .env 
-.PHONY: test_prepare test_remove
-test_prepare:
-	
-test_remove:
-
 
 .PHONY: test_install test_uninstall test_update
 test_install:
 	make -f basic.mk hint CONTENT="test install"
-	make -C ${TEST_PROJ} install INFO=${TEST_INFO} || true
+	make -C ${TEST_PROJ} install  || true
 	make test_test_state
 	
 
@@ -23,23 +18,18 @@ test_update:
 	make -C ${TEST_PROJ} update || true
 	make test_test_state
 
-.PHONY: test_genconf test_setconf test_restoreconf test_rmconf test_updateconf
+.PHONY: test_genconf test_rmconf test_revertconf test_updateconf
 test_genconf:
 	make -f basic.mk hint CONTENT="test genconf"
 	make -C ${TEST_PROJ} config || true
 	make test_test_state
 
-test_setconf:
 
 test_rmconf:	
 	make -f basic.mk hint CONTENT="test rmconfig"
 	make -C ${TEST_PROJ} restore || true
 	make test_test_state
 	
-test_popconf:
-	
-test_restoreconf:
-
 test_revertconf:
 	make -f basic.mk hint CONTENT="test revertconf"
 	make -C ${TEST_PROJ} revert_config || true
@@ -51,7 +41,7 @@ test_updateconf:
 	make test_test_state
 
 	
-.PHONY: test_start test_stop test_restart test_restart_sskcp test_restart_dns test_restart_bypass
+.PHONY: test_start test_stop test_restart 
 test_start: 
 	make -f basic.mk hint CONTENT="test start"	
 	make -C ${TEST_PROJ} start || true
@@ -68,7 +58,7 @@ test_restart:
 	make test_test_state
 
 
-.PHONY:  test_state
+.PHONY:  test_test_state
 test_test_state:
 	make -f basic.mk hint CONTENT="test test state"
 	make -C ${TEST_PROJ} test_state || true
