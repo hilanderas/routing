@@ -114,7 +114,7 @@
                 <a href="../../overview/USER.html">
             
                     
-                    (todo)Who are the user ?
+                    Who are the user ?
             
                 </a>
             
@@ -127,7 +127,7 @@
                 <a href="../../overview/PROJECT.html">
             
                     
-                    (todo)About project
+                    About project
             
                 </a>
             
@@ -160,7 +160,7 @@
                 <a href="../../topology/dhcp_balance.html">
             
                     
-                    dhcp with balance
+                    dhcp with load balance
             
                 </a>
             
@@ -186,7 +186,7 @@
                 <a href="../../topology/pppoe_balance.html">
             
                     
-                    pppoe with balance
+                    pppoe with load balance
             
                 </a>
             
@@ -439,44 +439,61 @@
                                 
                                 <h1 id="develop-mod">Develop mod</h1>
 <h3 id="generate-a-project">Generate a project</h3>
-<pre><code class="lang-bash">make <span class="hljs-_">-f</span> routing.mk create-proj-18<span class="hljs-_">-s</span>-dhcp
-make <span class="hljs-_">-f</span> routing.mk create-proj-16<span class="hljs-_">-s</span>-dhcp
+<ul>
+<li><p>Generate packages for ubuntu 18.04, no load balance, dhcp for WAN</p>
+<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> routing/testflow/script
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> routing.mk create-proj-18<span class="hljs-_">-s</span>-dhcp
 </code></pre>
+</li>
+<li><p>Generate packages for ubuntu 16.04, no load balance, dhcp for WAN</p>
+<pre><code class="lang-bash">make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> routing.mk create-proj-16<span class="hljs-_">-s</span>-dhcp
+</code></pre>
+</li>
+<li><p>Generate packages for ubuntu 16.04, no load balance, pppoe for WAN</p>
+<pre><code class="lang-bash">make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> routing.mk create-proj-16<span class="hljs-_">-s</span>-pppoe
+</code></pre>
+</li>
+<li><p>Generate packages for ubuntu 16.04, with load balance, pppoe for WAN</p>
+<pre><code class="lang-bash">make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> routing.mk create-proj-16<span class="hljs-_">-d</span>-pppoe
+</code></pre>
+</li>
+</ul>
 <h3 id="run-test-flow">Run test flow</h3>
 <ul>
 <li><p>Abnormal state test</p>
-<pre><code class="lang-bash">make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_init
-make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_confgened
-make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_running
-make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_confqueued
+<pre><code class="lang-bash">make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_init
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_confgened
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_running
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_confqueued_pop_branch
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_confqueued_rm_branch
 </code></pre>
 </li>
 <li><p>Normal state test</p>
-<pre><code class="lang-bash">make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_init_norm
-make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_confgened_norm
-make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_running_norm
-make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_confqueued_norm
+<pre><code class="lang-bash">make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_init_norm
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_confgened_norm
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_running_norm
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_confqueued_norm
 </code></pre>
 </li>
 <li><p>Functionality test</p>
-<pre><code class="lang-bash">make <span class="hljs-_">-f</span> function.mk <span class="hljs-built_in">test</span>_install
-make <span class="hljs-_">-f</span> function.mk <span class="hljs-built_in">test</span>_uninstall
-make <span class="hljs-_">-f</span> function.mk <span class="hljs-built_in">test</span>_installafteruninstall
-make <span class="hljs-_">-f</span> function.mk <span class="hljs-built_in">test</span>_reinstall
-make <span class="hljs-_">-f</span> function.mk <span class="hljs-built_in">test</span>_reuninstall
-make <span class="hljs-_">-f</span> function.mk <span class="hljs-built_in">test</span>_checkconf
+<pre><code class="lang-bash">make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk <span class="hljs-built_in">test</span>_install
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk <span class="hljs-built_in">test</span>_uninstall
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk <span class="hljs-built_in">test</span>_installafteruninstall
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk <span class="hljs-built_in">test</span>_reinstall
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk <span class="hljs-built_in">test</span>_reuninstall
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk <span class="hljs-built_in">test</span>_checkconf
 </code></pre>
 </li>
-<li><p>Run restart test case</p>
-<pre><code class="lang-bash">make <span class="hljs-_">-f</span> restart.mk <span class="hljs-built_in">test</span>_reboot_p1
-make <span class="hljs-_">-f</span> restart.mk <span class="hljs-built_in">test</span>_reboot_p2
-make <span class="hljs-_">-f</span> restart.mk <span class="hljs-built_in">test</span>_poweroff_p1
-make <span class="hljs-_">-f</span> restart.mk <span class="hljs-built_in">test</span>_poweroff_p2
-make <span class="hljs-_">-f</span> restart.mk <span class="hljs-built_in">test</span>_isprestart
-make <span class="hljs-_">-f</span> restart.mk <span class="hljs-built_in">test</span>_restartall
+</ul>
+<ul>
+<li>Run restart test case<pre><code class="lang-bash">make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk reboot_p1
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk reboot_p2
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk poweroff_p1
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk poweroff_p2
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk restartall
 </code></pre>
 </li>
-<li>Run update test cases<pre><code class="lang-bash">make <span class="hljs-_">-f</span> update.mk
+<li>Run update test cases<pre><code class="lang-bash">make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk updateconf
 </code></pre>
 </li>
 </ul>
@@ -523,7 +540,7 @@ make <span class="hljs-_">-f</span> restart.mk <span class="hljs-built_in">test<
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Develop mode","level":"6.1","depth":1,"next":{"title":"Production mode","level":"6.2","depth":1,"path":"usage/testflow/PRODUCTIONMODE.md","ref":"usage/testflow/PRODUCTIONMODE.md","articles":[]},"previous":{"title":"How to manipulate the service","level":"5.3","depth":1,"path":"usage/morescenarios/SERVICE.md","ref":"usage/morescenarios/SERVICE.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/testflow/DEVELOPMODE.md","mtime":"2018-12-09T05:55:15.643Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-09T08:27:28.765Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Develop mode","level":"6.1","depth":1,"next":{"title":"Production mode","level":"6.2","depth":1,"path":"usage/testflow/PRODUCTIONMODE.md","ref":"usage/testflow/PRODUCTIONMODE.md","articles":[]},"previous":{"title":"How to manipulate the service","level":"5.3","depth":1,"path":"usage/morescenarios/SERVICE.md","ref":"usage/morescenarios/SERVICE.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/testflow/DEVELOPMODE.md","mtime":"2018-12-10T15:01:34.923Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-10T15:20:33.254Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
