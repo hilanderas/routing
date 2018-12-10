@@ -41,6 +41,7 @@ unset:
 	sudo rm $(SYSD)/routing.service
 	sudo rm $(SYSD)/route_balance.timer
 	sudo rm $(SYSD)/route_balance.service
+	sudo systemctl daemon-reload
 
 uninstall: stop unset
 
@@ -53,12 +54,12 @@ status:
 	./existed.sh $(SYSD)/routing.service
 	./existed.sh $(SYSD)/route_balance.service
 	./existed.sh $(SYSD)/route_balance.timer
-	ip route
-	sudo iptables -t nat -S POSTROUTING
-	sudo iptables -t filter -S FORWARD
-	sudo systemctl status routing.service || true
-	sudo systemctl status route_balance.timer || true
-	sudo systemctl status route_balance.service || true
+	#ip route
+	#sudo iptables -t nat -S POSTROUTING
+	#sudo iptables -t filter -S FORWARD
+	#sudo systemctl status routing.service || true
+	#sudo systemctl status route_balance.timer || true
+	#sudo systemctl status route_balance.service || true
 
 .PHONY: showconf
 showconf: $(SYS_ROUTE)
