@@ -1,7 +1,7 @@
 #!make 
 include .env
 LIB=".env"
-PAK_SEQ=routing-16.04-dhcp-single-${PROJ_VERSION} routing-18.04-dhcp-single-${PROJ_VERSION} 
+PAK_SEQ=routing-16.04-dhcp-single-${PROJ_VERSION} routing-18.04-dhcp-single-${PROJ_VERSION} routing-16.04-pppoe-single-${PROJ_VERSION} routing-16.04-pppoe-dual-${PROJ_VERSION}
 
 .PHONY: download rm_download
 download: $(addprefix download-, $(PAK_SEQ))

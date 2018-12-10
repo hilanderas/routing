@@ -6,7 +6,6 @@ test_install:
 	make -f basic.mk hint CONTENT="test install"
 	make -C ${TEST_PROJ} install  || true
 	make test_test_state
-	
 
 test_uninstall:
 	make -f basic.mk hint CONTENT="test uninstall"
