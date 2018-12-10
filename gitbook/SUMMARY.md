@@ -3,14 +3,14 @@
 * [Introduction](README.md)
 
 ### Overview 
-* [(todo)Who are the user ?](overview/USER.md)
-* [(todo)About project](overview/PROJECT.md)
+* [Who are the user ?](overview/USER.md)
+* [About project](overview/PROJECT.md)
 
 ### Topology
 * [dhcp](topology/dhcp.md)
-* [dhcp with balance](topology/dhcp_balance.md)
+* [dhcp with load balance](topology/dhcp_balance.md)
 * [pppoe](topology/pppoe.md)
-* [pppoe with balance](topology/pppoe_balance.md)
+* [pppoe with load balance](topology/pppoe_balance.md)
 
 ### Quick start
 * [Dependency](usage/quickstart/DEPENDENCY.md)

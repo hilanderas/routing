@@ -19,6 +19,14 @@ Or
 ```bash
 make -f basic.mk config TEST_PROJ=dev-18.04-dhcp-single
 ```
+Or 
+```bash
+make -f basic.mk config TEST_PROJ=dev-16.04-pppoe-single
+```
+Or
+```bash
+make -f basic.mk config TEST_PROJ=dev-16.04-pppoe-dual
+```
 
 ### Run test flow
 * Functionality test
