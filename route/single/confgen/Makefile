@@ -4,6 +4,6 @@ config:
 	cp -r $(CURDIR)/configsrc/* $(CONFIG)
 	vim $(CONFIG)/setting.env
 
-showconf:
+showconf: $(CONFIG)
 	cat $(CONFIG)/setting.env
 

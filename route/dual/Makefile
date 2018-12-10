@@ -14,12 +14,15 @@ restore:
 	echo "remove configuration"	
 	rm -rf $(CONFIG)
 
+.PHONY: status
+status:
+	make -C $(API) status
+
+.PHONY: show_running_conf show_conf
+show_running_conf:
+	make -C $(API) showconf
+show_conf:
+	make -C $(CONFGEN) showconf
 test-config: $(CONFIG)
 	tree $(CONFIG)
 
-test-restore:
-	ls $(CONFIG) || true
-test-start:
-	make -C $(API) -f $(API)/Makefile test-install
-test-stop:
-	make -C $(API) -f $(API)/Makefile test-uninstall
