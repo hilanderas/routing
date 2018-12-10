@@ -1,10 +1,25 @@
 # Develop mod
 
 ### Generate a project
+* Generate packages for ubuntu 18.04, no load balance, dhcp for WAN
 ```bash
 cd routing/testflow/script
 make -s -f routing.mk create-proj-18-s-dhcp
+```
+
+* Generate packages for ubuntu 16.04, no load balance, dhcp for WAN
+```bash
 make -s -f routing.mk create-proj-16-s-dhcp
+```
+
+* Generate packages for ubuntu 16.04, no load balance, pppoe for WAN
+```bash
+make -s -f routing.mk create-proj-16-s-pppoe
+```
+
+* Generate packages for ubuntu 16.04, with load balance, pppoe for WAN
+```bash
+make -s -f routing.mk create-proj-16-d-pppoe
 ```
 
 ### Run test flow
@@ -42,7 +57,6 @@ make -s -f function.mk reboot_p1
 make -s -f function.mk reboot_p2
 make -s -f function.mk poweroff_p1
 make -s -f function.mk poweroff_p2
-make -s -f function.mk isprestart
 make -s -f function.mk restartall
 ```
 * Run update test cases
