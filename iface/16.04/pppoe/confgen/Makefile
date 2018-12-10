@@ -1,5 +1,5 @@
 .PHONY: config
-config:
+config: $(CONFIG)
 	echo "TODO: make conf"
 	# config interface
 	cp -r $(CURDIR)/configsrc/* $(CONFIG)
@@ -11,3 +11,8 @@ config:
 
 	python3 -m confgenerator.cli -f $(CONFIG)/ppp-info.yml -d $(CONFIG)
 	
+showconf: $(CONFIG)
+	cat $(CONFIG)/interfaces
+	cat $(CONFIG)/interfaces.d/*
+	cat $(CONFIG)/secrets/*
+	cat $(CONFIG)/peers/*
