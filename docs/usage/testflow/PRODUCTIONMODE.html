@@ -114,7 +114,7 @@
                 <a href="../../overview/USER.html">
             
                     
-                    (todo)Who are the user ?
+                    Who are the user ?
             
                 </a>
             
@@ -127,7 +127,7 @@
                 <a href="../../overview/PROJECT.html">
             
                     
-                    (todo)About project
+                    About project
             
                 </a>
             
@@ -160,7 +160,7 @@
                 <a href="../../topology/dhcp_balance.html">
             
                     
-                    dhcp with balance
+                    dhcp with load balance
             
                 </a>
             
@@ -186,7 +186,7 @@
                 <a href="../../topology/pppoe_balance.html">
             
                     
-                    pppoe with balance
+                    pppoe with load balance
             
                 </a>
             
@@ -438,6 +438,50 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="production-mode">Production mode</h1>
+<h3 id="download-routing-testflow-packages">Download routing-testflow packages</h3>
+<pre><code class="lang-bash">wget https://github.com/hilanderas/routing/releases/download/0.0.11/routing-testflow-0.0.11.zip
+unzip routing-testflow-0.0.11.zip
+</code></pre>
+<h3 id="download-routing-project-you-are-going-to-test-with">Download routing project you are going to test with</h3>
+<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> routing-testflow
+make <span class="hljs-_">-f</span> basic.mk download
+</code></pre>
+<h3 id="set-test-project">Set test project</h3>
+<pre><code class="lang-bash">make <span class="hljs-_">-f</span> basic.mk config TEST_PROJ=dev-16.04-dhcp-single
+</code></pre>
+<p>Or </p>
+<pre><code class="lang-bash">make <span class="hljs-_">-f</span> basic.mk config TEST_PROJ=dev-18.04-dhcp-single
+</code></pre>
+<p>Or </p>
+<pre><code class="lang-bash">make <span class="hljs-_">-f</span> basic.mk config TEST_PROJ=dev-16.04-pppoe-single
+</code></pre>
+<p>Or</p>
+<pre><code class="lang-bash">make <span class="hljs-_">-f</span> basic.mk config TEST_PROJ=dev-16.04-pppoe-dual
+</code></pre>
+<h3 id="run-test-flow">Run test flow</h3>
+<ul>
+<li><p>Functionality test</p>
+<pre><code class="lang-bash">make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk install
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk uninstall
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk installafteruninstall
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk reinstall
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk reuninstall
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk checkconf
+</code></pre>
+</li>
+<li><p>Run restart test case</p>
+<pre><code class="lang-bash">make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk reboot_p1
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk reboot_p2
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk poweroff_p1
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk poweroff_p2
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk isprestart
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk restartall
+</code></pre>
+</li>
+<li>Run update test cases<pre><code class="lang-bash">make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk updateconf
+</code></pre>
+</li>
+</ul>
 
                                 
                                 </section>
@@ -481,7 +525,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Production mode","level":"6.2","depth":1,"next":{"title":"Trouble shooting","level":"7.1","depth":1,"path":"faq/TROUBLESHOOTING.md","ref":"faq/TROUBLESHOOTING.md","articles":[]},"previous":{"title":"Develop mode","level":"6.1","depth":1,"path":"usage/testflow/DEVELOPMODE.md","ref":"usage/testflow/DEVELOPMODE.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/testflow/PRODUCTIONMODE.md","mtime":"2018-12-09T08:26:48.998Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-09T08:27:28.765Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Production mode","level":"6.2","depth":1,"next":{"title":"Trouble shooting","level":"7.1","depth":1,"path":"faq/TROUBLESHOOTING.md","ref":"faq/TROUBLESHOOTING.md","articles":[]},"previous":{"title":"Develop mode","level":"6.1","depth":1,"path":"usage/testflow/DEVELOPMODE.md","ref":"usage/testflow/DEVELOPMODE.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/testflow/PRODUCTIONMODE.md","mtime":"2018-12-10T15:01:34.923Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-10T15:20:33.254Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
