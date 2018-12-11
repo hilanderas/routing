@@ -94,7 +94,7 @@
                 <a href="../../">
             
                     
-                    Introduction
+                    Introduction routing-0.0.11
             
                 </a>
             
@@ -114,7 +114,7 @@
                 <a href="../../overview/USER.html">
             
                     
-                    Who are the user ?
+                    Who are the user
             
                 </a>
             
@@ -460,25 +460,107 @@ make <span class="hljs-_">-f</span> basic.mk download
 </code></pre>
 <h3 id="run-test-flow">Run test flow</h3>
 <ul>
-<li><p>Functionality test</p>
-<pre><code class="lang-bash">make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk install
-make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk uninstall
-make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk installafteruninstall
-make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk reinstall
-make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk reuninstall
-make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk checkconf
+<li><p>Install and uninstall test</p>
+<pre><code class="lang-bash">make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_install
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+<span class="hljs-comment"># On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114</span>
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_uninstall
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
 </code></pre>
 </li>
-<li><p>Run restart test case</p>
-<pre><code class="lang-bash">make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk reboot_p1
-make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk reboot_p2
-make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk poweroff_p1
-make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk poweroff_p2
-make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk isprestart
-make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk restartall
+<li><p>Install after uninstall</p>
+<pre><code class="lang-bash">make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_install
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_uninstall
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_install
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+<span class="hljs-comment"># On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114</span>
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_uninstall
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
 </code></pre>
 </li>
-<li>Run update test cases<pre><code class="lang-bash">make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk updateconf
+<li><p>Reinstall</p>
+<pre><code class="lang-bash">make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_install
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_install
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+<span class="hljs-comment"># On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114</span>
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_uninstall
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+</code></pre>
+</li>
+<li><p>Reuninstall</p>
+<pre><code class="lang-bash">make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_install
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_uninstall
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_uninstall
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+<span class="hljs-comment"># On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114</span>
+</code></pre>
+</li>
+<li><p>Checkconf</p>
+<pre><code class="lang-bash">make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_install
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_showconf
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_uninstall
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+</code></pre>
+</li>
+<li><p>Reboot</p>
+<pre><code class="lang-bash">make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_install
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+<span class="hljs-comment"># On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114</span>
+make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> basic.mk re_boot
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+<span class="hljs-comment"># On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114</span>
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_uninstall
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+</code></pre>
+</li>
+<li><p>Power off</p>
+<pre><code class="lang-bash">make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_install
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+<span class="hljs-comment"># On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114</span>
+<span class="hljs-comment"># Please power off router</span>
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+<span class="hljs-comment"># On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114</span>
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_uninstall
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+</code></pre>
+</li>
+<li><p>ISP restart</p>
+<pre><code class="lang-bash">make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_install
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+<span class="hljs-comment"># On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114</span>
+<span class="hljs-comment"># Please restart isp</span>
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+<span class="hljs-comment"># On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114</span>
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_uninstall
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+</code></pre>
+</li>
+</ul>
+<ul>
+<li>Restart <pre><code class="lang-bash">make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_install
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_restart
+<span class="hljs-comment"># On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114</span>
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_uninstall
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+</code></pre>
+</li>
+</ul>
+<ul>
+<li>Run update test cases<pre><code class="lang-bash">make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_install
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_update
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+<span class="hljs-comment"># On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114</span>
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_showconf
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_uninstall
+make <span class="hljs-_">-s</span> <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
 </code></pre>
 </li>
 </ul>
@@ -525,7 +607,7 @@ make <span class="hljs-_">-s</span> <span class="hljs-_">-f</span> function.mk r
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Production mode","level":"6.2","depth":1,"next":{"title":"Trouble shooting","level":"7.1","depth":1,"path":"faq/TROUBLESHOOTING.md","ref":"faq/TROUBLESHOOTING.md","articles":[]},"previous":{"title":"Develop mode","level":"6.1","depth":1,"path":"usage/testflow/DEVELOPMODE.md","ref":"usage/testflow/DEVELOPMODE.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/testflow/PRODUCTIONMODE.md","mtime":"2018-12-10T15:01:34.923Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-10T15:20:33.254Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Production mode","level":"6.2","depth":1,"next":{"title":"Trouble shooting","level":"7.1","depth":1,"path":"faq/TROUBLESHOOTING.md","ref":"faq/TROUBLESHOOTING.md","articles":[]},"previous":{"title":"Develop mode","level":"6.1","depth":1,"path":"usage/testflow/DEVELOPMODE.md","ref":"usage/testflow/DEVELOPMODE.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/testflow/PRODUCTIONMODE.md","mtime":"2018-12-11T02:09:43.854Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-11T02:10:24.074Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
