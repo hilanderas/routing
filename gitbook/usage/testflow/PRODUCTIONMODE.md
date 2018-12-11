@@ -2,8 +2,8 @@
 
 ### Download routing-testflow packages
 ```bash
-wget https://github.com/hilanderas/routing/releases/download/0.0.11/routing-testflow-0.0.11.zip
-unzip routing-testflow-0.0.11.zip
+wget https://github.com/hilanderas/routing/releases/download/0.0.12/routing-testflow-0.0.12.zip
+unzip routing-testflow-0.0.12.zip
 ```
 ### Download routing project you are going to test with
 ```bash
