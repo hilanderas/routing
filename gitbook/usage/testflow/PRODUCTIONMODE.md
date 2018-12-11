@@ -5,6 +5,11 @@
 wget https://github.com/hilanderas/routing/releases/download/0.0.12/routing-testflow-0.0.12.zip
 unzip routing-testflow-0.0.12.zip
 ```
+### Check integrity of routing-testflow packages
+```bash
+make -f basic.mk test_integrity
+```
+
 ### Download routing project you are going to test with
 ```bash
 cd routing-testflow
