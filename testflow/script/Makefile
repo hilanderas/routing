@@ -5,17 +5,17 @@ include .env
 test_install:
 	make -f basic.mk hint CONTENT="test install"
 	make -C ${TEST_PROJ} install  || true
-	make test_test_state
+	make -s -f basic.mk re_boot
 
 test_uninstall:
 	make -f basic.mk hint CONTENT="test uninstall"
 	make -C ${TEST_PROJ} uninstall || true
-	make test_test_state
+	make -s -f basic.mk re_boot
 
 test_update:
 	make -f basic.mk hint CONTENT="test update"
 	make -C ${TEST_PROJ} update || true
-	make test_test_state
+	make -s -f basic.mk re_boot
 
 .PHONY: test_genconf test_rmconf test_revertconf test_updateconf
 test_genconf:
@@ -61,7 +61,6 @@ test_restart:
 test_test_state:
 	make -f basic.mk hint CONTENT="test test state"
 	make -C ${TEST_PROJ} test_state || true
-	make -f basic.mk confirm 
 
 .PHONY: test_showconf test_show_queued_conf
 test_showconf:

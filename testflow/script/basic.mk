@@ -46,6 +46,8 @@ confirm:
 		@( read -p "Are you sure?!? [y/N]: " sure && case "$$sure" in [yY]) true;; *) false;; esac )
 
 re_boot:
+		make -s -f basic.mk hint CONTENT="You are going to reboot"
+		make -f basic.mk confirm
 		sudo reboot
 
 
