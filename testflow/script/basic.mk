@@ -13,6 +13,10 @@ rm_download:
 	rm -rf ${PROJECT}*
 
 
+.PHONY: test_integrity
+test_integrity:
+	md5sum -c routing-testflow-${PROJ_VERSION}.md5
+
 .PHONY: config read_config  
 config: 
 	sed -i '/TEST_PROJ/c\export TEST_PROJ=${TEST_PROJ}' ${LIB}
