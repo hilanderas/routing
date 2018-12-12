@@ -36,114 +36,114 @@ make -f basic.mk config TEST_PROJ=dev-16.04-pppoe-dual
 ### Run test flow
 * Install and uninstall test
 ```bash
-make -s test_install
-make -s test_test_state
+make test_install
+make test_test_state
 # On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114
-make -s test_uninstall
-make -s test_test_state
+make test_uninstall
+make test_test_state
 ```
 
 * Install after uninstall
 ```bash
-make -s test_install
-make -s test_test_state
-make -s test_uninstall
-make -s test_test_state
-make -s test_install
-make -s test_test_state
+make test_install
+make test_test_state
+make test_uninstall
+make test_test_state
+make test_install
+make test_test_state
 # On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114
-make -s test_uninstall
-make -s test_test_state
+make test_uninstall
+make test_test_state
 ```
 
 * Reinstall
 ```bash
-make -s test_install
-make -s test_test_state
-make -s test_install
-make -s test_test_state
+make test_install
+make test_test_state
+make test_install
+make test_test_state
 # On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114
-make -s test_uninstall
-make -s test_test_state
+make test_uninstall
+make test_test_state
 ```
 
 * Reuninstall
 ```bash
-make -s test_install
-make -s test_test_state
-make -s test_uninstall
-make -s test_test_state
-make -s test_uninstall
-make -s test_test_state
+make test_install
+make test_test_state
+make test_uninstall
+make test_test_state
+make test_uninstall
+make test_test_state
 # On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114
 ```
 
 * Checkconf
 ```bash
-make -s test_install
-make -s test_test_state
-make -s test_showconf
-make -s test_uninstall
-make -s test_test_state
+make test_install
+make test_test_state
+make test_showconf
+make test_uninstall
+make test_test_state
 ```
 
 * Reboot
 ```bash
-make -s test_install
-make -s test_test_state
+make test_install
+make test_test_state
 # On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114
-make -s -f basic.mk re_boot
-make -s test_test_state
+make -f basic.mk re_boot
+make test_test_state
 # On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114
-make -s test_uninstall
-make -s test_test_state
+make test_uninstall
+make test_test_state
 ```
 * Power off
 ```bash
-make -s test_install
-make -s test_test_state
+make test_install
+make test_test_state
 # On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114
 # Please power off router
-make -s test_test_state
+make test_test_state
 # On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114
-make -s test_uninstall
-make -s test_test_state
+make test_uninstall
+make test_test_state
 ```
 
 * ISP restart
 ```bash
-make -s test_install
-make -s test_test_state
+make test_install
+make test_test_state
 # On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114
 # Please restart isp
-make -s test_test_state
+make test_test_state
 # On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114
-make -s test_uninstall
-make -s test_test_state
+make test_uninstall
+make test_test_state
 ```
 
 
 * Restart 
 ```bash
-make -s test_install
-make -s test_test_state
-make -s test_restart
+make test_install
+make test_test_state
+make test_restart
 # On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114
-make -s test_uninstall
-make -s test_test_state
+make test_uninstall
+make test_test_state
 ```
 
 
 * Run update test cases
 ```bash
-make -s test_install
-make -s test_test_state
-make -s test_update
-make -s test_test_state
+make test_install
+make test_test_state
+make test_update
+make test_test_state
 # On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114
-make -s test_showconf
-make -s test_uninstall
-make -s test_test_state
+make test_showconf
+make test_uninstall
+make test_test_state
 ```
 
 
