@@ -28,8 +28,7 @@ make -s -f routing.mk create-proj-16-d-pppoe
 make -s -f state.mk test_init
 make -s -f state.mk test_confgened
 make -s -f state.mk test_running
-make -s -f state.mk test_confqueued_pop_branch
-make -s -f state.mk test_confqueued_rm_branch
+make -s -f state.mk test_confqueued
 ```
 
 * Normal state test
