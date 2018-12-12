@@ -2,8 +2,8 @@
 
 ### Download routing-testflow packages
 ```bash
-wget https://github.com/hilanderas/routing/releases/download/0.0.12/routing-testflow-0.0.12.zip
-unzip routing-testflow-0.0.12.zip
+wget https://github.com/hilanderas/routing/releases/download//routing-testflow-.zip
+unzip routing-testflow-.zip
 ```
 ### Check integrity of routing-testflow packages
 ```bash
@@ -38,7 +38,7 @@ make -f basic.mk config TEST_PROJ=dev-16.04-pppoe-dual
 ```bash
 make test_install
 make test_test_state
-# On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114
+# On pc connected to router, ping lan ip, wan ip of router and .114
 make test_uninstall
 make test_test_state
 ```
@@ -51,7 +51,7 @@ make test_uninstall
 make test_test_state
 make test_install
 make test_test_state
-# On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114
+# On pc connected to router, ping lan ip, wan ip of router and .114
 make test_uninstall
 make test_test_state
 ```
@@ -62,7 +62,7 @@ make test_install
 make test_test_state
 make test_install
 make test_test_state
-# On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114
+# On pc connected to router, ping lan ip, wan ip of router and .114
 make test_uninstall
 make test_test_state
 ```
@@ -75,7 +75,7 @@ make test_uninstall
 make test_test_state
 make test_uninstall
 make test_test_state
-# On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114
+# On pc connected to router, ping lan ip, wan ip of router and .114
 ```
 
 * Checkconf
@@ -91,10 +91,10 @@ make test_test_state
 ```bash
 make test_install
 make test_test_state
-# On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114
+# On pc connected to router, ping lan ip, wan ip of router and .114
 make -f basic.mk re_boot
 make test_test_state
-# On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114
+# On pc connected to router, ping lan ip, wan ip of router and .114
 make test_uninstall
 make test_test_state
 ```
@@ -102,10 +102,10 @@ make test_test_state
 ```bash
 make test_install
 make test_test_state
-# On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114
+# On pc connected to router, ping lan ip, wan ip of router and .114
 # Please power off router
 make test_test_state
-# On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114
+# On pc connected to router, ping lan ip, wan ip of router and .114
 make test_uninstall
 make test_test_state
 ```
@@ -114,10 +114,10 @@ make test_test_state
 ```bash
 make test_install
 make test_test_state
-# On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114
+# On pc connected to router, ping lan ip, wan ip of router and .114
 # Please restart isp
 make test_test_state
-# On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114
+# On pc connected to router, ping lan ip, wan ip of router and .114
 make test_uninstall
 make test_test_state
 ```
@@ -128,7 +128,7 @@ make test_test_state
 make test_install
 make test_test_state
 make test_restart
-# On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114
+# On pc connected to router, ping lan ip, wan ip of router and .114
 make test_uninstall
 make test_test_state
 ```
@@ -140,7 +140,7 @@ make test_install
 make test_test_state
 make test_update
 make test_test_state
-# On pc connected to router, ping lan ip, wan ip of router and 114.114.114.114
+# On pc connected to router, ping lan ip, wan ip of router and .114
 make test_showconf
 make test_uninstall
 make test_test_state
