@@ -35,8 +35,8 @@ status:
 	./existed.sh $(SYS_ROUTE)/Makefile
 	./existed.sh $(SYS_ROUTE)/setting.env
 	./existed.sh $(SYSD)/routing.service
-	sudo iptables -t nat -S POSTROUTING -nv
-	sudo iptables -t filter -S FORWARD -nv
+	sudo iptables -t nat -S POSTROUTING
+	sudo iptables -t filter -S FORWARD
 	sudo systemctl status routing.service || true
 
 .PHONY: showconf
