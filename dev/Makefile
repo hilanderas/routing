@@ -35,8 +35,8 @@ restart: stop start
 
 update_config: 
 	make -s -f sm.mk is_RUNNING_CONFQUEUED && \
-	make -C $(IFACE) config CONFIG=$(CONFQ)/iface && \
-	make -C $(ROUTE) config CONFIG=$(CONFQ)/route && \
+	make -C $(IFACE) config SOURCE=$(CONFQ)/iface CONFIG=$(CONFQ)/iface && \
+	make -C $(ROUTE) config SOURCE=$(CONFQ)/route CONFIG=$(CONFQ)/route && \
 	make -s -f sm.mk set_CONFQUEUED
 
 revert_config:
