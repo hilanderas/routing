@@ -61,6 +61,7 @@ test_restart:
 test_test_state:
 	make -f basic.mk hint CONTENT="test test state"
 	make -C ${TEST_PROJ} test_state || true
+	make -f basic.mk confirm
 
 .PHONY: test_showconf test_show_queued_conf
 test_showconf:
