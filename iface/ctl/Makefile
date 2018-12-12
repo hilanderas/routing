@@ -10,8 +10,7 @@ start:
 stop:
 	make -C $(API) uninstall
 restore:
-	echo "remove configuration"	
-	rm -rf $(CONFIG)
+	make -C $(CONFGEN) restore CONFIG=$(CONFIG)
 
 .PHONY: status
 status:

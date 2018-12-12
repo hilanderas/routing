@@ -4,6 +4,11 @@ config: $(CONFIG)
 	cp -r $(CURDIR)/configsrc/* $(CONFIG)
 	vim $(CONFIG)/interfaces.d/lan
 	vim $(CONFIG)/interfaces.d/wan
+
+restore: $(CONFIG)
+	rm -rf $(CONFIG)
+
 showconf: $(CONFIG)
 	cat $(CONFIG)/interfaces.d/lan
 	cat $(CONFIG)/interfaces.d/wan
+
