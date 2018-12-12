@@ -39,7 +39,8 @@ status:
 	./existed.sh $(SYS_NET)/interfaces
 	./existed.sh $(SYS_NET)/interfaces.d.bk
 	./existed.sh $(SYS_NET)/interfaces.bk
-#	ifconfig
+	echo "ifconfig"
+	ifconfig
 
 .PHONY: showconf
 showconf:
