@@ -1,7 +1,9 @@
-.PHONY: config showconf
+SOURCE=$(CURDIR)/configsrc
+
+.PHONY: config restore showconf
 config: $(CONFIG)
 	echo "TODO: make conf"
-	cp -r $(CURDIR)/configsrc/* $(CONFIG)
+	cp -r $(SOURCE)/* $(CONFIG) || true
 	vim $(CONFIG)/interfaces.d/lan
 	vim $(CONFIG)/interfaces.d/wan
 

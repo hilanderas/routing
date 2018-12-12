@@ -1,8 +1,10 @@
-.PHONY: config
+SOURCE=$(CURDIR)/configsrc
+
+.PHONY: config restore showconf
 config: $(CONFIG)
 	echo "TODO: make conf"
 	# config interface
-	cp -r $(CURDIR)/configsrc/* $(CONFIG)
+	cp -r $(SOURCE)/* $(CONFIG) || true
 	vim $(CONFIG)/interfaces.d/lan
 
 	# according to the ppp-info.yml, generate wan interface, peer files and secrets.

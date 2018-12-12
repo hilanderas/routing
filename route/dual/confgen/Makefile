@@ -1,7 +1,9 @@
+SOURCE=$(CURDIR)/configsrc
+
 .PHONY: config showconf
 config:
 	echo "TODO: make conf"
-	cp -r $(CURDIR)/configsrc/* $(CONFIG)
+	cp -r $(SOURCE)/* $(CONFIG) || true
 	vim $(CONFIG)/setting.env
 
 showconf:
