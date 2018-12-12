@@ -62,7 +62,7 @@ status_ppp:
 
 .PHONY: status
 status: status_iface status_ppp
-	ifconfig
+	#ifconfig
 	plog || true
 
 .PHONY: showconf
