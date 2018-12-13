@@ -21,7 +21,7 @@ build-book: $(GITBOOK)
 	gitbook build $(GITBOOK) $(DOCS)
 
 .PHONY: build
-build: create-dev check_version
+build: create-dev
 	cd $(DEV)-$(OS_VERSION)-$(WAN_MODE)-$(ROUTE_NUM)/; find . -type f -exec md5sum {} \; > $(CURDIR)/$(project)-$(version).md5; cd -
 	mv $(project)-$(version).md5 $(DEV)-$(OS_VERSION)-$(WAN_MODE)-$(ROUTE_NUM)
 	zip -r $(project)-$(OS_VERSION)-$(WAN_MODE)-$(ROUTE_NUM)-$(version).zip dev-$(OS_VERSION)-$(WAN_MODE)-$(ROUTE_NUM)
