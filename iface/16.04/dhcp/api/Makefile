@@ -4,17 +4,24 @@ SYS_NET = /etc/network
 set:
 	echo "set-wan"
 	echo "set-lan"
-	sudo mv $(SYS_NET)/interfaces $(SYS_NET)/interfaces.bk
-	sudo mv $(SYS_NET)/interfaces.d $(SYS_NET)/interfaces.d.bk
+	sudo mv $(SYS_NET)/interfaces $(SYS_NET)/interfaces.routing.bk
+	sudo mv $(SYS_NET)/interfaces.d $(SYS_NET)/interfaces.d.routing.bk
 	sudo cp -r $(CONFIG)/* $(SYS_NET)/
 
 .PHONY: start
 start:
 	echo "You need to reboot to make it work"
 
-.PHONY: install
+.PHONY: install test_install
 install: set start
 
+test_install:
+	python3 validator.py -f $(SYS_NET)/interfaces.d 
+	python3 validator.py -f $(SYS_NET)/interfaces.d/lan
+	python3 validator.py -f $(SYS_NET)/interfaces.d/wan
+	python3 validator.py -f $(SYS_NET)/interfaces
+	python3 validator.py -f $(SYS_NET)/interfaces.d.routing.bk
+	python3 validator.py -f $(SYS_NET)/interfaces.routing.bk
 
 .PHONY: stop
 stop:
@@ -28,19 +35,16 @@ unset:
 	sudo rm -rf $(SYS_NET)/interfaces.d
 	sudo mv $(SYS_NET)/interfaces.d.bk $(SYS_NET)/interfaces.d
 
-.PHONY: uninstall
+.PHONY: uninstall test_uninstall
 uninstall: unset stop
 
-.PHONY: status
-status:
-	./existed.sh $(SYS_NET)/interfaces.d
-	./existed.sh $(SYS_NET)/interfaces.d/lan
-	./existed.sh $(SYS_NET)/interfaces.d/wan
-	./existed.sh $(SYS_NET)/interfaces
-	./existed.sh $(SYS_NET)/interfaces.d.bk
-	./existed.sh $(SYS_NET)/interfaces.bk
-
-	#ifconfig
+test_uninstall:
+	python3 validator.py -f $(SYS_NET)/interfaces.d 
+	python3 validator.py -f $(SYS_NET)/interfaces.d/lan -e
+	python3 validator.py -f $(SYS_NET)/interfaces.d/wan -e
+	python3 validator.py -f $(SYS_NET)/interfaces
+	python3 validator.py -f $(SYS_NET)/interfaces.d.routing.bk -e 
+	python3 validator.py -f $(SYS_NET)/interfaces.routing.bk -e
 
 .PHONY: showconf
 showconf:
