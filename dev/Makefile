@@ -57,16 +57,42 @@ test_state: get_state
 	make -s -f sm.mk test_state
 
 test_INIT:
-	echo "test init" 
+	echo "test init"
+	make -s -C $(IFACE) test_restore CONFIG=$(CONFQ)/iface
+	make -s -C $(IFACE) test_restore CONFIG=$(CONF)/iface
+	make -s -C $(IFACE) test_stop CONFIG=$(CONFQ)/iface
+
+	make -s -C $(ROUTE) test_restore CONFIG=$(CONFQ)/route
+	make -s -C $(ROUTE) test_restore CONFIG=$(CONF)/route
+	make -s -C $(ROUTE) test_stop CONFIG=$(CONFQ)/route
 
 test_CONFGENED:
 	echo "test confgened"
+	make -s -C $(IFACE) test_config CONFIG=$(CONFQ)/iface
+	make -s -C $(IFACE) test_stop CONFIG=$(CONFQ)/iface
+
+	make -s -C $(ROUTE) test_config CONFIG=$(CONFQ)/route
+	make -s -C $(ROUTE) test_stop CONFIG=$(CONFQ)/route
 
 test_RUNNING:
 	echo "test running"
+	make -s -C $(IFACE) test_config CONFIG=$(CONFQ)/iface
+	make -s -C $(IFACE) test_config CONFIG=$(CONF)/iface
+	make -s -C $(IFACE) test_start
+
+	make -s -C $(ROUTE) test_config CONFIG=$(CONFQ)/route
+	make -s -C $(ROUTE) test_config CONFIG=$(CONF)/route
+	make -s -C $(ROUTE) test_start
 
 test_CONFQUEUED:
 	echo "test confqueued"
+	make -s -C $(IFACE) test_config CONFIG=$(CONFQ)/iface
+	make -s -C $(IFACE) test_config CONFIG=$(CONF)/iface
+	make -s -C $(IFACE) test_start
+
+	make -s -C $(ROUTE) test_config CONFIG=$(CONFQ)/route
+	make -s -C $(ROUTE) test_config CONFIG=$(CONF)/route
+	make -s -C $(ROUTE) test_start
 
 
 .PHONY: showconf show_queued_conf
