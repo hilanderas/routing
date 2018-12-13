@@ -4,6 +4,9 @@ GITBOOK=$(CURDIR)/gitbook
 DOCS=$(CURDIR)/docs
 DEV=$(CURDIR)/dev
 TESTFLOW=$(project)-testflow
+OS_VERSION=16.04
+WAN_MODE=dhcp
+ROUTE_NUM=single
 
 .PHONY: create-dev clean-dev
 create-dev:
