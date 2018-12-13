@@ -49,15 +49,25 @@ install: config start
 update: update_config restart
 uninstall: stop restore
 
-.PHONY: test_state get_state
-test_state: get_state
-	tree $(CONFQ) || true
-	tree $(CONF) || true
-	make -s -C $(IFACE) status
-	make -s -C $(ROUTE) status 
-
+.PHONY: test_state get_state test_INIT test_CONFGENED test_RUNNING test_CONFQUEUED
 get_state:
 	make -s -f sm.mk get_state
+
+test_state: get_state
+	make -s -f sm.mk test_state
+
+test_INIT:
+	echo "test init" 
+
+test_CONFGENED:
+	echo "test confgened"
+
+test_RUNNING:
+	echo "test running"
+
+test_CONFQUEUED:
+	echo "test confqueued"
+
 
 .PHONY: showconf show_queued_conf
 showconf:

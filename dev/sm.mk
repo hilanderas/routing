@@ -19,3 +19,5 @@ is_INIT_CONFGENED:
 is_RUNNING_CONFQUEUED:
 	make -f sm.mk is_RUNNING || make -f sm.mk is_CONFQUEUED 
 
+test_state:
+	make -f Makefile test_$(STATE)
