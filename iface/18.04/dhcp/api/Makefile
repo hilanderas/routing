@@ -37,6 +37,7 @@ status:
 	ls $(SYS_NET)/ || true
 	./existed.sh $(SYS_NET).bk
 	ls $(SYS_NET).bk/ || true
+
 	#ifconfig
 
 .PHONY: showconf

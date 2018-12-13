@@ -63,6 +63,7 @@ test_test_state:
 	make -C ${TEST_PROJ} test_state || true
 	make -s -f basic.mk confirm
 
+
 .PHONY: test_showconf test_show_queued_conf
 test_showconf:
 	make -s -f basic.mk hint CONTENT="test showconf"
