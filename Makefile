@@ -1,3 +1,4 @@
+version=0.0.13
 project=routing
 GITBOOK=$(CURDIR)/gitbook
 DOCS=$(CURDIR)/docs
@@ -29,7 +30,7 @@ clean:
 
 
 .PHONY: build-testflow
-build-testflow: check_version
+build-testflow:
 	cp -r testflow/script $(TESTFLOW)
 	cd $(TESTFLOW) && make -f basic.mk set_mod TESTMODE=prod
 	sed -i '/PROJ_VERSION/c\export PROJ_VERSION=${version}' $(TESTFLOW)/.env
@@ -39,15 +40,10 @@ build-testflow: check_version
 	rm -rf $(TESTFLOW)
 
 .PHONY: update-gitbook
-update-gitbook: $(GITBOOK) check_version
+update-gitbook: $(GITBOOK)
 	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(version)/g $(CURDIR)/gitbook/usage/testflow/PRODUCTIONMODE.md
 	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(version)/g $(CURDIR)/gitbook/SUMMARY.md
 	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(version)/g $(CURDIR)/gitbook/usage/quickstart/INSTALL.md
 	grep -R --color=always $(version) $(CURDIR)/gitbook
 
-.PHONY: check_version
-check_version:
-ifndef version
-$(error version is not set)
-endif
 
