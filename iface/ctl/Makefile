@@ -12,9 +12,11 @@ stop:
 restore:
 	make -C $(CONFGEN) restore CONFIG=$(CONFIG)
 
-.PHONY: status
-status:
-	make -C $(API) status 
+.PHONY: test_start test_stop
+test_start:
+	make -C $(API) test_install
+test_stop:
+	make -C $(API) test_uninstall
 
 .PHONY: show_runing_conf show_conf
 show_running_conf:
