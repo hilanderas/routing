@@ -14,7 +14,7 @@ test_config: $(CONFIG)
 	python3 validator.py -f $(CONFIG)/routing.service
 	python3 validator.py -f $(CONFIG)/setting.env
 
-test_restore: $(CONFIG)
+test_restore:
 	python3 validator.py -f $(CONFIG) -e
 
 .PHONY: showconf
