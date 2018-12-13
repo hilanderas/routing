@@ -31,9 +31,9 @@ stop:
 unset:
 	echo "unset-wan"
 	echo "unset-lan"
-	sudo mv $(SYS_NET)/interfaces.bk $(SYS_NET)/interfaces
+	sudo mv $(SYS_NET)/interfaces.routing.bk $(SYS_NET)/interfaces
 	sudo rm -rf $(SYS_NET)/interfaces.d
-	sudo mv $(SYS_NET)/interfaces.d.bk $(SYS_NET)/interfaces.d
+	sudo mv $(SYS_NET)/interfaces.d.routing.bk $(SYS_NET)/interfaces.d
 
 .PHONY: uninstall test_uninstall
 uninstall: unset stop
