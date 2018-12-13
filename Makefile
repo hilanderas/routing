@@ -1,4 +1,3 @@
-version=0.1.0
 project=routing
 GITBOOK=$(CURDIR)/gitbook
 DOCS=$(CURDIR)/docs
@@ -21,7 +20,7 @@ build-book: $(GITBOOK)
 	gitbook build $(GITBOOK) $(DOCS)
 
 .PHONY: build
-build: create-dev
+build: create-dev check_version
 	cd $(DEV)-$(OS_VERSION)-$(WAN_MODE)-$(ROUTE_NUM)/; find . -type f -exec md5sum {} \; > $(CURDIR)/$(project)-$(version).md5; cd -
 	mv $(project)-$(version).md5 $(DEV)-$(OS_VERSION)-$(WAN_MODE)-$(ROUTE_NUM)
 	zip -r $(project)-$(OS_VERSION)-$(WAN_MODE)-$(ROUTE_NUM)-$(version).zip dev-$(OS_VERSION)-$(WAN_MODE)-$(ROUTE_NUM)
@@ -30,7 +29,7 @@ clean:
 
 
 .PHONY: build-testflow
-build-testflow:
+build-testflow: check_version
 	cp -r testflow/script $(TESTFLOW)
 	cd $(TESTFLOW) && make -f basic.mk set_mod TESTMODE=prod
 	sed -i '/PROJ_VERSION/c\export PROJ_VERSION=${version}' $(TESTFLOW)/.env
@@ -40,10 +39,15 @@ build-testflow:
 	rm -rf $(TESTFLOW)
 
 .PHONY: update-gitbook
-update-gitbook: $(GITBOOK)
-	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(CUR)/g $(CURDIR)/gitbook/usage/testflow/PRODUCTIONMODE.md
-	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(CUR)/g $(CURDIR)/gitbook/SUMMARY.md
-	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(CUR)/g $(CURDIR)/gitbook/usage/quickstart/INSTALL.md
+update-gitbook: $(GITBOOK) check_version
+	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(version)/g $(CURDIR)/gitbook/usage/testflow/PRODUCTIONMODE.md
+	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(version)/g $(CURDIR)/gitbook/SUMMARY.md
+	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(version)/g $(CURDIR)/gitbook/usage/quickstart/INSTALL.md
+	grep -R --color=always $(version) $(CURDIR)/gitbook
 
-
+.PHONY: check_version
+check_version:
+ifndef version
+$(error version is not set)
+endif
 
