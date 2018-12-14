@@ -67,6 +67,8 @@ status: status_iface status_ppp
 
 .PHONY: showconf
 showconf:
-	sudo cat $(SYS_PPP)/peers/* 
-	sudo cat $(SYS_PPP)/chap-secrets
-	sudo cat $(SYS_PPP)/pap-secrets
+	cat $(SYS_PPP)/peers/* 
+	cat $(SYS_PPP)/chap-secrets
+	cat $(SYS_PPP)/pap-secrets
+	cat $(SYS_NET)/interfaces.d/lan
+	cat $(SYS_NET)/interfaces.d/wan

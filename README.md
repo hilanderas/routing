@@ -1,6 +1,6 @@
 <h1 align="center"> routing </h1>
 <p align="center">
-  <b >Make a machine acts as a router</b>
+  <b >Make a machine as a router</b>
 </p>
 <br>
 
