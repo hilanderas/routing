@@ -13,13 +13,13 @@ test_config: $(CONFIG)
 	python3 validator.py -f $(CONFIG)
 	python3 validator.py -f $(CONFIG)/interfaces
 	python3 validator.py -f $(CONFIG)/interfaces.d/lan
-	python3 validator.py -f $(CONFIG)/ppp-info.yaml
+	python3 validator.py -f $(CONFIG)/ppp-info.yml
 	ls $(CONFIG)/interfaces.d/ | grep wan
 
 restore: $(CONFIG)
 	rm -rf $(CONFIG)
 test_restore:
-	python3 validator.py -f $(CONFIG)
+	python3 validator.py -f $(CONFIG) -e
 
 showconf: $(CONFIG)
 	cat $(CONFIG)/interfaces
