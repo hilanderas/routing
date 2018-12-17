@@ -1,14 +1,13 @@
 # Install
-
 ### Login the machine you want to configured as a router
 ```bash
 ssh [USER]@[IP/HOSTNAME]
 ```
-* [USER]: The user name of router.
-* [IP/HOSTNAME]: The ip of router or the hostname of router.
 
 ### Download package and unzip
-Download the routing package:
+Choose one package to download according to your topology
+
+e.g, WAN is dhcp mode without load balance
 ```bash
 wget https://github.com/hilanderas/routing/releases/download/0.0.17/routing-16.04-dhcp-single-0.0.17.zip
 unzip routing-16.04-dhcp-single-0.0.17.zip
@@ -18,6 +17,7 @@ unzip routing-16.04-dhcp-single-0.0.17.zip
 
 ### Install routing
 ```bash
+cd dev-16.04-dhcp-single
 make install
 ```
 

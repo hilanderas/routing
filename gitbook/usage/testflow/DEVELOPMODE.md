@@ -4,17 +4,17 @@
 * Generate packages for ubuntu 18.04, no load balance, dhcp for WAN
 ```bash
 cd routing/testflow/script
-make -f routing.mk create-proj-18-dhcp
+make -f routing.mk create-proj-18-s-dhcp
 ```
 
 * Generate packages for ubuntu 16.04, no load balance, dhcp for WAN
 ```bash
-make -f routing.mk create-proj-16-dhcp
+make -f routing.mk create-proj-16-s-dhcp
 ```
 
 * Generate packages for ubuntu 16.04, no load balance, pppoe for WAN
 ```bash
-make -f routing.mk create-proj-16-pppoe
+make -f routing.mk create-proj-16-s-pppoe
 ```
 
 * Generate packages for ubuntu 16.04, with load balance, pppoe for WAN
