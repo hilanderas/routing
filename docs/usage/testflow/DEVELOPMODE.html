@@ -114,7 +114,7 @@
                 <a href="../../overview/USER.html">
             
                     
-                    Who are the user
+                    Who are the users ?
             
                 </a>
             
@@ -173,7 +173,7 @@
                 <a href="../../topology/pppoe.html">
             
                     
-                    pppoe
+                    PPPoE
             
                 </a>
             
@@ -186,7 +186,7 @@
                 <a href="../../topology/pppoe_balance.html">
             
                     
-                    pppoe with load balance
+                    PPPoE with load balance
             
                 </a>
             
@@ -339,12 +339,25 @@
         
         
     
-        <li class="chapter " data-level="7.1" data-path="../../faq/TROUBLESHOOTING.html">
+        <li class="chapter " data-level="7.1" data-path="../../faq/TSDHCP.html">
             
-                <a href="../../faq/TROUBLESHOOTING.html">
+                <a href="../../faq/TSDHCP.html">
             
                     
-                    Trouble shooting
+                    Trouble shooting for dhcp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../faq/TSPPPOE.html">
+            
+                <a href="../../faq/TSPPPOE.html">
+            
+                    
+                    Trouble shooting for PPPoE
             
                 </a>
             
@@ -449,11 +462,11 @@ make <span class="hljs-_">-f</span> routing.mk create-proj-18<span class="hljs-_
 <pre><code class="lang-bash">make <span class="hljs-_">-f</span> routing.mk create-proj-16<span class="hljs-_">-s</span>-dhcp
 </code></pre>
 </li>
-<li><p>Generate packages for ubuntu 16.04, no load balance, pppoe for WAN</p>
+<li><p>Generate packages for ubuntu 16.04, no load balance, PPPoE for WAN</p>
 <pre><code class="lang-bash">make <span class="hljs-_">-f</span> routing.mk create-proj-16<span class="hljs-_">-s</span>-pppoe
 </code></pre>
 </li>
-<li><p>Generate packages for ubuntu 16.04, with load balance, pppoe for WAN</p>
+<li><p>Generate packages for ubuntu 16.04, with load balance, PPPoE for WAN</p>
 <pre><code class="lang-bash">make <span class="hljs-_">-f</span> routing.mk create-proj-16<span class="hljs-_">-d</span>-pppoe
 </code></pre>
 </li>
@@ -475,6 +488,12 @@ make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</s
 </code></pre>
 </li>
 </ul>
+<h3 id="clean-up">Clean up</h3>
+<pre><code class="lang-bash">make <span class="hljs-_">-f</span> routing.mk del-proj-16<span class="hljs-_">-s</span>-dhcp
+make <span class="hljs-_">-f</span> routing.mk del-proj-16<span class="hljs-_">-s</span>-pppoe
+make <span class="hljs-_">-f</span> routing.mk del-proj-16<span class="hljs-_">-d</span>-pppoe
+make <span class="hljs-_">-f</span> routing.mk del-proj-18<span class="hljs-_">-s</span>-dhcp
+</code></pre>
 
                                 
                                 </section>
@@ -518,7 +537,7 @@ make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</s
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Develop mode","level":"6.1","depth":1,"next":{"title":"Production mode","level":"6.2","depth":1,"path":"usage/testflow/PRODUCTIONMODE.md","ref":"usage/testflow/PRODUCTIONMODE.md","articles":[]},"previous":{"title":"How to manipulate the service","level":"5.3","depth":1,"path":"usage/morescenarios/SERVICE.md","ref":"usage/morescenarios/SERVICE.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/testflow/DEVELOPMODE.md","mtime":"2018-12-17T02:30:44.039Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-17T02:32:00.007Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Develop mode","level":"6.1","depth":1,"next":{"title":"Production mode","level":"6.2","depth":1,"path":"usage/testflow/PRODUCTIONMODE.md","ref":"usage/testflow/PRODUCTIONMODE.md","articles":[]},"previous":{"title":"How to manipulate the service","level":"5.3","depth":1,"path":"usage/morescenarios/SERVICE.md","ref":"usage/morescenarios/SERVICE.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/testflow/DEVELOPMODE.md","mtime":"2018-12-17T07:25:02.745Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-17T07:51:34.919Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
