@@ -81,5 +81,4 @@ showconf:
 	cat $(SYS_PPP)/peers/* 
 	cat $(SYS_PPP)/chap-secrets
 	cat $(SYS_PPP)/pap-secrets
-	cat $(SYS_NET)/interfaces.d/lan
-	cat $(SYS_NET)/interfaces.d/wan
+	cat $(SYS_NET)/interfaces.d/*

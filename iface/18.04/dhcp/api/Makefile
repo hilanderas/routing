@@ -36,6 +36,6 @@ test_uninstall:
 
 .PHONY: showconf
 showconf: $(SYS_NET)/01-lan.yaml $(SYS_NET)/02-wan.yaml
-	./existed.sh $(SYS_NET)/01-lan.yaml
-	./existed.sh $(SYS_NET)/02-wan.yaml
+	cat $(SYS_NET)/01-lan.yaml
+	cat $(SYS_NET)/02-wan.yaml
 

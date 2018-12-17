@@ -5,6 +5,8 @@ config: $(CONFIG)
 	echo "TODO: make conf"
 	# config interface
 	cp -r $(SOURCE)/* $(CONFIG) || true
+	rm -r $(CONFIG)/peers || true
+	rm -r $(CONFIG)/secrets || true
 	vim $(CONFIG)/interfaces.d/lan
 	# according to the ppp-info.yml, generate wan interface, peer files and secrets.
 	vim $(CONFIG)/ppp-info.yml
