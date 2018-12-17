@@ -1,6 +1,6 @@
 SOURCE=$(CURDIR)/configsrc
 
-.PHONY: config restore showconf test_config test_restore
+.PHONY: config restore test_config test_restore
 config: $(CONFIG)
 	echo "TODO: make conf"
 	cp -r $(SOURCE)/* $(CONFIG) || true
@@ -16,7 +16,10 @@ restore: $(CONFIG)
 test_restore:
 	python3 validator.py -f $(CONFIG) -e
 
+.PHONY: showconf
 showconf: $(CONFIG)
 	cat $(CONFIG)/01-lan.yaml
 	cat $(CONFIG)/02-wan.yaml
-
+showinfo: $(CONFIG)
+	cat $(CONFIG)/01-lan.yaml
+	cat $(CONFIG)/02-wan.yaml

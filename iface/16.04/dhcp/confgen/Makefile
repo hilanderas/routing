@@ -18,8 +18,11 @@ test_config: $(CONFIG)
 test_restore:
 	python3 validator.py -f $(CONFIG) -e
 
-.PHONY: showconf
+.PHONY: showconf showinfo
 showconf: $(CONFIG)
+	cat $(CONFIG)/interfaces.d/lan
+	cat $(CONFIG)/interfaces.d/wan
+showinfo: $(CONFIG)
 	cat $(CONFIG)/interfaces.d/lan
 	cat $(CONFIG)/interfaces.d/wan
 

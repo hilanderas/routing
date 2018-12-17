@@ -19,6 +19,8 @@ restore:
 test_restore:
 	python3 validator.py -f $(CONFIG) -e
 
-.PHONY: showconf 
+.PHONY: showconf showinfo
 showconf:
+	cat $(CONFIG)/setting.env
+showinfo:
 	cat $(CONFIG)/setting.env

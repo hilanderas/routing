@@ -23,8 +23,10 @@ test_stop:
 test_restore:
 	make -C $(CONFGEN) test_restore CONFIG=$(CONFIG)
 
-.PHONY: show_running_conf show_conf
+.PHONY: show_running_conf show_conf showinfo
 show_running_conf:
 	make -C $(API) showconf
 show_conf:
 	make -C $(CONFGEN) showconf
+showinfo:
+	make -C $(CONFGEN) showinfo config=$(CONFIG)

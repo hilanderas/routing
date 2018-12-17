@@ -95,7 +95,7 @@ test_CONFQUEUED:
 	make -s -C $(ROUTE) test_start
 
 
-.PHONY: showconf show_queued_conf
+.PHONY: showconf show_queued_conf showinfo show_queued_info
 showconf:
 	make -s -C $(IFACE) show_running_conf
 	make -s -C $(ROUTE) show_running_conf
@@ -103,3 +103,11 @@ showconf:
 show_queued_conf: $(CONFQ)
 	make -s -C $(IFACE) show_conf CONFIG=$(CONFQ)/iface
 	make -s -C $(ROUTE) show_conf CONFIG=$(CONFQ)/route
+
+showinfo:
+	make -s -C $(IFACE) showinfo CONFIG=$(CONF)/iface
+	make -s -C $(ROUTE) showinfo CONFIG=$(CONF)/route
+
+show_queued_info:
+	make -s -C $(IFACE) showinfo CONFIG=$(CONFQ)/iface
+	make -s -C $(ROUTE) showinfo CONFIG=$(CONFQ)/route

@@ -1,6 +1,6 @@
 SOURCE=$(CURDIR)/configsrc
 
-.PHONY: config restore showconf
+.PHONY: config restore test_config test_restore
 config: $(CONFIG)
 	echo "TODO: make conf"
 	# config interface
@@ -23,8 +23,12 @@ restore: $(CONFIG)
 test_restore:
 	python3 validator.py -f $(CONFIG) -e
 
+.PHONY: showconf showinfo
 showconf: $(CONFIG)
 	cat $(CONFIG)/interfaces
 	cat $(CONFIG)/interfaces.d/*
 	cat $(CONFIG)/secrets/*
 	cat $(CONFIG)/peers/*
+showinfo: $(CONFIG)
+	cat $(CONFIG)/interfaces.d/lan
+	cat $(CONFIG)/ppp-info.yml
