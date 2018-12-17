@@ -12,12 +12,12 @@ make -f routing.mk create-proj-18-s-dhcp
 make -f routing.mk create-proj-16-s-dhcp
 ```
 
-* Generate packages for ubuntu 16.04, no load balance, pppoe for WAN
+* Generate packages for ubuntu 16.04, no load balance, PPPoE for WAN
 ```bash
 make -f routing.mk create-proj-16-s-pppoe
 ```
 
-* Generate packages for ubuntu 16.04, with load balance, pppoe for WAN
+* Generate packages for ubuntu 16.04, with load balance, PPPoE for WAN
 ```bash
 make -f routing.mk create-proj-16-d-pppoe
 ```

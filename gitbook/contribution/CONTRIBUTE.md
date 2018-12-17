@@ -1,1 +1,1 @@
-# How to participate
+# [How to participate](https://opensource.guide/how-to-contribute/)
