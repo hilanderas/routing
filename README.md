@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="gitbook/img/routing.svg">
+  <img src="img/routing.svg">
 </p>
 
 <h1 align="center"> routing </h1>
