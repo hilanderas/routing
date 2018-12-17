@@ -8,8 +8,8 @@ config: $(CONFIG)
 	vim $(CONFIG)/02-wan.yaml
 test_config:
 	python3 validator.py -f $(CONFIG)
-	python3 validator.py -f $(CONFIG)/$(CONFIG)/01-lan.yaml
-	python3 validator.py -f $(CONFIG)/$(CONFIG)/02-wan.yaml
+	python3 validator.py -f $(CONFIG)/01-lan.yaml
+	python3 validator.py -f $(CONFIG)/02-wan.yaml
 
 restore: $(CONFIG)
 	rm -rf $(CONFIG)
