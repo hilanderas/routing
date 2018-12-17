@@ -1,4 +1,6 @@
 # Install
+{% video %}https://vimeo.com/306730332{% endvideo %}
+
 ### Login the machine you want to configured as a router
 ```bash
 ssh [USER]@[IP/HOSTNAME]

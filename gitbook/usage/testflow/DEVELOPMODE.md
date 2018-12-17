@@ -38,3 +38,12 @@ make -f state.mk test_confgened_norm
 make -f state.mk test_running_norm
 make -f state.mk test_confqueued_norm
 ```
+
+
+### Clean up
+```bash
+make -f routing.mk del-proj-16-s-dhcp
+make -f routing.mk del-proj-16-s-pppoe
+make -f routing.mk del-proj-16-d-pppoe
+make -f routing.mk del-proj-18-s-dhcp
+```
