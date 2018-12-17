@@ -441,12 +441,9 @@
 <h3 id="login-the-machine-you-want-to-configured-as-a-router">Login the machine you want to configured as a router</h3>
 <pre><code class="lang-bash">ssh [USER]@[IP/HOSTNAME]
 </code></pre>
-<ul>
-<li>[USER]: The user name of router.</li>
-<li>[IP/HOSTNAME]: The ip of router or the hostname of router.</li>
-</ul>
 <h3 id="download-package-and-unzip">Download package and unzip</h3>
-<p>Download the routing package:</p>
+<p>Choose one package to download according to your topology</p>
+<p>e.g, WAN is dhcp mode without load balance</p>
 <pre><code class="lang-bash">wget https://github.com/hilanderas/routing/releases/download/0.0.17/routing-16.04-dhcp-single-0.0.17.zip
 unzip routing-16.04-dhcp-single-0.0.17.zip
 </code></pre>
@@ -454,7 +451,8 @@ unzip routing-16.04-dhcp-single-0.0.17.zip
 <p>Check all available packages in <a href="https://github.com/elespejo/routing/releases" target="_blank">release page</a>.</p>
 </blockquote>
 <h3 id="install-routing">Install routing</h3>
-<pre><code class="lang-bash">make install
+<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> dev-16.04-dhcp-single
+make install
 </code></pre>
 <h3 id="check-states">Check states</h3>
 <pre><code class="lang-bash">make <span class="hljs-built_in">test</span>_state
@@ -503,7 +501,7 @@ unzip routing-16.04-dhcp-single-0.0.17.zip
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Install","level":"4.2","depth":1,"next":{"title":"Uninstall","level":"4.3","depth":1,"path":"usage/quickstart/UNINSTALL.md","ref":"usage/quickstart/UNINSTALL.md","articles":[]},"previous":{"title":"Dependency","level":"4.1","depth":1,"path":"usage/quickstart/DEPENDENCY.md","ref":"usage/quickstart/DEPENDENCY.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/quickstart/INSTALL.md","mtime":"2018-12-17T02:03:14.800Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-17T02:04:20.905Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Install","level":"4.2","depth":1,"next":{"title":"Uninstall","level":"4.3","depth":1,"path":"usage/quickstart/UNINSTALL.md","ref":"usage/quickstart/UNINSTALL.md","articles":[]},"previous":{"title":"Dependency","level":"4.1","depth":1,"path":"usage/quickstart/DEPENDENCY.md","ref":"usage/quickstart/DEPENDENCY.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/quickstart/INSTALL.md","mtime":"2018-12-17T02:30:44.039Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-17T02:32:00.007Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
