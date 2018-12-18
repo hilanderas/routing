@@ -4,20 +4,20 @@
 * Generate packages for ubuntu 18.04, no load balance, dhcp for WAN
 ```bash
 cd routing/testflow/script
-make -f routing.mk create-proj-18-dhcp
+make -f routing.mk create-proj-18-s-dhcp
 ```
 
 * Generate packages for ubuntu 16.04, no load balance, dhcp for WAN
 ```bash
-make -f routing.mk create-proj-16-dhcp
+make -f routing.mk create-proj-16-s-dhcp
 ```
 
-* Generate packages for ubuntu 16.04, no load balance, pppoe for WAN
+* Generate packages for ubuntu 16.04, no load balance, PPPoE for WAN
 ```bash
-make -f routing.mk create-proj-16-pppoe
+make -f routing.mk create-proj-16-s-pppoe
 ```
 
-* Generate packages for ubuntu 16.04, with load balance, pppoe for WAN
+* Generate packages for ubuntu 16.04, with load balance, PPPoE for WAN
 ```bash
 make -f routing.mk create-proj-16-d-pppoe
 ```
@@ -37,4 +37,13 @@ make -f state.mk test_init_norm
 make -f state.mk test_confgened_norm
 make -f state.mk test_running_norm
 make -f state.mk test_confqueued_norm
+```
+
+
+### Clean up
+```bash
+make -f routing.mk del-proj-16-s-dhcp
+make -f routing.mk del-proj-16-s-pppoe
+make -f routing.mk del-proj-16-d-pppoe
+make -f routing.mk del-proj-18-s-dhcp
 ```

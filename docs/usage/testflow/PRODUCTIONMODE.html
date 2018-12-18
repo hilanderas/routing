@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../../faq/TROUBLESHOOTING.html" />
+    <link rel="next" href="../../faq/TSDHCP.html" />
     
     
     <link rel="prev" href="DEVELOPMODE.html" />
@@ -94,7 +94,7 @@
                 <a href="../../">
             
                     
-                    Introduction routing-0.0.13
+                    Introduction routing-0.0.17
             
                 </a>
             
@@ -114,7 +114,7 @@
                 <a href="../../overview/USER.html">
             
                     
-                    Who are the user
+                    Who are the users ?
             
                 </a>
             
@@ -173,7 +173,7 @@
                 <a href="../../topology/pppoe.html">
             
                     
-                    pppoe
+                    PPPoE
             
                 </a>
             
@@ -186,7 +186,7 @@
                 <a href="../../topology/pppoe_balance.html">
             
                     
-                    pppoe with load balance
+                    PPPoE with load balance
             
                 </a>
             
@@ -339,12 +339,25 @@
         
         
     
-        <li class="chapter " data-level="7.1" data-path="../../faq/TROUBLESHOOTING.html">
+        <li class="chapter " data-level="7.1" data-path="../../faq/TSDHCP.html">
             
-                <a href="../../faq/TROUBLESHOOTING.html">
+                <a href="../../faq/TSDHCP.html">
             
                     
-                    Trouble shooting
+                    Trouble shooting for dhcp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../faq/TSPPPOE.html">
+            
+                <a href="../../faq/TSPPPOE.html">
+            
+                    
+                    Trouble shooting for PPPoE
             
                 </a>
             
@@ -439,16 +452,15 @@
                                 
                                 <h1 id="production-mode">Production mode</h1>
 <h3 id="download-routing-testflow-packages">Download routing-testflow packages</h3>
-<pre><code class="lang-bash">wget https://github.com/hilanderas/routing/releases/download/0.0.13/routing-testflow-0.0.13.zip
-unzip routing-testflow-0.0.13.zip
+<pre><code class="lang-bash">wget https://github.com/hilanderas/routing/releases/download/0.0.17/routing-testflow-0.0.17.zip
+unzip routing-testflow-0.0.17.zip
 </code></pre>
 <h3 id="check-integrity-of-routing-testflow-packages">Check integrity of routing-testflow packages</h3>
 <pre><code class="lang-bash"><span class="hljs-built_in">cd</span> routing-testflow
 make <span class="hljs-_">-f</span> basic.mk <span class="hljs-built_in">test</span>_integrity
 </code></pre>
 <h3 id="download-routing-project-you-are-going-to-test-with">Download routing project you are going to test with</h3>
-<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> routing-testflow
-make <span class="hljs-_">-f</span> basic.mk download
+<pre><code class="lang-bash">make <span class="hljs-_">-f</span> basic.mk download
 </code></pre>
 <h3 id="set-test-project">Set test project</h3>
 <pre><code class="lang-bash">make <span class="hljs-_">-f</span> basic.mk config TEST_PROJ=dev-16.04-dhcp-single
@@ -497,28 +509,27 @@ make <span class="hljs-built_in">test</span>_uninstall
 make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
 </code></pre>
 </li>
-<li><p>Reuninstall
-```bash
-make test_install
-make test_test_state
-make test_uninstall
-make test_test_state
-make test_uninstall
-make test_test_state</p>
-<h1 id="on-pc-connected-to-router-configure-a-static-ip">On pc connected to router, configure a static IP</h1>
-<h1 id="and-ping-lan-ip-wan-ip-of-router-and-public-ip">And ping lan ip, wan ip of router and public IP</h1>
+<li><p>Reuninstall</p>
+<pre><code class="lang-bash">make <span class="hljs-built_in">test</span>_install
+make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+make <span class="hljs-built_in">test</span>_uninstall
+make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+make <span class="hljs-built_in">test</span>_uninstall
+make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+<span class="hljs-comment"># On pc connected to router, configure a static IP </span>
+<span class="hljs-comment"># And ping lan ip, wan ip of router and public IP</span>
+</code></pre>
 </li>
-</ul>
-<pre><code>
-* Checkconf
-```bash
-make test_install
-make test_test_state
-make test_showconf
-make test_uninstall
-make test_test_state
-</code></pre><ul>
-<li>Reboot<pre><code class="lang-bash">make <span class="hljs-built_in">test</span>_install
+<li><p>Checkconf</p>
+<pre><code class="lang-bash">make <span class="hljs-built_in">test</span>_install
+make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+make <span class="hljs-built_in">test</span>_showconf
+make <span class="hljs-built_in">test</span>_uninstall
+make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
+</code></pre>
+</li>
+<li><p>Reboot</p>
+<pre><code class="lang-bash">make <span class="hljs-built_in">test</span>_install
 make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
 <span class="hljs-comment"># On pc connected to router, configure a static IP </span>
 <span class="hljs-comment"># And ping lan ip, wan ip of router and public IP</span>
@@ -613,7 +624,7 @@ make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</s
                 </a>
                 
                 
-                <a href="../../faq/TROUBLESHOOTING.html" class="navigation navigation-next " aria-label="Next page: Trouble shooting">
+                <a href="../../faq/TSDHCP.html" class="navigation navigation-next " aria-label="Next page: Trouble shooting for dhcp">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -624,7 +635,7 @@ make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</s
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Production mode","level":"6.2","depth":1,"next":{"title":"Trouble shooting","level":"7.1","depth":1,"path":"faq/TROUBLESHOOTING.md","ref":"faq/TROUBLESHOOTING.md","articles":[]},"previous":{"title":"Develop mode","level":"6.1","depth":1,"path":"usage/testflow/DEVELOPMODE.md","ref":"usage/testflow/DEVELOPMODE.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/testflow/PRODUCTIONMODE.md","mtime":"2018-12-13T02:05:40.992Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-13T02:22:13.343Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Production mode","level":"6.2","depth":1,"next":{"title":"Trouble shooting for dhcp","level":"7.1","depth":1,"path":"faq/TSDHCP.md","ref":"faq/TSDHCP.md","articles":[]},"previous":{"title":"Develop mode","level":"6.1","depth":1,"path":"usage/testflow/DEVELOPMODE.md","ref":"usage/testflow/DEVELOPMODE.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/testflow/PRODUCTIONMODE.md","mtime":"2018-12-17T02:03:14.800Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-17T08:35:54.638Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

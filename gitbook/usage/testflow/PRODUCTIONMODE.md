@@ -2,8 +2,8 @@
 
 ### Download routing-testflow packages
 ```bash
-wget https://github.com/hilanderas/routing/releases/download/0.0.13/routing-testflow-0.0.13.zip
-unzip routing-testflow-0.0.13.zip
+wget https://github.com/hilanderas/routing/releases/download/0.0.17/routing-testflow-0.0.17.zip
+unzip routing-testflow-0.0.17.zip
 ```
 ### Check integrity of routing-testflow packages
 ```bash
@@ -13,7 +13,6 @@ make -f basic.mk test_integrity
 
 ### Download routing project you are going to test with
 ```bash
-cd routing-testflow
 make -f basic.mk download
 ```
 
@@ -81,7 +80,6 @@ make test_uninstall
 make test_test_state
 # On pc connected to router, configure a static IP 
 # And ping lan ip, wan ip of router and public IP
-
 ```
 
 * Checkconf

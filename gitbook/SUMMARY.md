@@ -1,16 +1,16 @@
 # SUMMARY
 
-* [Introduction routing-0.0.13](README.md)
+* [Introduction routing-0.0.17](README.md)
 
 ### Overview 
-* [Who are the user](overview/USER.md)
+* [Who are the users ?](overview/USER.md)
 * [About project](overview/PROJECT.md)
 
 ### Topology
 * [dhcp](topology/dhcp.md)
 * [dhcp with load balance](topology/dhcp_balance.md)
-* [pppoe](topology/pppoe.md)
-* [pppoe with load balance](topology/pppoe_balance.md)
+* [PPPoE](topology/pppoe.md)
+* [PPPoE with load balance](topology/pppoe_balance.md)
 
 ### Quick start
 * [Dependency](usage/quickstart/DEPENDENCY.md)
@@ -28,7 +28,8 @@
 * [Production mode](usage/testflow/PRODUCTIONMODE.md)
 
 ### FAQ
-* [Trouble shooting](faq/TROUBLESHOOTING.md)
+* [Trouble shooting for dhcp](faq/TSDHCP.md)
+* [Trouble shooting for PPPoE](faq/TSPPPOE.md)
 
 ### Contribution
 * [How to participate](contribution/CONTRIBUTE.md)
