@@ -6,28 +6,28 @@ CONFQ = $(CURDIR)/config.queued
 .PHONY: config restore start stop restart update_config revert_config
 config:
 	make -s -f sm.mk is_INIT_CONFGENED && \
-	make -C $(IFACE) config CONFIG=$(CONFQ)/iface && \
-	make -C $(ROUTE) config CONFIG=$(CONFQ)/route && \
+	make -s -C $(IFACE) config CONFIG=$(CONFQ)/iface && \
+	make -s -C $(ROUTE) config CONFIG=$(CONFQ)/route && \
 	make -s -f sm.mk set_CONFGENED
 
 restore:
 	make -s -f sm.mk is_CONFGENED && \
-	make -C $(IFACE) restore CONFIG=$(CONFQ)/iface && \
-	make -C $(ROUTE) restore CONFIG=$(CONFQ)/route && \
+	make -s -C $(IFACE) restore CONFIG=$(CONFQ)/iface && \
+	make -s -C $(ROUTE) restore CONFIG=$(CONFQ)/route && \
 	rm -rf $(CONFQ) && \
 	make -s -f sm.mk set_INIT
 
 start:
 	make -s -f sm.mk is_CONFGENED && \
 	cp -rf $(CONFQ) $(CONF) && \
-	make -C $(IFACE) start CONFIG=$(CONF)/iface && \
-	make -C $(ROUTE) start CONFIG=$(CONF)/route && \
+	make -s -C $(IFACE) start CONFIG=$(CONF)/iface && \
+	make -s -C $(ROUTE) start CONFIG=$(CONF)/route && \
 	make -s -f sm.mk set_RUNNING
 
 stop:
 	make -s -f sm.mk is_RUNNING_CONFQUEUED && \
-	make -C $(IFACE) stop && \
-	make -C $(ROUTE) stop && \
+	make -s -C $(IFACE) stop && \
+	make -s -C $(ROUTE) stop && \
 	rm -rf $(CONF) && \
 	make -s -f sm.mk set_CONFGENED
 
@@ -35,8 +35,8 @@ restart: stop start
 
 update_config: 
 	make -s -f sm.mk is_RUNNING_CONFQUEUED && \
-	make -C $(IFACE) config SOURCE=$(CONFQ)/iface CONFIG=$(CONFQ)/iface && \
-	make -C $(ROUTE) config SOURCE=$(CONFQ)/route CONFIG=$(CONFQ)/route && \
+	make -s -C $(IFACE) config SOURCE=$(CONFQ)/iface CONFIG=$(CONFQ)/iface && \
+	make -s -C $(ROUTE) config SOURCE=$(CONFQ)/route CONFIG=$(CONFQ)/route && \
 	make -s -f sm.mk set_CONFQUEUED
 
 revert_config:
