@@ -1,3 +1,5 @@
+SHELL = /bin/bash
+
 SOURCE=$(CURDIR)/configsrc
 
 .PHONY: config restore test_config test_restore
