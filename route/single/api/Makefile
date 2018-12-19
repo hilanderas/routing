@@ -28,8 +28,8 @@ test_install:
 	echo -e "\e[96mShow rules in net POSTROUTING:\e[0m"
 	sudo iptables -t nat -S POSTROUTING | grep "MASQUERADE" || true
 	echo -e "\e[96mShow rules in filter FORWARD:\e[0m"
-	sudo iptables -t filter -S FORWARD | grep "p tcp --syn -m conntrack --ctstate NEW -j ACCEPT" || true
-	sudo iptables -t filter -S FORWARD | grep "m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT" || true
+	sudo iptables -t filter -S FORWARD | grep "ctstate NEW -j ACCEPT" || true
+	sudo iptables -t filter -S FORWARD | grep "ESTABLISHED\|RELATED" || true
 
 
 
@@ -57,8 +57,8 @@ test_uninstall:
 	echo -e "\e[96mShow rules in net POSTROUTING:\e[0m"
 	sudo iptables -t nat -S POSTROUTING | grep "MASQUERADE" || true
 	echo -e "\e[96mShow rules in filter FORWARD:\e[0m"
-	sudo iptables -t filter -S FORWARD | grep "p tcp --syn -m conntrack --ctstate NEW -j ACCEPT" || true
-	sudo iptables -t filter -S FORWARD | grep "m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT" || true
+	sudo iptables -t filter -S FORWARD | grep "ctstate NEW -j ACCEPT" || true
+	sudo iptables -t filter -S FORWARD | grep "ESTABLISHED\|RELATED" || true
 
 
 .PHONY: showconf
