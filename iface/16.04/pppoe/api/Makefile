@@ -18,6 +18,7 @@ set_ppp:
 	sudo mv $(SYS_PPP)/peers $(SYS_PPP)/peers.routing.bk
 	sudo cp -r $(CONFIG)/peers $(SYS_PPP)/
 start:
+	echo -e "\e[96mStart iface:\e[0m"
 	echo "\e[93mYou need to reboot to make it work\e[0m"
 install: set_iface set_ppp start
 test_install:
@@ -44,6 +45,7 @@ test_install:
 
 .PHONY: stop unset_iface unset_ppp uninstall test_uninstall
 stop:
+	echo -e "\e[96mStop iface:\e[0m"
 	echo -e "\e[93mYou need to reboot to make it work!\e[0m"
 unset_iface:
 	echo -e "\e[96mUnset interface files:\e[0m"

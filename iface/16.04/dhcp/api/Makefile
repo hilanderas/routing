@@ -11,6 +11,7 @@ set:
 
 .PHONY: start
 start:
+	echo -e "\e[93mStart iface:\e[0m"
 	echo -e "\e[93mYou need to reboot to make it work:\e[0m"
 
 .PHONY: install test_install
@@ -27,6 +28,7 @@ test_install:
 
 .PHONY: stop
 stop:
+	echo -e "\e[96mStart iface:\e[0m"
 	echo -e "\e[93mYou need to reboot to make it work:\e[0m"
 
 .PHONY: unset

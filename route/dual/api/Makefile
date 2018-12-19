@@ -46,8 +46,11 @@ test_install:
 	ip route
 
 	echo -e "\e[96mShow iptables:\e[0m"
-	sudo iptables -t nat -L POSTROUTING -nv
-	sudo iptables -t filter -L FORWARD -nv
+	echo -e "\e[96mnet POSTROUTING:\e[0m"
+	sudo iptables -t nat -L POSTROUTING -nv | grep "MASQUERADE" || true
+	echo -e "\e[96mfilter FORWARD:\e[0m"
+	sudo iptables -t filter -L FORWARD -nv | grep  "ctstate NEW" || true
+	sudo iptables -t filter -L FORWARD -nv | grep  "ctstate RELATED,ESTABLISHED" || true
 
 	echo -e "\e[96mShow services status:\e[0m"
 	sudo systemctl status routing.service || true
@@ -91,8 +94,11 @@ test_uninstall:
 	ip route
 
 	echo -e "\e[96mShow iptables:\e[0m"
-	sudo iptables -t nat -L POSTROUTING -nv
-	sudo iptables -t filter -L FORWARD -nv
+	echo -e "\e[96mnet POSTROUTING:\e[0m"
+	sudo iptables -t nat -L POSTROUTING -nv | grep "MASQUERADE" || true
+	echo -e "\e[96mfilter FORWARD:\e[0m"
+	sudo iptables -t filter -L FORWARD -nv | grep  "ctstate NEW" || true
+	sudo iptables -t filter -L FORWARD -nv | grep  "ctstate RELATED,ESTABLISHED" || true
 
 	echo -e "\e[96mShow services status:\e[0m"
 	sudo systemctl status routing.service || true

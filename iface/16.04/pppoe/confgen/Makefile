@@ -4,7 +4,7 @@ SOURCE=$(CURDIR)/configsrc
 
 .PHONY: config restore test_config test_restore
 config: $(CONFIG)
-	echo -e "\e[96mConfig iface:\e[0m"
+	echo -e "\e[96mConfig iface:\e[0m"$(CONFIG)
 	echo -e "\e[96mConfig interface:\e[0m"
 	cp -r $(SOURCE)/* $(CONFIG) || true
 	rm -r $(CONFIG)/peers || true
@@ -14,7 +14,7 @@ config: $(CONFIG)
 	vim $(CONFIG)/ppp-info.yml
 	python3 -m confgenerator.cli -f $(CONFIG)/ppp-info.yml -d $(CONFIG)
 test_config: $(CONFIG)
-	echo -e "\e[96mTest iface config:\e[0m"
+	echo -e "\e[96mTest iface config:\e[0m"$(CONFIG)
 	echo -e "\e[96mTest interface files:\e[0m"
 	python3 validator.py -f $(CONFIG)
 	python3 validator.py -f $(CONFIG)/interfaces
@@ -24,10 +24,10 @@ test_config: $(CONFIG)
 	python3 validator.py -f $(CONFIG)/ppp-info.yml
 
 restore: $(CONFIG)
-	echo -e "\e[96mRestore iface:\e[0m"
+	echo -e "\e[96mRestore iface:\e[0m"$(CONFIG)
 	rm -rf $(CONFIG)
 test_restore:
-	echo -e "\e[96mTest iface restore:\e[0m"
+	echo -e "\e[96mTest iface restore:\e[0m"$(CONFIG)
 	python3 validator.py -f $(CONFIG) -e
 
 .PHONY: showconf showinfo

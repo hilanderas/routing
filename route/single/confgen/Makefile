@@ -4,22 +4,22 @@ SOURCE=$(CURDIR)/configsrc
 
 .PHONY: config restore test_config test_restore
 config: $(CONFIG) $(SOURCE)
-	echo -e "\e[96mConfig route:\e[0m"
+	echo -e "\e[96mConfig route:\e[0m"$(CONFIG)
 	cp -r $(SOURCE)/* $(CONFIG) || true
 	vim $(CONFIG)/setting.env
 
 restore: $(CONFIG)
-	echo -e "\e[96mRestore route:\e[0m"
+	echo -e "\e[96mRestore route:\e[0m"$(CONFIG)
 	rm -rf $(CONFIG)
 
 test_config: $(CONFIG)
-	echo -e "\e[96mTest route config:\e[0m"
+	echo -e "\e[96mTest route config:\e[0m"$(CONFIG)
 	python3 validator.py -f $(CONFIG)/Makefile
 	python3 validator.py -f $(CONFIG)/routing.service
 	python3 validator.py -f $(CONFIG)/setting.env
 
 test_restore:
-	echo -e "\e[96mTest route restore:\e[0m"
+	echo -e "\e[96mTest route restore:\e[0m"$(CONFIG)
 	python3 validator.py -f $(CONFIG) -e
 
 .PHONY: showconf showinfo
