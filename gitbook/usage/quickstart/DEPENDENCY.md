@@ -15,3 +15,4 @@ Use the command `sudo apt install [command]` to install the command below:
 Use the command `pip3 install [package]` to install the package below:
 * `pyyaml`
 * `argparse`
+* `termcolor`
