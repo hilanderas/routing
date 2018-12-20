@@ -2,8 +2,8 @@
 
 ### Download routing-testflow packages
 ```bash
-wget https://github.com/hilanderas/routing/releases/download/0.0.17/routing-testflow-0.0.17.zip
-unzip routing-testflow-0.0.17.zip
+wget https://github.com/hilanderas/routing/releases/download/0.0.22/routing-testflow-0.0.22.zip
+unzip routing-testflow-0.0.22.zip
 ```
 ### Check integrity of routing-testflow packages
 ```bash

@@ -1,42 +1,23 @@
 # Trouble shooting for dhcp
+**Please fire an [issue](https://github.com/hilanderas/routing/issues) if you don't find answers here or check the [change log](https://github.com/hilanderas/routing/releases)**
 
-### 1. Why I can't ping WAN after install routing
-* Run test_state to check current state, all tests should be passed(you can see a green True in the front of each statement) and state is running
-```bash
-make test_state
-```
+### 1. Why I can't ping WAN after installing routing
+It is probably because of an incorrect WAN configuration. Please follow the steps to check 
 
-* If all tests pass and the state is running, then check your configuration
-```bash
-make showconf
-```
-Make sure LAN and WAN you filled are existing in system, check them by
-```bash
-ip link
-``` 
+* Execute `make test_state` to test current state, it should be RUNNING and all test cases should be passed (you can see a green `True` in the front of each statement). 
+
+* Then execute `make showconf` to check your configuration. Make sure LAN and WAN you filled are correct comparing with the result from `ip link`.
 
 ### 2. Why I can't ping public IP after install routing
-* Run test_state to check current state, all tests should be passed(you can see a green True in the front of each statement) and state is running
-```bash
-make test_state
-```
+It is probably because of an incorrect iptables rules added. Please follow the steps to check 
 
-* If all tests pass and the state is running, then check your configuration in iptables 
-```bash
-make test_state
-```
-Make sure LAN and WAN in iptables are correct, e.g, enp2s0 is WAN and br0 is LAN, then iptables should look like this:
+* Run `make test_state` to test current state, it should be RUNNING and all test cases should be passed (you can see a green `True` in the front of each statement). 
+
+* Then check rules in iptables, make sure LAN and WAN are correct, e.g, if enp2s0 is WAN and br0 is LAN, then it should look like this:
 ```
 -P POSTROUTING ACCEPT
 -A POSTROUTING -o enp2s0 -j MASQUERADE 
--A POSTROUTING -s 172.17.0.0/16 ! -o docker0 -j MASQUERADE
 -P FORWARD ACCEPT
--A FORWARD -j DOCKER-USER
--A FORWARD -j DOCKER-ISOLATION-STAGE-1
--A FORWARD -o docker0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
--A FORWARD -o docker0 -j DOCKER
--A FORWARD -i docker0 ! -o docker0 -j ACCEPT
--A FORWARD -i docker0 -o docker0 -j ACCEPT
 -A FORWARD -i enp2s0 -o br0 -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -m conntrack --ctstate NEW -j ACCEPT
 -A FORWARD -i enp2s0 -o br0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 -A FORWARD -i br0 -o enp2s0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT

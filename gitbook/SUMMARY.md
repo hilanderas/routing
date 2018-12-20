@@ -1,6 +1,6 @@
 # SUMMARY
 
-* [Introduction routing-0.0.17](README.md)
+* [Introduction routing-0.0.22](README.md)
 
 ### Overview 
 * [Who are the users ?](overview/USER.md)
@@ -8,7 +8,6 @@
 
 ### Topology
 * [dhcp](topology/dhcp.md)
-* [dhcp with load balance](topology/dhcp_balance.md)
 * [PPPoE](topology/pppoe.md)
 * [PPPoE with load balance](topology/pppoe_balance.md)
 
@@ -19,6 +18,7 @@
 * [Update](usage/quickstart/UPDATE.md)
 
 ### More scenarios
+* [How to check info]()
 * [How to check conf](usage/morescenarios/CONFIG.md)
 * [How to check state](usage/morescenarios/STATE.md)
 * [How to manipulate the service](usage/morescenarios/SERVICE.md)
@@ -33,6 +33,3 @@
 
 ### Contribution
 * [How to participate](contribution/CONTRIBUTE.md)
-
-### Other
-* [change log](changelog.md)

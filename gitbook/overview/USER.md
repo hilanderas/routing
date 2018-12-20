@@ -1,3 +1,4 @@
 # Who are the users ?
 
-Powter-client users, powter-client can't be functional without routing
+* The developer who wants to develop a router on a portable device like Raspberry Pi with UI
+* Powter-client users, powter-client can't be functional without routing

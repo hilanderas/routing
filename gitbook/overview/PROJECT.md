@@ -1,6 +1,6 @@
 # About project
-Routing allows one or more computers to be connected to the other computers, network devices, or to other networks.
+Make a machine, which can be a pc or Raspberry Pi, act as a router.
 
 * Manage LAN and WAN
-* Forward packages from LAN to WAN 
+* Forward packets between LAN and WAN 
 * MASQUERADE for WAN 

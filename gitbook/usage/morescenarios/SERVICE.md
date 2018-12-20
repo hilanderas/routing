@@ -1,5 +1,6 @@
 # How to manipulate the service
-There is a service called routing.service, check with:
+
+* Check status of service
 ```bash
 make test_state
 ```

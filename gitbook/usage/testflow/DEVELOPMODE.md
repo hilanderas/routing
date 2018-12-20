@@ -25,25 +25,25 @@ make -f routing.mk create-proj-16-d-pppoe
 ### Run test flow
 * Abnormal state test
 ```bash
-make -f state.mk test_init
-make -f state.mk test_confgened
-make -f state.mk test_running
-make -f state.mk test_confqueued
+make -s -f state.mk test_init
+make -s -f state.mk test_confgened
+make -s -f state.mk test_running
+make -s -f state.mk test_confqueued
 ```
 
 * Normal state test
 ```bash
-make -f state.mk test_init_norm
-make -f state.mk test_confgened_norm
-make -f state.mk test_running_norm
-make -f state.mk test_confqueued_norm
+make -s -f state.mk test_init_norm
+make -s -f state.mk test_confgened_norm
+make -s -f state.mk test_running_norm
+make -s -f state.mk test_confqueued_norm
 ```
 
 
 ### Clean up
 ```bash
-make -f routing.mk del-proj-16-s-dhcp
-make -f routing.mk del-proj-16-s-pppoe
-make -f routing.mk del-proj-16-d-pppoe
-make -f routing.mk del-proj-18-s-dhcp
+make -s -f routing.mk del-proj-16-s-dhcp
+make -s -f routing.mk del-proj-16-s-pppoe
+make -s -f routing.mk del-proj-16-d-pppoe
+make -s -f routing.mk del-proj-18-s-dhcp
 ```

@@ -2,27 +2,29 @@
 
 There are 2 kinds of config in system:
 * config - For the running service
-* config_queque - For generating config
+* config_queued - For generating config
 
 ### Show running config
 ```bash
-make showconf
+make showconfig
 ```
 
 ### Show queued config
 ```bash
-make show_queued_conf
+make show_queued_config
 ```
 
 
 ### Delete config
-When you in CONFGENED state, you can discard config_queue by:
+When you are in CONFGENED state, you can discard config_queued by:
 ```bash
 make restore 
 ```
+After the action, you will be in init state
 
 ### Revert config
-When you in CONFQUEUED state, you can discard config_queue by:
+When you in CONFQUEUED state, you can discard config_queued by:
 ```bash
 make revert_config
 ```
+After the action, you will be in running state
