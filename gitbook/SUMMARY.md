@@ -18,7 +18,7 @@
 * [Update](usage/quickstart/UPDATE.md)
 
 ### More scenarios
-* [How to check info]()
+* [How to check info](usage/morescenarios/INFO.md)
 * [How to check conf](usage/morescenarios/CONFIG.md)
 * [How to check state](usage/morescenarios/STATE.md)
 * [How to manipulate the service](usage/morescenarios/SERVICE.md)
