@@ -94,7 +94,7 @@
                 <a href="../">
             
                     
-                    Introduction routing-0.0.17
+                    Introduction routing-0.0.22
             
                 </a>
             
@@ -155,20 +155,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" data-path="../topology/dhcp_balance.html">
-            
-                <a href="../topology/dhcp_balance.html">
-            
-                    
-                    dhcp with load balance
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="3.3" data-path="../topology/pppoe.html">
+        <li class="chapter " data-level="3.2" data-path="../topology/pppoe.html">
             
                 <a href="../topology/pppoe.html">
             
@@ -181,7 +168,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.4" data-path="../topology/pppoe_balance.html">
+        <li class="chapter " data-level="3.3" data-path="../topology/pppoe_balance.html">
             
                 <a href="../topology/pppoe_balance.html">
             
@@ -260,7 +247,20 @@
         
         
     
-        <li class="chapter " data-level="5.1" data-path="../usage/morescenarios/CONFIG.html">
+        <li class="chapter " data-level="5.1" >
+            
+                <span>
+            
+                    
+                    How to check info
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../usage/morescenarios/CONFIG.html">
             
                 <a href="../usage/morescenarios/CONFIG.html">
             
@@ -273,7 +273,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.2" data-path="../usage/morescenarios/STATE.html">
+        <li class="chapter " data-level="5.3" data-path="../usage/morescenarios/STATE.html">
             
                 <a href="../usage/morescenarios/STATE.html">
             
@@ -286,7 +286,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.3" data-path="../usage/morescenarios/SERVICE.html">
+        <li class="chapter " data-level="5.4" data-path="../usage/morescenarios/SERVICE.html">
             
                 <a href="../usage/morescenarios/SERVICE.html">
             
@@ -387,26 +387,6 @@
     
 
     
-        
-        <li class="header">Other</li>
-        
-        
-    
-        <li class="chapter " data-level="9.1" data-path="../changelog.html">
-            
-                <a href="../changelog.html">
-            
-                    
-                    change log
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-    
 
     <li class="divider"></li>
 
@@ -451,40 +431,24 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="trouble-shooting-for-dhcp">Trouble shooting for dhcp</h1>
-<h3 id="1-why-i-cant-ping-wan-after-install-routing">1. Why I can&apos;t ping WAN after install routing</h3>
+<p><strong>Please fire an <a href="https://github.com/hilanderas/routing/issues" target="_blank">issue</a> if you don&apos;t find answers here or check the <a href="https://github.com/hilanderas/routing/releases" target="_blank">change log</a></strong></p>
+<h3 id="1-why-i-cant-ping-wan-after-installing-routing">1. Why I can&apos;t ping WAN after installing routing</h3>
+<p>It is probably because of an incorrect WAN configuration. Please follow the steps to check </p>
 <ul>
-<li><p>Run test_state to check current state, all tests should be passed(you can see a green True in the front of each statement) and state is running</p>
-<pre><code class="lang-bash">make <span class="hljs-built_in">test</span>_state
-</code></pre>
+<li><p>Execute <code>make test_state</code> to test current state, it should be RUNNING and all test cases should be passed (you can see a green <code>True</code> in the front of each statement). </p>
 </li>
-<li><p>If all tests pass and the state is running, then check your configuration</p>
-<pre><code class="lang-bash">make showconf
-</code></pre>
-<p>Make sure LAN and WAN you filled are existing in system, check them by</p>
-<pre><code class="lang-bash">ip link
-</code></pre>
+<li><p>Then execute <code>make showconf</code> to check your configuration. Make sure LAN and WAN you filled are correct comparing with the result from <code>ip link</code>.</p>
 </li>
 </ul>
 <h3 id="2-why-i-cant-ping-public-ip-after-install-routing">2. Why I can&apos;t ping public IP after install routing</h3>
+<p>It is probably because of an incorrect iptables rules added. Please follow the steps to check </p>
 <ul>
-<li><p>Run test_state to check current state, all tests should be passed(you can see a green True in the front of each statement) and state is running</p>
-<pre><code class="lang-bash">make <span class="hljs-built_in">test</span>_state
-</code></pre>
+<li><p>Run <code>make test_state</code> to test current state, it should be RUNNING and all test cases should be passed (you can see a green <code>True</code> in the front of each statement). </p>
 </li>
-<li><p>If all tests pass and the state is running, then check your configuration in iptables </p>
-<pre><code class="lang-bash">make <span class="hljs-built_in">test</span>_state
-</code></pre>
-<p>Make sure LAN and WAN in iptables are correct, e.g, enp2s0 is WAN and br0 is LAN, then iptables should look like this:</p>
+<li><p>Then check rules in iptables, make sure LAN and WAN are correct, e.g, if enp2s0 is WAN and br0 is LAN, then it should look like this:</p>
 <pre><code>-P POSTROUTING ACCEPT
 -A POSTROUTING -o enp2s0 -j MASQUERADE 
--A POSTROUTING -s 172.17.0.0/16 ! -o docker0 -j MASQUERADE
 -P FORWARD ACCEPT
--A FORWARD -j DOCKER-USER
--A FORWARD -j DOCKER-ISOLATION-STAGE-1
--A FORWARD -o docker0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
--A FORWARD -o docker0 -j DOCKER
--A FORWARD -i docker0 ! -o docker0 -j ACCEPT
--A FORWARD -i docker0 -o docker0 -j ACCEPT
 -A FORWARD -i enp2s0 -o br0 -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -m conntrack --ctstate NEW -j ACCEPT
 -A FORWARD -i enp2s0 -o br0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 -A FORWARD -i br0 -o enp2s0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
@@ -533,7 +497,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Trouble shooting for dhcp","level":"7.1","depth":1,"next":{"title":"Trouble shooting for PPPoE","level":"7.2","depth":1,"path":"faq/TSPPPOE.md","ref":"faq/TSPPPOE.md","articles":[]},"previous":{"title":"Production mode","level":"6.2","depth":1,"path":"usage/testflow/PRODUCTIONMODE.md","ref":"usage/testflow/PRODUCTIONMODE.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"faq/TSDHCP.md","mtime":"2018-12-17T07:53:24.089Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-17T08:35:54.638Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Trouble shooting for dhcp","level":"7.1","depth":1,"next":{"title":"Trouble shooting for PPPoE","level":"7.2","depth":1,"path":"faq/TSPPPOE.md","ref":"faq/TSPPPOE.md","articles":[]},"previous":{"title":"Production mode","level":"6.2","depth":1,"path":"usage/testflow/PRODUCTIONMODE.md","ref":"usage/testflow/PRODUCTIONMODE.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"faq/TSDHCP.md","mtime":"2018-12-20T02:33:43.945Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-20T02:42:47.587Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

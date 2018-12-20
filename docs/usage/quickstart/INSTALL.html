@@ -94,7 +94,7 @@
                 <a href="../../">
             
                     
-                    Introduction routing-0.0.17
+                    Introduction routing-0.0.22
             
                 </a>
             
@@ -155,20 +155,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" data-path="../../topology/dhcp_balance.html">
-            
-                <a href="../../topology/dhcp_balance.html">
-            
-                    
-                    dhcp with load balance
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="3.3" data-path="../../topology/pppoe.html">
+        <li class="chapter " data-level="3.2" data-path="../../topology/pppoe.html">
             
                 <a href="../../topology/pppoe.html">
             
@@ -181,7 +168,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.4" data-path="../../topology/pppoe_balance.html">
+        <li class="chapter " data-level="3.3" data-path="../../topology/pppoe_balance.html">
             
                 <a href="../../topology/pppoe_balance.html">
             
@@ -260,7 +247,20 @@
         
         
     
-        <li class="chapter " data-level="5.1" data-path="../morescenarios/CONFIG.html">
+        <li class="chapter " data-level="5.1" >
+            
+                <span>
+            
+                    
+                    How to check info
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../morescenarios/CONFIG.html">
             
                 <a href="../morescenarios/CONFIG.html">
             
@@ -273,7 +273,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.2" data-path="../morescenarios/STATE.html">
+        <li class="chapter " data-level="5.3" data-path="../morescenarios/STATE.html">
             
                 <a href="../morescenarios/STATE.html">
             
@@ -286,7 +286,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.3" data-path="../morescenarios/SERVICE.html">
+        <li class="chapter " data-level="5.4" data-path="../morescenarios/SERVICE.html">
             
                 <a href="../morescenarios/SERVICE.html">
             
@@ -387,26 +387,6 @@
     
 
     
-        
-        <li class="header">Other</li>
-        
-        
-    
-        <li class="chapter " data-level="9.1" data-path="../../changelog.html">
-            
-                <a href="../../changelog.html">
-            
-                    
-                    change log
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-    
 
     <li class="divider"></li>
 
@@ -452,14 +432,14 @@
                                 
                                 <h1 id="install">Install</h1>
 <p><div style="position: relative;padding-bottom: 56.25%;padding-top: 25px;height: 0;"><iframe style="border: none;position: absolute;top: 0;left: 0;width: 100%;height: 100%" src="https://player.vimeo.com/video/306730332" frameborder="0"></iframe></div></p>
-<h3 id="login-the-machine-you-want-to-configured-as-a-router">Login the machine you want to configured as a router</h3>
+<h3 id="login-the-machine-you-want-to-configure-as-a-router">Login the machine you want to configure as a router</h3>
 <pre><code class="lang-bash">ssh [USER]@[IP/HOSTNAME]
 </code></pre>
 <h3 id="download-package-and-unzip">Download package and unzip</h3>
 <p>Choose one package to download according to your topology</p>
-<p>e.g, WAN is dhcp mode without load balance</p>
-<pre><code class="lang-bash">wget https://github.com/hilanderas/routing/releases/download/0.0.17/routing-16.04-dhcp-single-0.0.17.zip
-unzip routing-16.04-dhcp-single-0.0.17.zip
+<p>e.g, WAN is dhcp mode for ubuntu 16.04</p>
+<pre><code class="lang-bash">wget https://github.com/hilanderas/routing/releases/download/0.0.22/routing-16.04-dhcp-single-0.0.22.zip
+unzip routing-16.04-dhcp-single-0.0.22.zip
 </code></pre>
 <blockquote>
 <p>Check all available packages in <a href="https://github.com/elespejo/routing/releases" target="_blank">release page</a>.</p>
@@ -515,7 +495,7 @@ make install
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Install","level":"4.2","depth":1,"next":{"title":"Uninstall","level":"4.3","depth":1,"path":"usage/quickstart/UNINSTALL.md","ref":"usage/quickstart/UNINSTALL.md","articles":[]},"previous":{"title":"Dependency","level":"4.1","depth":1,"path":"usage/quickstart/DEPENDENCY.md","ref":"usage/quickstart/DEPENDENCY.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/quickstart/INSTALL.md","mtime":"2018-12-17T07:53:24.093Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-17T08:35:54.638Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Install","level":"4.2","depth":1,"next":{"title":"Uninstall","level":"4.3","depth":1,"path":"usage/quickstart/UNINSTALL.md","ref":"usage/quickstart/UNINSTALL.md","articles":[]},"previous":{"title":"Dependency","level":"4.1","depth":1,"path":"usage/quickstart/DEPENDENCY.md","ref":"usage/quickstart/DEPENDENCY.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/quickstart/INSTALL.md","mtime":"2018-12-20T02:35:46.981Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-20T02:42:47.587Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
