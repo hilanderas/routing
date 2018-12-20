@@ -1,7 +1,7 @@
 # How to check state
 
 There are 4 states in system, check state by:
-```bash
+```
 make test_state
 ```
 ### INIT

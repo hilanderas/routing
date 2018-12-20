@@ -432,145 +432,128 @@
                                 
                                 <h1 id="production-mode">Production mode</h1>
 <h3 id="download-routing-testflow-packages">Download routing-testflow packages</h3>
-<pre><code class="lang-bash">wget https://github.com/hilanderas/routing/releases/download/0.0.22/routing-testflow-0.0.22.zip
+<pre><code>wget https://github.com/hilanderas/routing/releases/download/0.0.22/routing-testflow-0.0.22.zip
 unzip routing-testflow-0.0.22.zip
-</code></pre>
-<h3 id="check-integrity-of-routing-testflow-packages">Check integrity of routing-testflow packages</h3>
-<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> routing-testflow
-make <span class="hljs-_">-f</span> basic.mk <span class="hljs-built_in">test</span>_integrity
-</code></pre>
-<h3 id="download-routing-project-you-are-going-to-test-with">Download routing project you are going to test with</h3>
-<pre><code class="lang-bash">make <span class="hljs-_">-f</span> basic.mk download
-</code></pre>
-<h3 id="set-test-project">Set test project</h3>
-<pre><code class="lang-bash">make <span class="hljs-_">-f</span> basic.mk config TEST_PROJ=dev-16.04-dhcp-single
-</code></pre>
-<p>Or </p>
-<pre><code class="lang-bash">make <span class="hljs-_">-f</span> basic.mk config TEST_PROJ=dev-18.04-dhcp-single
-</code></pre>
-<p>Or </p>
-<pre><code class="lang-bash">make <span class="hljs-_">-f</span> basic.mk config TEST_PROJ=dev-16.04-pppoe-single
-</code></pre>
-<p>Or</p>
-<pre><code class="lang-bash">make <span class="hljs-_">-f</span> basic.mk config TEST_PROJ=dev-16.04-pppoe-dual
-</code></pre>
-<h3 id="run-test-flow">Run test flow</h3>
+</code></pre><h3 id="check-integrity-of-routing-testflow-packages">Check integrity of routing-testflow packages</h3>
+<pre><code>cd routing-testflow
+make -f basic.mk test_integrity
+</code></pre><h3 id="download-routing-project-you-are-going-to-test-with">Download routing project you are going to test with</h3>
+<pre><code>make -f basic.mk download
+</code></pre><h3 id="set-test-project">Set test project</h3>
+<pre><code>make -f basic.mk config TEST_PROJ=dev-16.04-dhcp-single
+</code></pre><p>Or </p>
+<pre><code>make -f basic.mk config TEST_PROJ=dev-18.04-dhcp-single
+</code></pre><p>Or </p>
+<pre><code>make -f basic.mk config TEST_PROJ=dev-16.04-pppoe-single
+</code></pre><p>Or</p>
+<pre><code>make -f basic.mk config TEST_PROJ=dev-16.04-pppoe-dual
+</code></pre><h3 id="run-test-flow">Run test flow</h3>
 <ul>
 <li><p>Install and uninstall test</p>
-<pre><code class="lang-bash">make <span class="hljs-built_in">test</span>_install
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-<span class="hljs-comment"># On pc connected to router, configure a static IP </span>
-<span class="hljs-comment"># And ping lan ip, wan ip of router and public IP</span>
-make <span class="hljs-built_in">test</span>_uninstall
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-</code></pre>
-</li>
+<pre><code>make test_install
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make test_uninstall
+make test_test_state
+</code></pre></li>
 <li><p>Install after uninstall</p>
-<pre><code class="lang-bash">make <span class="hljs-built_in">test</span>_install
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-make <span class="hljs-built_in">test</span>_uninstall
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-make <span class="hljs-built_in">test</span>_install
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-<span class="hljs-comment"># On pc connected to router, configure a static IP </span>
-<span class="hljs-comment"># And ping lan ip, wan ip of router and public IP</span>
-make <span class="hljs-built_in">test</span>_uninstall
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-</code></pre>
-</li>
+<pre><code>make test_install
+make test_test_state
+make test_uninstall
+make test_test_state
+make test_install
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make test_uninstall
+make test_test_state
+</code></pre></li>
 <li><p>Reinstall</p>
-<pre><code class="lang-bash">make <span class="hljs-built_in">test</span>_install
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-make <span class="hljs-built_in">test</span>_install
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-<span class="hljs-comment"># On pc connected to router, configure a static IP </span>
-<span class="hljs-comment"># And ping lan ip, wan ip of router and public IP</span>
-make <span class="hljs-built_in">test</span>_uninstall
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-</code></pre>
-</li>
+<pre><code>make test_install
+make test_test_state
+make test_install
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make test_uninstall
+make test_test_state
+</code></pre></li>
 <li><p>Reuninstall</p>
-<pre><code class="lang-bash">make <span class="hljs-built_in">test</span>_install
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-make <span class="hljs-built_in">test</span>_uninstall
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-make <span class="hljs-built_in">test</span>_uninstall
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-<span class="hljs-comment"># On pc connected to router, configure a static IP </span>
-<span class="hljs-comment"># And ping lan ip, wan ip of router and public IP</span>
-</code></pre>
-</li>
+<pre><code>make test_install
+make test_test_state
+make test_uninstall
+make test_test_state
+make test_uninstall
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+</code></pre></li>
 <li><p>Checkconf</p>
-<pre><code class="lang-bash">make <span class="hljs-built_in">test</span>_install
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-make <span class="hljs-built_in">test</span>_showconf
-make <span class="hljs-built_in">test</span>_uninstall
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-</code></pre>
-</li>
+<pre><code>make test_install
+make test_test_state
+make test_showconf
+make test_uninstall
+make test_test_state
+</code></pre></li>
 <li><p>Reboot</p>
-<pre><code class="lang-bash">make <span class="hljs-built_in">test</span>_install
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-<span class="hljs-comment"># On pc connected to router, configure a static IP </span>
-<span class="hljs-comment"># And ping lan ip, wan ip of router and public IP</span>
-make <span class="hljs-_">-f</span> basic.mk re_boot
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-<span class="hljs-comment"># On pc connected to router, configure a static IP </span>
-<span class="hljs-comment"># And ping lan ip, wan ip of router and public IP</span>
-make <span class="hljs-built_in">test</span>_uninstall
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-</code></pre>
-</li>
+<pre><code>make test_install
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make -f basic.mk re_boot
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make test_uninstall
+make test_test_state
+</code></pre></li>
 <li><p>Power off</p>
-<pre><code class="lang-bash">make <span class="hljs-built_in">test</span>_install
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-<span class="hljs-comment"># On pc connected to router, configure a static IP </span>
-<span class="hljs-comment"># And ping lan ip, wan ip of router and public IP</span>
-<span class="hljs-comment"># Please power off router</span>
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-<span class="hljs-comment"># On pc connected to router, configure a static IP </span>
-<span class="hljs-comment"># And ping lan ip, wan ip of router and public IP</span>
-make <span class="hljs-built_in">test</span>_uninstall
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-</code></pre>
-</li>
+<pre><code>make test_install
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+# Please power off router
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make test_uninstall
+make test_test_state
+</code></pre></li>
 <li><p>ISP restart</p>
-<pre><code class="lang-bash">make <span class="hljs-built_in">test</span>_install
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-<span class="hljs-comment"># On pc connected to router, configure a static IP </span>
-<span class="hljs-comment"># And ping lan ip, wan ip of router and public IP</span>
-<span class="hljs-comment"># Please restart isp</span>
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-<span class="hljs-comment"># On pc connected to router, configure a static IP </span>
-<span class="hljs-comment"># And ping lan ip, wan ip of router and public IP</span>
-make <span class="hljs-built_in">test</span>_uninstall
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-</code></pre>
-</li>
+<pre><code>make test_install
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+# Please restart isp
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make test_uninstall
+make test_test_state
+</code></pre></li>
 </ul>
 <ul>
-<li>Restart <pre><code class="lang-bash">make <span class="hljs-built_in">test</span>_install
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-make <span class="hljs-built_in">test</span>_restart
-<span class="hljs-comment"># On pc connected to router, configure a static IP </span>
-<span class="hljs-comment"># And ping lan ip, wan ip of router and public IP</span>
-make <span class="hljs-built_in">test</span>_uninstall
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-</code></pre>
-</li>
+<li>Restart <pre><code>make test_install
+make test_test_state
+make test_restart
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make test_uninstall
+make test_test_state
+</code></pre></li>
 </ul>
 <ul>
-<li>Run update test cases<pre><code class="lang-bash">make <span class="hljs-built_in">test</span>_install
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-make <span class="hljs-built_in">test</span>_update
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-<span class="hljs-comment"># On pc connected to router, configure a static IP </span>
-<span class="hljs-comment"># And ping lan ip, wan ip of router and public IP</span>
-make <span class="hljs-built_in">test</span>_showconf
-make <span class="hljs-built_in">test</span>_uninstall
-make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</span>_state
-</code></pre>
-</li>
+<li>Run update test cases<pre><code>make test_install
+make test_test_state
+make test_update
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make test_showconf
+make test_uninstall
+make test_test_state
+</code></pre></li>
 </ul>
 
                                 
@@ -615,7 +598,7 @@ make <span class="hljs-built_in">test</span>_<span class="hljs-built_in">test</s
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Production mode","level":"6.2","depth":1,"next":{"title":"Trouble shooting for dhcp","level":"7.1","depth":1,"path":"faq/TSDHCP.md","ref":"faq/TSDHCP.md","articles":[]},"previous":{"title":"Develop mode","level":"6.1","depth":1,"path":"usage/testflow/DEVELOPMODE.md","ref":"usage/testflow/DEVELOPMODE.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/testflow/PRODUCTIONMODE.md","mtime":"2018-12-20T02:44:38.693Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-20T03:03:59.929Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Production mode","level":"6.2","depth":1,"next":{"title":"Trouble shooting for dhcp","level":"7.1","depth":1,"path":"faq/TSDHCP.md","ref":"faq/TSDHCP.md","articles":[]},"previous":{"title":"Develop mode","level":"6.1","depth":1,"path":"usage/testflow/DEVELOPMODE.md","ref":"usage/testflow/DEVELOPMODE.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/testflow/PRODUCTIONMODE.md","mtime":"2018-12-20T03:43:49.147Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-20T03:46:08.854Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
