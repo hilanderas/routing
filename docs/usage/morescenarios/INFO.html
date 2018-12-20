@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Install · GitBook</title>
+        <title>How to check info · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="UNINSTALL.html" />
+    <link rel="next" href="CONFIG.html" />
     
     
-    <link rel="prev" href="DEPENDENCY.html" />
+    <link rel="prev" href="../quickstart/UPDATE.html" />
     
 
     </head>
@@ -188,9 +188,9 @@
         
         
     
-        <li class="chapter " data-level="4.1" data-path="DEPENDENCY.html">
+        <li class="chapter " data-level="4.1" data-path="../quickstart/DEPENDENCY.html">
             
-                <a href="DEPENDENCY.html">
+                <a href="../quickstart/DEPENDENCY.html">
             
                     
                     Dependency
@@ -201,9 +201,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="4.2" data-path="INSTALL.html">
+        <li class="chapter " data-level="4.2" data-path="../quickstart/INSTALL.html">
             
-                <a href="INSTALL.html">
+                <a href="../quickstart/INSTALL.html">
             
                     
                     Install
@@ -214,9 +214,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.3" data-path="UNINSTALL.html">
+        <li class="chapter " data-level="4.3" data-path="../quickstart/UNINSTALL.html">
             
-                <a href="UNINSTALL.html">
+                <a href="../quickstart/UNINSTALL.html">
             
                     
                     Uninstall
@@ -227,9 +227,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.4" data-path="UPDATE.html">
+        <li class="chapter " data-level="4.4" data-path="../quickstart/UPDATE.html">
             
-                <a href="UPDATE.html">
+                <a href="../quickstart/UPDATE.html">
             
                     
                     Update
@@ -247,9 +247,9 @@
         
         
     
-        <li class="chapter " data-level="5.1" data-path="../morescenarios/INFO.html">
+        <li class="chapter active" data-level="5.1" data-path="INFO.html">
             
-                <a href="../morescenarios/INFO.html">
+                <a href="INFO.html">
             
                     
                     How to check info
@@ -260,9 +260,9 @@
             
         </li>
     
-        <li class="chapter " data-level="5.2" data-path="../morescenarios/CONFIG.html">
+        <li class="chapter " data-level="5.2" data-path="CONFIG.html">
             
-                <a href="../morescenarios/CONFIG.html">
+                <a href="CONFIG.html">
             
                     
                     How to check conf
@@ -273,9 +273,9 @@
             
         </li>
     
-        <li class="chapter " data-level="5.3" data-path="../morescenarios/STATE.html">
+        <li class="chapter " data-level="5.3" data-path="STATE.html">
             
-                <a href="../morescenarios/STATE.html">
+                <a href="STATE.html">
             
                     
                     How to check state
@@ -286,9 +286,9 @@
             
         </li>
     
-        <li class="chapter " data-level="5.4" data-path="../morescenarios/SERVICE.html">
+        <li class="chapter " data-level="5.4" data-path="SERVICE.html">
             
-                <a href="../morescenarios/SERVICE.html">
+                <a href="SERVICE.html">
             
                     
                     How to manipulate the service
@@ -415,7 +415,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Install</a>
+        <a href="../.." >How to check info</a>
     </h1>
 </div>
 
@@ -430,28 +430,22 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="install">Install</h1>
-<p><div style="position: relative;padding-bottom: 56.25%;padding-top: 25px;height: 0;"><iframe style="border: none;position: absolute;top: 0;left: 0;width: 100%;height: 100%" src="https://player.vimeo.com/video/306730332" frameborder="0"></iframe></div></p>
-<h3 id="login-the-machine-you-want-to-configure-as-a-router">Login the machine you want to configure as a router</h3>
-<pre><code class="lang-bash">ssh [USER]@[IP/HOSTNAME]
+                                <h1 id="how-to-check-info">How to check info</h1>
+<p>Info is the configuration for user to manage, there are 2 kinds of info in system:</p>
+<ul>
+<li>info - For running services</li>
+<li>info_queued - For replacing info</li>
+</ul>
+<h3 id="check-info">Check info</h3>
+<p>Check info in RUNNING, CONFQUEUED state</p>
+<pre><code class="lang-make">make showinfo
 </code></pre>
-<h3 id="download-package-and-unzip">Download package and unzip</h3>
-<p>Choose one package to download according to your topology</p>
-<p>e.g, WAN is dhcp mode for ubuntu 16.04</p>
-<pre><code class="lang-bash">wget https://github.com/hilanderas/routing/releases/download/0.0.22/routing-16.04-dhcp-single-0.0.22.zip
-unzip routing-16.04-dhcp-single-0.0.22.zip
+<p><strong>Please note that you can&apos;t check info in INIT and CONFGENED state</strong></p>
+<h3 id="check-infoqueued">Check info_queued</h3>
+<p>Check info_queued in CONFGEND, RUNNING, CONFQUEUED state</p>
+<pre><code class="lang-make">make show_queued_info
 </code></pre>
-<blockquote>
-<p>Check all available packages in <a href="https://github.com/elespejo/routing/releases" target="_blank">release page</a>.</p>
-</blockquote>
-<h3 id="install-routing">Install routing</h3>
-<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> dev-16.04-dhcp-single
-make install
-</code></pre>
-<h3 id="check-states">Check states</h3>
-<pre><code class="lang-bash">make <span class="hljs-built_in">test</span>_state
-</code></pre>
-<p>The state should be in running after installation.</p>
+<p><strong>Please note that you can&apos;t check info_queued in INIT state</strong></p>
 
                                 
                                 </section>
@@ -479,12 +473,12 @@ make install
 
             
                 
-                <a href="DEPENDENCY.html" class="navigation navigation-prev " aria-label="Previous page: Dependency">
+                <a href="../quickstart/UPDATE.html" class="navigation navigation-prev " aria-label="Previous page: Update">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="UNINSTALL.html" class="navigation navigation-next " aria-label="Next page: Uninstall">
+                <a href="CONFIG.html" class="navigation navigation-next " aria-label="Next page: How to check conf">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -495,7 +489,7 @@ make install
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Install","level":"4.2","depth":1,"next":{"title":"Uninstall","level":"4.3","depth":1,"path":"usage/quickstart/UNINSTALL.md","ref":"usage/quickstart/UNINSTALL.md","articles":[]},"previous":{"title":"Dependency","level":"4.1","depth":1,"path":"usage/quickstart/DEPENDENCY.md","ref":"usage/quickstart/DEPENDENCY.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/quickstart/INSTALL.md","mtime":"2018-12-20T02:44:38.693Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-20T03:03:59.929Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"How to check info","level":"5.1","depth":1,"next":{"title":"How to check conf","level":"5.2","depth":1,"path":"usage/morescenarios/CONFIG.md","ref":"usage/morescenarios/CONFIG.md","articles":[]},"previous":{"title":"Update","level":"4.4","depth":1,"path":"usage/quickstart/UPDATE.md","ref":"usage/quickstart/UPDATE.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/morescenarios/INFO.md","mtime":"2018-12-20T03:03:00.898Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-20T03:03:59.929Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
