@@ -94,7 +94,7 @@
                 <a href="../../">
             
                     
-                    Introduction
+                    Introduction routing-0.0.22
             
                 </a>
             
@@ -114,7 +114,7 @@
                 <a href="../../overview/USER.html">
             
                     
-                    (todo)Who are the user ?
+                    Who are the users ?
             
                 </a>
             
@@ -127,7 +127,7 @@
                 <a href="../../overview/PROJECT.html">
             
                     
-                    (todo)About project
+                    About project
             
                 </a>
             
@@ -155,25 +155,12 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" data-path="../../topology/dhcp_balance.html">
-            
-                <a href="../../topology/dhcp_balance.html">
-            
-                    
-                    dhcp with balance
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="3.3" data-path="../../topology/pppoe.html">
+        <li class="chapter " data-level="3.2" data-path="../../topology/pppoe.html">
             
                 <a href="../../topology/pppoe.html">
             
                     
-                    pppoe
+                    PPPoE
             
                 </a>
             
@@ -181,12 +168,12 @@
             
         </li>
     
-        <li class="chapter " data-level="3.4" data-path="../../topology/pppoe_balance.html">
+        <li class="chapter " data-level="3.3" data-path="../../topology/pppoe_balance.html">
             
                 <a href="../../topology/pppoe_balance.html">
             
                     
-                    pppoe with balance
+                    PPPoE with load balance
             
                 </a>
             
@@ -260,7 +247,20 @@
         
         
     
-        <li class="chapter " data-level="5.1" data-path="CONFIG.html">
+        <li class="chapter " data-level="5.1" data-path="INFO.html">
+            
+                <a href="INFO.html">
+            
+                    
+                    How to check info
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="CONFIG.html">
             
                 <a href="CONFIG.html">
             
@@ -273,7 +273,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="5.2" data-path="STATE.html">
+        <li class="chapter active" data-level="5.3" data-path="STATE.html">
             
                 <a href="STATE.html">
             
@@ -286,7 +286,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.3" data-path="SERVICE.html">
+        <li class="chapter " data-level="5.4" data-path="SERVICE.html">
             
                 <a href="SERVICE.html">
             
@@ -339,12 +339,25 @@
         
         
     
-        <li class="chapter " data-level="7.1" data-path="../../faq/TROUBLESHOOTING.html">
+        <li class="chapter " data-level="7.1" data-path="../../faq/TSDHCP.html">
             
-                <a href="../../faq/TROUBLESHOOTING.html">
+                <a href="../../faq/TSDHCP.html">
             
                     
-                    Trouble shooting
+                    Trouble shooting for dhcp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../faq/TSPPPOE.html">
+            
+                <a href="../../faq/TSPPPOE.html">
+            
+                    
+                    Trouble shooting for PPPoE
             
                 </a>
             
@@ -365,26 +378,6 @@
             
                     
                     How to participate
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-    
-        
-        <li class="header">Other</li>
-        
-        
-    
-        <li class="chapter " data-level="9.1" data-path="../../changelog.html">
-            
-                <a href="../../changelog.html">
-            
-                    
-                    change log
             
                 </a>
             
@@ -438,36 +431,62 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="how-to-check-state">How to check state</h1>
-<p>There are 4 states in system, check states by:</p>
-<pre><code class="lang-bash">make <span class="hljs-built_in">test</span>_state
-</code></pre>
-<h3 id="init">INIT</h3>
+<p>There are 4 states in system, check state by:</p>
+<pre><code>make test_state
+</code></pre><h3 id="init">INIT</h3>
 <ul>
-<li>Config exists- False</li>
-<li>Config_queue exists - False</li>
-<li>Config put in right place - False</li>
+<li>Config exists - False</li>
+<li>Config_queued exists - False</li>
+<li>System config exists - False</li>
 <li>Service running - False</li>
 </ul>
 <h3 id="confgened">CONFGENED</h3>
 <ul>
-<li>Config exists- False</li>
-<li>Config_queue exists - True</li>
-<li>Config put in right place - False</li>
+<li>Config exists - False</li>
+<li>Config_queued exists - True</li>
+<li>System config exists - False</li>
 <li>Service running - False</li>
 </ul>
 <h3 id="running">RUNNING</h3>
+<p>In this state, config and config_queued are exactly the same </p>
 <ul>
-<li>Config exists- True</li>
-<li>Config_queue exists - False</li>
-<li>Config put in right place - True</li>
+<li>Config exists - True</li>
+<li>Config_queued exists - True</li>
+<li>System config exists - True</li>
 <li>Service running - True</li>
 </ul>
 <h3 id="confqueued">CONFQUEUED</h3>
+<p>In this state, config and config_queued are probably <strong>NOT</strong> the same</p>
 <ul>
-<li>Config exists- True</li>
-<li>Config_queue exists - True</li>
-<li>Config put in right place - True</li>
+<li>Config exists - True</li>
+<li>Config_queued exists - True</li>
+<li>System config exists - True</li>
 <li>Service running - True</li>
+</ul>
+<h3 id="further-explanation-of-the-attributes">Further explanation of the attributes</h3>
+<ul>
+<li><a href="CONFIG.html">Config</a></li>
+<li><a href="CONFIG.html">Config_queued</a></li>
+<li>System config exists - When it is true, systems files were replaced by configurations that are generated by routing project</li>
+<li><p>Service running - When it is true, service status is active and iptables rules exist, e.g, in dhcp ubuntu 16.04 mode, service status and iptables rules shown as below:</p>
+<p>  <strong>Service status</strong></p>
+<pre><code>&#x25CF; routing.service - Routing
+ Loaded: loaded (/etc/systemd/system/routing.service; enabled; vendor preset: enabled)
+ Active: active (exited) since Mon 2018-12-17 15:35:45 CST; 52min ago
+Process: 1839 ExecStart=/usr/bin/make -f /etc/routing/Makefile start (code=exited, status=0/SUCCESS)
+Main PID: 1839 (code=exited, status=0/SUCCESS)
+  Tasks: 0
+ Memory: 0B
+    CPU: 0
+ CGroup: /system.slice/routing.service
+</code></pre><p>  <strong>iptables rules</strong></p>
+<pre><code>-P POSTROUTING ACCEPT
+-A POSTROUTING -o enp2s0 -j MASQUERADE
+-P FORWARD ACCEPT
+-A FORWARD -i enp2s0 -o br0 -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -m conntrack --ctstate NEW -j ACCEPT
+-A FORWARD -i enp2s0 -o br0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+-A FORWARD -i br0 -o enp2s0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+</code></pre></li>
 </ul>
 
                                 
@@ -512,7 +531,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"How to check state","level":"5.2","depth":1,"next":{"title":"How to manipulate the service","level":"5.3","depth":1,"path":"usage/morescenarios/SERVICE.md","ref":"usage/morescenarios/SERVICE.md","articles":[]},"previous":{"title":"How to check conf","level":"5.1","depth":1,"path":"usage/morescenarios/CONFIG.md","ref":"usage/morescenarios/CONFIG.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/morescenarios/STATE.md","mtime":"2018-12-09T05:04:42.618Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-09T08:27:28.765Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"How to check state","level":"5.3","depth":1,"next":{"title":"How to manipulate the service","level":"5.4","depth":1,"path":"usage/morescenarios/SERVICE.md","ref":"usage/morescenarios/SERVICE.md","articles":[]},"previous":{"title":"How to check conf","level":"5.2","depth":1,"path":"usage/morescenarios/CONFIG.md","ref":"usage/morescenarios/CONFIG.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/morescenarios/STATE.md","mtime":"2018-12-28T10:10:45.321Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-28T10:21:14.311Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

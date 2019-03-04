@@ -11,15 +11,22 @@ start:
 stop:
 	make -C $(API) uninstall
 restore:
-	echo "remove configuration"	
-	rm -rf $(CONFIG)
+	make -C $(CONFGEN) restore CONFIG=$(CONFIG)
 
-.PHONY: status
-status:
-	make -C $(API) status
+.PHONY: test_config test_start test_stop test_restore
+test_config:
+	make -C $(CONFGEN) test_config CONFIG=$(CONFIG)
+test_start:
+	make -C $(API) test_install
+test_stop:
+	make -C $(API) test_uninstall
+test_restore:
+	make -C $(CONFGEN) test_restore CONFIG=$(CONFIG)
 
-.PHONY: show_running_conf show_conf
+.PHONY: show_running_conf show_conf showinfo
 show_running_conf:
 	make -C $(API) showconf
 show_conf:
 	make -C $(CONFGEN) showconf
+showinfo:
+	make -C $(CONFGEN) showinfo config=$(CONFIG)

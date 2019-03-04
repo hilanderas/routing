@@ -94,7 +94,7 @@
                 <a href="../../">
             
                     
-                    Introduction
+                    Introduction routing-0.0.22
             
                 </a>
             
@@ -114,7 +114,7 @@
                 <a href="../../overview/USER.html">
             
                     
-                    (todo)Who are the user ?
+                    Who are the users ?
             
                 </a>
             
@@ -127,7 +127,7 @@
                 <a href="../../overview/PROJECT.html">
             
                     
-                    (todo)About project
+                    About project
             
                 </a>
             
@@ -155,25 +155,12 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" data-path="../../topology/dhcp_balance.html">
-            
-                <a href="../../topology/dhcp_balance.html">
-            
-                    
-                    dhcp with balance
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="3.3" data-path="../../topology/pppoe.html">
+        <li class="chapter " data-level="3.2" data-path="../../topology/pppoe.html">
             
                 <a href="../../topology/pppoe.html">
             
                     
-                    pppoe
+                    PPPoE
             
                 </a>
             
@@ -181,12 +168,12 @@
             
         </li>
     
-        <li class="chapter " data-level="3.4" data-path="../../topology/pppoe_balance.html">
+        <li class="chapter " data-level="3.3" data-path="../../topology/pppoe_balance.html">
             
                 <a href="../../topology/pppoe_balance.html">
             
                     
-                    pppoe with balance
+                    PPPoE with load balance
             
                 </a>
             
@@ -260,7 +247,20 @@
         
         
     
-        <li class="chapter " data-level="5.1" data-path="../morescenarios/CONFIG.html">
+        <li class="chapter " data-level="5.1" data-path="../morescenarios/INFO.html">
+            
+                <a href="../morescenarios/INFO.html">
+            
+                    
+                    How to check info
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../morescenarios/CONFIG.html">
             
                 <a href="../morescenarios/CONFIG.html">
             
@@ -273,7 +273,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.2" data-path="../morescenarios/STATE.html">
+        <li class="chapter " data-level="5.3" data-path="../morescenarios/STATE.html">
             
                 <a href="../morescenarios/STATE.html">
             
@@ -286,7 +286,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.3" data-path="../morescenarios/SERVICE.html">
+        <li class="chapter " data-level="5.4" data-path="../morescenarios/SERVICE.html">
             
                 <a href="../morescenarios/SERVICE.html">
             
@@ -339,12 +339,25 @@
         
         
     
-        <li class="chapter " data-level="7.1" data-path="../../faq/TROUBLESHOOTING.html">
+        <li class="chapter " data-level="7.1" data-path="../../faq/TSDHCP.html">
             
-                <a href="../../faq/TROUBLESHOOTING.html">
+                <a href="../../faq/TSDHCP.html">
             
                     
-                    Trouble shooting
+                    Trouble shooting for dhcp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../faq/TSPPPOE.html">
+            
+                <a href="../../faq/TSPPPOE.html">
+            
+                    
+                    Trouble shooting for PPPoE
             
                 </a>
             
@@ -365,26 +378,6 @@
             
                     
                     How to participate
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-    
-        
-        <li class="header">Other</li>
-        
-        
-    
-        <li class="chapter " data-level="9.1" data-path="../../changelog.html">
-            
-                <a href="../../changelog.html">
-            
-                    
-                    change log
             
                 </a>
             
@@ -439,48 +432,42 @@
                                 
                                 <h1 id="develop-mod">Develop mod</h1>
 <h3 id="generate-a-project">Generate a project</h3>
-<pre><code class="lang-bash">make <span class="hljs-_">-f</span> routing.mk create-proj-18<span class="hljs-_">-s</span>-dhcp
-make <span class="hljs-_">-f</span> routing.mk create-proj-16<span class="hljs-_">-s</span>-dhcp
-</code></pre>
+<ul>
+<li><p>Generate packages for ubuntu 18.04, no load balance, dhcp for WAN</p>
+<pre><code>cd routing/testflow/script
+make -f routing.mk create-proj-18-s-dhcp
+</code></pre></li>
+<li><p>Generate packages for ubuntu 16.04, no load balance, dhcp for WAN</p>
+<pre><code>make -f routing.mk create-proj-16-s-dhcp
+</code></pre></li>
+<li><p>Generate packages for ubuntu 16.04, no load balance, PPPoE for WAN</p>
+<pre><code>make -f routing.mk create-proj-16-s-pppoe
+</code></pre></li>
+<li><p>Generate packages for ubuntu 16.04, with load balance, PPPoE for WAN</p>
+<pre><code>make -f routing.mk create-proj-16-d-pppoe
+</code></pre></li>
+</ul>
 <h3 id="run-test-flow">Run test flow</h3>
 <ul>
 <li><p>Abnormal state test</p>
-<pre><code class="lang-bash">make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_init
-make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_confgened
-make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_running
-make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_confqueued
-</code></pre>
-</li>
+<pre><code>make -s -f state.mk test_init
+make -s -f state.mk test_confgened
+make -s -f state.mk test_running
+make -s -f state.mk test_confqueued
+</code></pre></li>
 <li><p>Normal state test</p>
-<pre><code class="lang-bash">make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_init_norm
-make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_confgened_norm
-make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_running_norm
-make <span class="hljs-_">-f</span> state.mk <span class="hljs-built_in">test</span>_confqueued_norm
-</code></pre>
-</li>
-<li><p>Functionality test</p>
-<pre><code class="lang-bash">make <span class="hljs-_">-f</span> function.mk <span class="hljs-built_in">test</span>_install
-make <span class="hljs-_">-f</span> function.mk <span class="hljs-built_in">test</span>_uninstall
-make <span class="hljs-_">-f</span> function.mk <span class="hljs-built_in">test</span>_installafteruninstall
-make <span class="hljs-_">-f</span> function.mk <span class="hljs-built_in">test</span>_reinstall
-make <span class="hljs-_">-f</span> function.mk <span class="hljs-built_in">test</span>_reuninstall
-make <span class="hljs-_">-f</span> function.mk <span class="hljs-built_in">test</span>_checkconf
-</code></pre>
-</li>
-<li><p>Run restart test case</p>
-<pre><code class="lang-bash">make <span class="hljs-_">-f</span> restart.mk <span class="hljs-built_in">test</span>_reboot_p1
-make <span class="hljs-_">-f</span> restart.mk <span class="hljs-built_in">test</span>_reboot_p2
-make <span class="hljs-_">-f</span> restart.mk <span class="hljs-built_in">test</span>_poweroff_p1
-make <span class="hljs-_">-f</span> restart.mk <span class="hljs-built_in">test</span>_poweroff_p2
-make <span class="hljs-_">-f</span> restart.mk <span class="hljs-built_in">test</span>_isprestart
-make <span class="hljs-_">-f</span> restart.mk <span class="hljs-built_in">test</span>_restartall
-</code></pre>
-</li>
-<li>Run update test cases<pre><code class="lang-bash">make <span class="hljs-_">-f</span> update.mk
-</code></pre>
-</li>
+<pre><code>make -s -f state.mk test_init_norm
+make -s -f state.mk test_confgened_norm
+make -s -f state.mk test_running_norm
+make -s -f state.mk test_confqueued_norm
+</code></pre></li>
 </ul>
-
+<h3 id="clean-up">Clean up</h3>
+<pre><code>make -s -f routing.mk del-proj-16-s-dhcp
+make -s -f routing.mk del-proj-16-s-pppoe
+make -s -f routing.mk del-proj-16-d-pppoe
+make -s -f routing.mk del-proj-18-s-dhcp
+</code></pre>
                                 
                                 </section>
                             
@@ -523,7 +510,7 @@ make <span class="hljs-_">-f</span> restart.mk <span class="hljs-built_in">test<
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Develop mode","level":"6.1","depth":1,"next":{"title":"Production mode","level":"6.2","depth":1,"path":"usage/testflow/PRODUCTIONMODE.md","ref":"usage/testflow/PRODUCTIONMODE.md","articles":[]},"previous":{"title":"How to manipulate the service","level":"5.3","depth":1,"path":"usage/morescenarios/SERVICE.md","ref":"usage/morescenarios/SERVICE.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/testflow/DEVELOPMODE.md","mtime":"2018-12-09T05:55:15.643Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-09T08:27:28.765Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Develop mode","level":"6.1","depth":1,"next":{"title":"Production mode","level":"6.2","depth":1,"path":"usage/testflow/PRODUCTIONMODE.md","ref":"usage/testflow/PRODUCTIONMODE.md","articles":[]},"previous":{"title":"How to manipulate the service","level":"5.4","depth":1,"path":"usage/morescenarios/SERVICE.md","ref":"usage/morescenarios/SERVICE.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/testflow/DEVELOPMODE.md","mtime":"2018-12-28T10:10:45.321Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-28T10:21:14.311Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

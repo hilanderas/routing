@@ -1,9 +1,12 @@
-version=0.1.0
+version=0.0.13
 project=routing
 GITBOOK=$(CURDIR)/gitbook
 DOCS=$(CURDIR)/docs
 DEV=$(CURDIR)/dev
 TESTFLOW=$(project)-testflow
+OS_VERSION=16.04
+WAN_MODE=dhcp
+ROUTE_NUM=single
 
 .PHONY: create-dev clean-dev
 create-dev:
@@ -19,6 +22,8 @@ clean-dev:
 .PHONY: build-book
 build-book: $(GITBOOK)
 	gitbook build $(GITBOOK) $(DOCS)
+	sed -i 's/http:\/\/player.vimeo.com/https:\/\/player.vimeo.com/g' docs/usage/quickstart/INSTALL.html 
+	grep vimeo docs/usage/quickstart/INSTALL.html
 
 .PHONY: build
 build: create-dev
@@ -32,18 +37,18 @@ clean:
 .PHONY: build-testflow
 build-testflow:
 	cp -r testflow/script $(TESTFLOW)
+	cd $(TESTFLOW) && make -f basic.mk set_mod TESTMODE=prod
+	sed -i '/PROJ_VERSION/c\export PROJ_VERSION=${version}' $(TESTFLOW)/.env
 	cd $(TESTFLOW)/; find . -type f -exec md5sum {} \; > $(CURDIR)/$(TESTFLOW)-$(version).md5; cd -
 	mv $(TESTFLOW)-$(version).md5 $(TESTFLOW)
-	cd $(TESTFLOW) && make -f basic.mk set_mod TESTMODE=prod
-	sed -i '/PROJ_VERSION/c\export PROJ_VERSION=${version}' $(TESTFLOW)/.env 
 	zip -r $(TESTFLOW)-$(version).zip $(TESTFLOW)
 	rm -rf $(TESTFLOW)
 
 .PHONY: update-gitbook
 update-gitbook: $(GITBOOK)
-	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(CUR)/g $(CURDIR)/gitbook/usage/testflow/PRODUCTIONMODE.md
-	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(CUR)/g $(CURDIR)/gitbook/SUMMARY.md
-	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(CUR)/g $(CURDIR)/gitbook/usage/quickstart/INSTALL.md
-
+	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(version)/g $(CURDIR)/gitbook/usage/testflow/PRODUCTIONMODE.md
+	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(version)/g $(CURDIR)/gitbook/SUMMARY.md
+	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(version)/g $(CURDIR)/gitbook/usage/quickstart/INSTALL.md
+	grep -R --color=always $(version) $(CURDIR)/gitbook
 
 

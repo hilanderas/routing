@@ -1,16 +1,15 @@
 # SUMMARY
 
-* [Introduction](README.md)
+* [Introduction routing-0.0.22](README.md)
 
 ### Overview 
-* [(todo)Who are the user ?](overview/USER.md)
-* [(todo)About project](overview/PROJECT.md)
+* [Who are the users ?](overview/USER.md)
+* [About project](overview/PROJECT.md)
 
 ### Topology
 * [dhcp](topology/dhcp.md)
-* [dhcp with balance](topology/dhcp_balance.md)
-* [pppoe](topology/pppoe.md)
-* [pppoe with balance](topology/pppoe_balance.md)
+* [PPPoE](topology/pppoe.md)
+* [PPPoE with load balance](topology/pppoe_balance.md)
 
 ### Quick start
 * [Dependency](quickstart/DEPENDENCY.md)
@@ -19,6 +18,7 @@
 * [Update](quickstart/UPDATE.md)
 
 ### More scenarios
+* [How to check info](morescenarios/INFO.md)
 * [How to check conf](morescenarios/CONFIG.md)
 * [How to check state](morescenarios/STATE.md)
 * [How to manipulate the service](morescenarios/SERVICE.md)
@@ -33,7 +33,8 @@
 * [Production mode](qa/PRODUCTIONMODE.md)
 
 ### FAQ
-* [Trouble shooting](faq/TROUBLESHOOTING.md)
+* [Trouble shooting for dhcp](faq/TSDHCP.md)
+* [Trouble shooting for PPPoE](faq/TSPPPOE.md)
 
 ### Contribution
 * [How to participate](contribution/CONTRIBUTE.md)

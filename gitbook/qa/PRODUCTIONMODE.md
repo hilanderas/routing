@@ -1,48 +1,161 @@
 # Production mode
 
 ### Download routing-testflow packages
-```bash
-wget https://github.com/hilanderas/routing/releases/download/0.0.11/routing-testflow-0.0.11.zip
-unzip routing-testflow-0.0.11.zip
+```  
+wget https://github.com/hilanderas/routing/releases/download/0.0.22/routing-testflow-0.0.22.zip
+unzip routing-testflow-0.0.22.zip
 ```
-### Download routing project you are going to test with
-```bash
+### Check integrity of routing-testflow packages
+```  
 cd routing-testflow
+make -f basic.mk test_integrity
+```
+
+### Download routing project you are going to test with
+```  
 make -f basic.mk download
 ```
 
 ### Set test project
-```bash
+```  
 make -f basic.mk config TEST_PROJ=dev-16.04-dhcp-single 
 ```
 Or 
-```bash
+```  
 make -f basic.mk config TEST_PROJ=dev-18.04-dhcp-single
+```
+Or 
+```  
+make -f basic.mk config TEST_PROJ=dev-16.04-pppoe-single
+```
+Or
+```  
+make -f basic.mk config TEST_PROJ=dev-16.04-pppoe-dual
 ```
 
 ### Run test flow
-* Functionality test
-```bash
-make -s -f function.mk install
-make -s -f function.mk uninstall
-make -s -f function.mk installafteruninstall
-make -s -f function.mk reinstall
-make -s -f function.mk reuninstall
-make -s -f function.mk checkconf
+* Install and uninstall test
+```  
+make test_install
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make test_uninstall
+make test_test_state
 ```
 
-* Run restart test case
-```bash
-make -s -f function.mk reboot_p1
-make -s -f function.mk reboot_p2
-make -s -f function.mk poweroff_p1
-make -s -f function.mk poweroff_p2
-make -s -f function.mk isprestart
-make -s -f function.mk restartall
+* Install after uninstall
+```  
+make test_install
+make test_test_state
+make test_uninstall
+make test_test_state
+make test_install
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make test_uninstall
+make test_test_state
 ```
+
+* Reinstall
+```  
+make test_install
+make test_test_state
+make test_install
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make test_uninstall
+make test_test_state
+```
+
+* Reuninstall
+```  
+make test_install
+make test_test_state
+make test_uninstall
+make test_test_state
+make test_uninstall
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+```
+
+* Checkconf
+```  
+make test_install
+make test_test_state
+make test_showconf
+make test_uninstall
+make test_test_state
+```
+
+* Reboot
+```  
+make test_install
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make -f basic.mk re_boot
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make test_uninstall
+make test_test_state
+```
+* Power off
+```  
+make test_install
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+# Please power off router
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make test_uninstall
+make test_test_state
+```
+
+* ISP restart
+```  
+make test_install
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+# Please restart isp
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make test_uninstall
+make test_test_state
+```
+
+
+* Restart 
+```  
+make test_install
+make test_test_state
+make test_restart
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make test_uninstall
+make test_test_state
+```
+
+
 * Run update test cases
-```bash
-make -s -f function.mk updateconf
+```  
+make test_install
+make test_test_state
+make test_update
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make test_showconf
+make test_uninstall
+make test_test_state
 ```
 
 

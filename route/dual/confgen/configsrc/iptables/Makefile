@@ -18,7 +18,7 @@ start:
 	done
 
 stop:
-	for w in $(WAN) $(WAN2); do \
+	for w in $(WAN1) $(WAN2); do \
 		echo "Restore iptables rules between $(LAN) and $$w:"; \
 		iptables -D POSTROUTING -t nat -o $$w -j MASQUERADE; \
 		iptables -D FORWARD -i $$w -o $(LAN) -p tcp --syn -m conntrack --ctstate NEW -j ACCEPT; \

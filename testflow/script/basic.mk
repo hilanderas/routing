@@ -1,7 +1,7 @@
 #!make 
 include .env
 LIB=".env"
-PAK_SEQ=routing-16.04-dhcp-single-${PROJ_VERSION} routing-18.04-dhcp-single-${PROJ_VERSION} 
+PAK_SEQ=routing-16.04-dhcp-single-${PROJ_VERSION} routing-18.04-dhcp-single-${PROJ_VERSION} routing-16.04-pppoe-single-${PROJ_VERSION} routing-16.04-pppoe-dual-${PROJ_VERSION}
 
 .PHONY: download rm_download
 download: $(addprefix download-, $(PAK_SEQ))
@@ -12,6 +12,10 @@ download-%:
 rm_download:
 	rm -rf ${PROJECT}*
 
+
+.PHONY: test_integrity
+test_integrity:
+	md5sum -c routing-testflow-${PROJ_VERSION}.md5
 
 .PHONY: config read_config  
 config: 
@@ -46,6 +50,8 @@ confirm:
 		@( read -p "Are you sure?!? [y/N]: " sure && case "$$sure" in [yY]) true;; *) false;; esac )
 
 re_boot:
+		make -s -f basic.mk hint CONTENT="You are going to reboot"
+		make -f basic.mk confirm
 		sudo reboot
 
 

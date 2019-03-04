@@ -1,21 +1,24 @@
 # Update
 
+### When to update
 * Update WAN or LAN
 * Update static ip of LAN
 
 ### Update configuration
-During update, three [configuration](../morescenarios/CONFIG.md) files will pop up be for you to modify, enter `:wq` after modification
-```bash
+During update, three [configuration](../morescenarios/CONFIG.md) files will be popped up for editing, enter `:wq` after modification
+``` 
 make update
 ```
 
 ### Check whether configuration updated and working
 * Check configuration
-```bash
-make showconf
+``` 
+make showinfo
 ```
 
-* Check status
-```bash
+* Check state
+
+	State should be in running
+``` 
 make test_state
 ```

@@ -60,7 +60,7 @@
     <link rel="next" href="STATE.html" />
     
     
-    <link rel="prev" href="../quickstart/UPDATE.html" />
+    <link rel="prev" href="INFO.html" />
     
 
     </head>
@@ -94,7 +94,7 @@
                 <a href="../../">
             
                     
-                    Introduction
+                    Introduction routing-0.0.22
             
                 </a>
             
@@ -114,7 +114,7 @@
                 <a href="../../overview/USER.html">
             
                     
-                    (todo)Who are the user ?
+                    Who are the users ?
             
                 </a>
             
@@ -127,7 +127,7 @@
                 <a href="../../overview/PROJECT.html">
             
                     
-                    (todo)About project
+                    About project
             
                 </a>
             
@@ -155,25 +155,12 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" data-path="../../topology/dhcp_balance.html">
-            
-                <a href="../../topology/dhcp_balance.html">
-            
-                    
-                    dhcp with balance
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="3.3" data-path="../../topology/pppoe.html">
+        <li class="chapter " data-level="3.2" data-path="../../topology/pppoe.html">
             
                 <a href="../../topology/pppoe.html">
             
                     
-                    pppoe
+                    PPPoE
             
                 </a>
             
@@ -181,12 +168,12 @@
             
         </li>
     
-        <li class="chapter " data-level="3.4" data-path="../../topology/pppoe_balance.html">
+        <li class="chapter " data-level="3.3" data-path="../../topology/pppoe_balance.html">
             
                 <a href="../../topology/pppoe_balance.html">
             
                     
-                    pppoe with balance
+                    PPPoE with load balance
             
                 </a>
             
@@ -260,7 +247,20 @@
         
         
     
-        <li class="chapter active" data-level="5.1" data-path="CONFIG.html">
+        <li class="chapter " data-level="5.1" data-path="INFO.html">
+            
+                <a href="INFO.html">
+            
+                    
+                    How to check info
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="5.2" data-path="CONFIG.html">
             
                 <a href="CONFIG.html">
             
@@ -273,7 +273,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.2" data-path="STATE.html">
+        <li class="chapter " data-level="5.3" data-path="STATE.html">
             
                 <a href="STATE.html">
             
@@ -286,7 +286,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.3" data-path="SERVICE.html">
+        <li class="chapter " data-level="5.4" data-path="SERVICE.html">
             
                 <a href="SERVICE.html">
             
@@ -339,12 +339,25 @@
         
         
     
-        <li class="chapter " data-level="7.1" data-path="../../faq/TROUBLESHOOTING.html">
+        <li class="chapter " data-level="7.1" data-path="../../faq/TSDHCP.html">
             
-                <a href="../../faq/TROUBLESHOOTING.html">
+                <a href="../../faq/TSDHCP.html">
             
                     
-                    Trouble shooting
+                    Trouble shooting for dhcp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../faq/TSPPPOE.html">
+            
+                <a href="../../faq/TSPPPOE.html">
+            
+                    
+                    Trouble shooting for PPPoE
             
                 </a>
             
@@ -365,26 +378,6 @@
             
                     
                     How to participate
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-    
-        
-        <li class="header">Other</li>
-        
-        
-    
-        <li class="chapter " data-level="9.1" data-path="../../changelog.html">
-            
-                <a href="../../changelog.html">
-            
-                    
-                    change log
             
                 </a>
             
@@ -441,22 +434,20 @@
 <p>There are 2 kinds of config in system:</p>
 <ul>
 <li>config - For the running service</li>
-<li>config_queque - For generating config</li>
+<li>config_queued - For generating config</li>
 </ul>
 <h3 id="show-running-config">Show running config</h3>
-<pre><code class="lang-bash">make showconf
-</code></pre>
-<h3 id="show-queued-config">Show queued config</h3>
-<pre><code class="lang-bash">make show_queued_conf
-</code></pre>
-<h3 id="delete-config">Delete config</h3>
-<p>When you in CONFGENED state, you can discard config_queue by:</p>
-<pre><code class="lang-bash">make restore
-</code></pre>
+<pre><code>make showconfig
+</code></pre><h3 id="show-queued-config">Show queued config</h3>
+<pre><code>make show_queued_config
+</code></pre><h3 id="delete-config">Delete config</h3>
+<p>When you are in CONFGENED state, you can discard config_queued by:</p>
+<pre><code>make restore
+</code></pre><p>After the action, you will be in init state</p>
 <h3 id="revert-config">Revert config</h3>
-<p>When you in CONFQUEUED state, you can discard config_queue by:</p>
-<pre><code class="lang-bash">make revert_config
-</code></pre>
+<p>When you in CONFQUEUED state, you can discard config_queued by:</p>
+<pre><code>make revert_config
+</code></pre><p>After the action, you will be in running state</p>
 
                                 
                                 </section>
@@ -484,7 +475,7 @@
 
             
                 
-                <a href="../quickstart/UPDATE.html" class="navigation navigation-prev " aria-label="Previous page: Update">
+                <a href="INFO.html" class="navigation navigation-prev " aria-label="Previous page: How to check info">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -500,7 +491,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"How to check conf","level":"5.1","depth":1,"next":{"title":"How to check state","level":"5.2","depth":1,"path":"usage/morescenarios/STATE.md","ref":"usage/morescenarios/STATE.md","articles":[]},"previous":{"title":"Update","level":"4.4","depth":1,"path":"usage/quickstart/UPDATE.md","ref":"usage/quickstart/UPDATE.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/morescenarios/CONFIG.md","mtime":"2018-12-09T04:55:47.517Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-09T08:27:28.765Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"How to check conf","level":"5.2","depth":1,"next":{"title":"How to check state","level":"5.3","depth":1,"path":"usage/morescenarios/STATE.md","ref":"usage/morescenarios/STATE.md","articles":[]},"previous":{"title":"How to check info","level":"5.1","depth":1,"path":"usage/morescenarios/INFO.md","ref":"usage/morescenarios/INFO.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/morescenarios/CONFIG.md","mtime":"2018-12-28T10:10:45.321Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-28T10:21:14.311Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

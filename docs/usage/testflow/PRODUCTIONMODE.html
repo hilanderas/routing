@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../../faq/TROUBLESHOOTING.html" />
+    <link rel="next" href="../../faq/TSDHCP.html" />
     
     
     <link rel="prev" href="DEVELOPMODE.html" />
@@ -94,7 +94,7 @@
                 <a href="../../">
             
                     
-                    Introduction
+                    Introduction routing-0.0.22
             
                 </a>
             
@@ -114,7 +114,7 @@
                 <a href="../../overview/USER.html">
             
                     
-                    (todo)Who are the user ?
+                    Who are the users ?
             
                 </a>
             
@@ -127,7 +127,7 @@
                 <a href="../../overview/PROJECT.html">
             
                     
-                    (todo)About project
+                    About project
             
                 </a>
             
@@ -155,25 +155,12 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" data-path="../../topology/dhcp_balance.html">
-            
-                <a href="../../topology/dhcp_balance.html">
-            
-                    
-                    dhcp with balance
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="3.3" data-path="../../topology/pppoe.html">
+        <li class="chapter " data-level="3.2" data-path="../../topology/pppoe.html">
             
                 <a href="../../topology/pppoe.html">
             
                     
-                    pppoe
+                    PPPoE
             
                 </a>
             
@@ -181,12 +168,12 @@
             
         </li>
     
-        <li class="chapter " data-level="3.4" data-path="../../topology/pppoe_balance.html">
+        <li class="chapter " data-level="3.3" data-path="../../topology/pppoe_balance.html">
             
                 <a href="../../topology/pppoe_balance.html">
             
                     
-                    pppoe with balance
+                    PPPoE with load balance
             
                 </a>
             
@@ -260,7 +247,20 @@
         
         
     
-        <li class="chapter " data-level="5.1" data-path="../morescenarios/CONFIG.html">
+        <li class="chapter " data-level="5.1" data-path="../morescenarios/INFO.html">
+            
+                <a href="../morescenarios/INFO.html">
+            
+                    
+                    How to check info
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../morescenarios/CONFIG.html">
             
                 <a href="../morescenarios/CONFIG.html">
             
@@ -273,7 +273,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.2" data-path="../morescenarios/STATE.html">
+        <li class="chapter " data-level="5.3" data-path="../morescenarios/STATE.html">
             
                 <a href="../morescenarios/STATE.html">
             
@@ -286,7 +286,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.3" data-path="../morescenarios/SERVICE.html">
+        <li class="chapter " data-level="5.4" data-path="../morescenarios/SERVICE.html">
             
                 <a href="../morescenarios/SERVICE.html">
             
@@ -339,12 +339,25 @@
         
         
     
-        <li class="chapter " data-level="7.1" data-path="../../faq/TROUBLESHOOTING.html">
+        <li class="chapter " data-level="7.1" data-path="../../faq/TSDHCP.html">
             
-                <a href="../../faq/TROUBLESHOOTING.html">
+                <a href="../../faq/TSDHCP.html">
             
                     
-                    Trouble shooting
+                    Trouble shooting for dhcp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../faq/TSPPPOE.html">
+            
+                <a href="../../faq/TSPPPOE.html">
+            
+                    
+                    Trouble shooting for PPPoE
             
                 </a>
             
@@ -365,26 +378,6 @@
             
                     
                     How to participate
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-    
-        
-        <li class="header">Other</li>
-        
-        
-    
-        <li class="chapter " data-level="9.1" data-path="../../changelog.html">
-            
-                <a href="../../changelog.html">
-            
-                    
-                    change log
             
                 </a>
             
@@ -438,6 +431,130 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="production-mode">Production mode</h1>
+<h3 id="download-routing-testflow-packages">Download routing-testflow packages</h3>
+<pre><code>wget https://github.com/hilanderas/routing/releases/download/0.0.22/routing-testflow-0.0.22.zip
+unzip routing-testflow-0.0.22.zip
+</code></pre><h3 id="check-integrity-of-routing-testflow-packages">Check integrity of routing-testflow packages</h3>
+<pre><code>cd routing-testflow
+make -f basic.mk test_integrity
+</code></pre><h3 id="download-routing-project-you-are-going-to-test-with">Download routing project you are going to test with</h3>
+<pre><code>make -f basic.mk download
+</code></pre><h3 id="set-test-project">Set test project</h3>
+<pre><code>make -f basic.mk config TEST_PROJ=dev-16.04-dhcp-single
+</code></pre><p>Or </p>
+<pre><code>make -f basic.mk config TEST_PROJ=dev-18.04-dhcp-single
+</code></pre><p>Or </p>
+<pre><code>make -f basic.mk config TEST_PROJ=dev-16.04-pppoe-single
+</code></pre><p>Or</p>
+<pre><code>make -f basic.mk config TEST_PROJ=dev-16.04-pppoe-dual
+</code></pre><h3 id="run-test-flow">Run test flow</h3>
+<ul>
+<li><p>Install and uninstall test</p>
+<pre><code>make test_install
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make test_uninstall
+make test_test_state
+</code></pre></li>
+<li><p>Install after uninstall</p>
+<pre><code>make test_install
+make test_test_state
+make test_uninstall
+make test_test_state
+make test_install
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make test_uninstall
+make test_test_state
+</code></pre></li>
+<li><p>Reinstall</p>
+<pre><code>make test_install
+make test_test_state
+make test_install
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make test_uninstall
+make test_test_state
+</code></pre></li>
+<li><p>Reuninstall</p>
+<pre><code>make test_install
+make test_test_state
+make test_uninstall
+make test_test_state
+make test_uninstall
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+</code></pre></li>
+<li><p>Checkconf</p>
+<pre><code>make test_install
+make test_test_state
+make test_showconf
+make test_uninstall
+make test_test_state
+</code></pre></li>
+<li><p>Reboot</p>
+<pre><code>make test_install
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make -f basic.mk re_boot
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make test_uninstall
+make test_test_state
+</code></pre></li>
+<li><p>Power off</p>
+<pre><code>make test_install
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+# Please power off router
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make test_uninstall
+make test_test_state
+</code></pre></li>
+<li><p>ISP restart</p>
+<pre><code>make test_install
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+# Please restart isp
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make test_uninstall
+make test_test_state
+</code></pre></li>
+</ul>
+<ul>
+<li>Restart <pre><code>make test_install
+make test_test_state
+make test_restart
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make test_uninstall
+make test_test_state
+</code></pre></li>
+</ul>
+<ul>
+<li>Run update test cases<pre><code>make test_install
+make test_test_state
+make test_update
+make test_test_state
+# On pc connected to router, configure a static IP 
+# And ping lan ip, wan ip of router and public IP
+make test_showconf
+make test_uninstall
+make test_test_state
+</code></pre></li>
+</ul>
 
                                 
                                 </section>
@@ -470,7 +587,7 @@
                 </a>
                 
                 
-                <a href="../../faq/TROUBLESHOOTING.html" class="navigation navigation-next " aria-label="Next page: Trouble shooting">
+                <a href="../../faq/TSDHCP.html" class="navigation navigation-next " aria-label="Next page: Trouble shooting for dhcp">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -481,7 +598,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Production mode","level":"6.2","depth":1,"next":{"title":"Trouble shooting","level":"7.1","depth":1,"path":"faq/TROUBLESHOOTING.md","ref":"faq/TROUBLESHOOTING.md","articles":[]},"previous":{"title":"Develop mode","level":"6.1","depth":1,"path":"usage/testflow/DEVELOPMODE.md","ref":"usage/testflow/DEVELOPMODE.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/testflow/PRODUCTIONMODE.md","mtime":"2018-12-09T08:26:48.998Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-09T08:27:28.765Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Production mode","level":"6.2","depth":1,"next":{"title":"Trouble shooting for dhcp","level":"7.1","depth":1,"path":"faq/TSDHCP.md","ref":"faq/TSDHCP.md","articles":[]},"previous":{"title":"Develop mode","level":"6.1","depth":1,"path":"usage/testflow/DEVELOPMODE.md","ref":"usage/testflow/DEVELOPMODE.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/testflow/PRODUCTIONMODE.md","mtime":"2018-12-28T10:10:45.321Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-28T10:21:14.311Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

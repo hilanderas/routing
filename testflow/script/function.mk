@@ -1,7 +1,7 @@
 #!make
 include .env
 
-.PHONY: install uninstall installafteruninstall reinstall reuninstall 
+.PHONY: install uninstall installafteruninstall reinstall reuninstall checkconf 
 ifeq ($(TESTMODE),dev)
 install uninstall: 
 	make  test_install
@@ -49,6 +49,11 @@ install uninstall installafteruninstall reinstall reuninstall:
 	make -s -f basic.mk hint CONTENT="Please set test mode to either dev or prod!"
 endif
 
+.PHONY: checkconf
+checkconf:
+	make test_install
+	make test_showconf
+	make test_uninstall
 
 .PHONY: reboot_p1 poweroff_p1 
 ifeq ($(TESTMODE), $(filter $(TESTMODE),dev prod))

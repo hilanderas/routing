@@ -57,7 +57,7 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../morescenarios/CONFIG.html" />
+    <link rel="next" href="../morescenarios/INFO.html" />
     
     
     <link rel="prev" href="UNINSTALL.html" />
@@ -94,7 +94,7 @@
                 <a href="../../">
             
                     
-                    Introduction
+                    Introduction routing-0.0.22
             
                 </a>
             
@@ -114,7 +114,7 @@
                 <a href="../../overview/USER.html">
             
                     
-                    (todo)Who are the user ?
+                    Who are the users ?
             
                 </a>
             
@@ -127,7 +127,7 @@
                 <a href="../../overview/PROJECT.html">
             
                     
-                    (todo)About project
+                    About project
             
                 </a>
             
@@ -155,25 +155,12 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" data-path="../../topology/dhcp_balance.html">
-            
-                <a href="../../topology/dhcp_balance.html">
-            
-                    
-                    dhcp with balance
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="3.3" data-path="../../topology/pppoe.html">
+        <li class="chapter " data-level="3.2" data-path="../../topology/pppoe.html">
             
                 <a href="../../topology/pppoe.html">
             
                     
-                    pppoe
+                    PPPoE
             
                 </a>
             
@@ -181,12 +168,12 @@
             
         </li>
     
-        <li class="chapter " data-level="3.4" data-path="../../topology/pppoe_balance.html">
+        <li class="chapter " data-level="3.3" data-path="../../topology/pppoe_balance.html">
             
                 <a href="../../topology/pppoe_balance.html">
             
                     
-                    pppoe with balance
+                    PPPoE with load balance
             
                 </a>
             
@@ -260,7 +247,20 @@
         
         
     
-        <li class="chapter " data-level="5.1" data-path="../morescenarios/CONFIG.html">
+        <li class="chapter " data-level="5.1" data-path="../morescenarios/INFO.html">
+            
+                <a href="../morescenarios/INFO.html">
+            
+                    
+                    How to check info
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../morescenarios/CONFIG.html">
             
                 <a href="../morescenarios/CONFIG.html">
             
@@ -273,7 +273,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.2" data-path="../morescenarios/STATE.html">
+        <li class="chapter " data-level="5.3" data-path="../morescenarios/STATE.html">
             
                 <a href="../morescenarios/STATE.html">
             
@@ -286,7 +286,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.3" data-path="../morescenarios/SERVICE.html">
+        <li class="chapter " data-level="5.4" data-path="../morescenarios/SERVICE.html">
             
                 <a href="../morescenarios/SERVICE.html">
             
@@ -339,12 +339,25 @@
         
         
     
-        <li class="chapter " data-level="7.1" data-path="../../faq/TROUBLESHOOTING.html">
+        <li class="chapter " data-level="7.1" data-path="../../faq/TSDHCP.html">
             
-                <a href="../../faq/TROUBLESHOOTING.html">
+                <a href="../../faq/TSDHCP.html">
             
                     
-                    Trouble shooting
+                    Trouble shooting for dhcp
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../../faq/TSPPPOE.html">
+            
+                <a href="../../faq/TSPPPOE.html">
+            
+                    
+                    Trouble shooting for PPPoE
             
                 </a>
             
@@ -365,26 +378,6 @@
             
                     
                     How to participate
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-    
-        
-        <li class="header">Other</li>
-        
-        
-    
-        <li class="chapter " data-level="9.1" data-path="../../changelog.html">
-            
-                <a href="../../changelog.html">
-            
-                    
-                    change log
             
                 </a>
             
@@ -438,24 +431,23 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="update">Update</h1>
+<h3 id="when-to-update">When to update</h3>
 <ul>
 <li>Update WAN or LAN</li>
 <li>Update static ip of LAN</li>
 </ul>
 <h3 id="update-configuration">Update configuration</h3>
-<p>During update, three <a href="../morescenarios/CONFIG.html">configuration</a> files will pop up be for you to modify, enter <code>:wq</code> after modification</p>
-<pre><code class="lang-bash">make update
-</code></pre>
-<h3 id="check-whether-configuration-updated-and-working">Check whether configuration updated and working</h3>
+<p>During update, three <a href="../morescenarios/CONFIG.html">configuration</a> files will be popped up for editing, enter <code>:wq</code> after modification</p>
+<pre><code>make update
+</code></pre><h3 id="check-whether-configuration-updated-and-working">Check whether configuration updated and working</h3>
 <ul>
 <li><p>Check configuration</p>
-<pre><code class="lang-bash">make showconf
-</code></pre>
-</li>
-<li><p>Check status</p>
-<pre><code class="lang-bash">make <span class="hljs-built_in">test</span>_state
-</code></pre>
-</li>
+<pre><code>make showinfo
+</code></pre></li>
+<li><p>Check state</p>
+<p>  State should be in running</p>
+<pre><code>make test_state
+</code></pre></li>
 </ul>
 
                                 
@@ -489,7 +481,7 @@
                 </a>
                 
                 
-                <a href="../morescenarios/CONFIG.html" class="navigation navigation-next " aria-label="Next page: How to check conf">
+                <a href="../morescenarios/INFO.html" class="navigation navigation-next " aria-label="Next page: How to check info">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -500,7 +492,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Update","level":"4.4","depth":1,"next":{"title":"How to check conf","level":"5.1","depth":1,"path":"usage/morescenarios/CONFIG.md","ref":"usage/morescenarios/CONFIG.md","articles":[]},"previous":{"title":"Uninstall","level":"4.3","depth":1,"path":"usage/quickstart/UNINSTALL.md","ref":"usage/quickstart/UNINSTALL.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/quickstart/UPDATE.md","mtime":"2018-12-09T04:44:04.416Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-09T08:27:28.765Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Update","level":"4.4","depth":1,"next":{"title":"How to check info","level":"5.1","depth":1,"path":"usage/morescenarios/INFO.md","ref":"usage/morescenarios/INFO.md","articles":[]},"previous":{"title":"Uninstall","level":"4.3","depth":1,"path":"usage/quickstart/UNINSTALL.md","ref":"usage/quickstart/UNINSTALL.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["video"],"pluginsConfig":{"video":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"usage/quickstart/UPDATE.md","mtime":"2018-12-28T10:10:45.321Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-12-28T10:21:14.311Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
