@@ -1,4 +1,4 @@
-# Develop mod
+# Develop mode
 
 ### Generate a project
 * Generate packages for ubuntu 18.04, no load balance, dhcp for WAN

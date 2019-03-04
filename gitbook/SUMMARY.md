@@ -13,19 +13,24 @@
 * [pppoe with balance](topology/pppoe_balance.md)
 
 ### Quick start
-* [Dependency](usage/quickstart/DEPENDENCY.md)
-* [Install](usage/quickstart/INSTALL.md)
-* [Uninstall](usage/quickstart/UNINSTALL.md)
-* [Update](usage/quickstart/UPDATE.md)
+* [Dependency](quickstart/DEPENDENCY.md)
+* [Install](quickstart/INSTALL.md)
+* [Uninstall](quickstart/UNINSTALL.md)
+* [Update](quickstart/UPDATE.md)
 
 ### More scenarios
-* [How to check conf](usage/morescenarios/CONFIG.md)
-* [How to check state](usage/morescenarios/STATE.md)
-* [How to manipulate the service](usage/morescenarios/SERVICE.md)
+* [How to check conf](morescenarios/CONFIG.md)
+* [How to check state](morescenarios/STATE.md)
+* [How to manipulate the service](morescenarios/SERVICE.md)
+
+### Developer usage
+* [How to create dev env](dev/createdevenv.md)
+* [How to build locally](dev/localbuild.md)
+* [How to CI build](dev/cibuild.md)
 
 ### QA usage
-* [Develop mode](usage/testflow/DEVELOPMODE.md)
-* [Production mode](usage/testflow/PRODUCTIONMODE.md)
+* [Develop mode](qa/DEVELOPMODE.md)
+* [Production mode](qa/PRODUCTIONMODE.md)
 
 ### FAQ
 * [Trouble shooting](faq/TROUBLESHOOTING.md)
