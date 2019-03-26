@@ -44,9 +44,9 @@ build-testflow:
 
 .PHONY: update-gitbook
 update-gitbook: $(GITBOOK)
-	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(version)/g $(CURDIR)/gitbook/usage/testflow/PRODUCTIONMODE.md
+	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(version)/g $(CURDIR)/gitbook/testflow/PRODUCTIONMODE.md
 	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(version)/g $(CURDIR)/gitbook/SUMMARY.md
-	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(version)/g $(CURDIR)/gitbook/usage/quickstart/INSTALL.md
+	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(version)/g $(CURDIR)/gitbook/quickstart/INSTALL.md
 	grep -R --color=always $(version) $(CURDIR)/gitbook
 
 
