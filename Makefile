@@ -22,8 +22,6 @@ clean-dev:
 .PHONY: build-book
 build-book: $(GITBOOK)
 	gitbook build $(GITBOOK) $(DOCS)
-	sed -i 's/http:\/\/player.vimeo.com/https:\/\/player.vimeo.com/g' docs/usage/quickstart/INSTALL.html 
-	grep vimeo docs/usage/quickstart/INSTALL.html
 
 .PHONY: build
 build: create-dev

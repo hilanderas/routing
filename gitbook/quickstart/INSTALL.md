@@ -1,5 +1,6 @@
 # Install
-{% video %}https://vimeo.com/306730332{% endvideo %}
+<iframe frameborder="0" width="100%" height="450" src="https://www.dailymotion.com/embed/video/x74rhrs" allowfullscreen allow="autoplay"></iframe>
+Music by [Ilya Truhanov](https://icons8.com/music/author/ilya-truhanov) from [Fugue](https://icons8.com/music)
 
 ### Login the machine you want to configure as a router
 ``` 
