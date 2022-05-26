@@ -4,7 +4,7 @@ on:
     tags: 
       - '[0-9]+.[0-9]+.[0-9]+'
 jobs:
-  release_deployment:
+  create_deployment:
     strategy:
       matrix:
         os: [18.04]
@@ -18,14 +18,13 @@ jobs:
         run: |
           make build OS_VERSION=${{ matrix.os }} WAN_MODE=${{ matrix.wan_mode }} ROUTE_NUM=${{ matrix.route_num }} version=${{ github.ref_name }} 
         shell: bash
-      - name: release routing deployment 
-        uses: marvinpinto/action-automatic-releases@latest
+      - name: Archive deployment artifacts
+        uses: actions/upload-artifact@v3
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: true
-          files: |
+          name: routing
+          path: |
             *.zip
-  release_test:
+  create_test:
     runs-on: ubuntu-latest
     steps:
       - name: pull repo
@@ -34,6 +33,17 @@ jobs:
         run: |
           make build-testflow version=${{ github.ref_name }}
         shell: bash
+      - name: Archive test artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: routing 
+          path: |
+            *.zip
+  release:
+      - name: Download 
+        uses: actions/download-artifact@v3
+        with:
+          name: routing 
       - name: release zip for test
         uses: marvinpinto/action-automatic-releases@latest
         with:
