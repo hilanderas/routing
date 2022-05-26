@@ -1,0 +1,21 @@
+network:
+  renderer: networkd
+  ethernets:
+    enp4s0:
+      dhcp4: false 
+    enp5s0:
+      dhcp4: false
+    enp6s0:
+      dhcp4: false
+    enp7s0:
+      dhcp4: false
+  bridges:
+    br0:
+      dhcp4: true
+      interfaces:
+        - enp4s0
+        - enp5s0
+        - enp6s0
+        - enp7s0
+      addresses: [192.168.40.1/24, ]
+  version: 2
