@@ -2,8 +2,8 @@
 
 ### Download routing-testflow packages
 ```  
-wget https://github.com/hilanderas/routing/releases/download/0.0.22/routing-testflow-0.0.22.zip
-unzip routing-testflow-0.0.22.zip
+wget https://github.com/hilanderas/routing/releases/download/0.0.23/routing-testflow-0.0.23.zip
+unzip routing-testflow-0.0.23.zip
 ```
 ### Check integrity of routing-testflow packages
 ```  
@@ -18,19 +18,15 @@ make -f basic.mk download
 
 ### Set test project
 ```  
-make -f basic.mk config TEST_PROJ=dev-16.04-dhcp-single 
-```
-Or 
-```  
 make -f basic.mk config TEST_PROJ=dev-18.04-dhcp-single
 ```
 Or 
 ```  
-make -f basic.mk config TEST_PROJ=dev-16.04-pppoe-single
+make -f basic.mk config TEST_PROJ=dev-18.04-pppoe-single
 ```
 Or
 ```  
-make -f basic.mk config TEST_PROJ=dev-16.04-pppoe-dual
+make -f basic.mk config TEST_PROJ=dev-18.04-pppoe-dual
 ```
 
 ### Run test flow

@@ -94,7 +94,7 @@
                 <a href="../">
             
                     
-                    Introduction routing-0.0.22
+                    Introduction routing-0.0.23
             
                 </a>
             
@@ -503,14 +503,11 @@
 <pre><code>cd routing/testflow/script
 make -f routing.mk create-proj-18-s-dhcp
 </code></pre></li>
-<li><p>Generate packages for ubuntu 16.04, no load balance, dhcp for WAN</p>
-<pre><code>make -f routing.mk create-proj-16-s-dhcp
+<li><p>Generate packages for ubuntu 18.04, no load balance, PPPoE for WAN</p>
+<pre><code>make -f routing.mk create-proj-18-s-pppoe
 </code></pre></li>
-<li><p>Generate packages for ubuntu 16.04, no load balance, PPPoE for WAN</p>
-<pre><code>make -f routing.mk create-proj-16-s-pppoe
-</code></pre></li>
-<li><p>Generate packages for ubuntu 16.04, with load balance, PPPoE for WAN</p>
-<pre><code>make -f routing.mk create-proj-16-d-pppoe
+<li><p>Generate packages for ubuntu 18.04, with load balance, PPPoE for WAN</p>
+<pre><code>make -f routing.mk create-proj-18-d-pppoe
 </code></pre></li>
 </ul>
 <h3 id="run-test-flow">Run test flow</h3>
@@ -529,10 +526,9 @@ make -s -f state.mk test_confqueued_norm
 </code></pre></li>
 </ul>
 <h3 id="clean-up">Clean up</h3>
-<pre><code>make -s -f routing.mk del-proj-16-s-dhcp
-make -s -f routing.mk del-proj-16-s-pppoe
-make -s -f routing.mk del-proj-16-d-pppoe
-make -s -f routing.mk del-proj-18-s-dhcp
+<pre><code>make -s -f routing.mk del-proj-18-s-dhcp
+make -s -f routing.mk del-proj-18-s-pppoe
+make -s -f routing.mk del-proj-18-d-pppoe
 </code></pre>
                                 
                                 </section>
@@ -576,7 +572,7 @@ make -s -f routing.mk del-proj-18-s-dhcp
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Develop mode","level":"7.1","depth":1,"next":{"title":"Production mode","level":"7.2","depth":1,"path":"qa/PRODUCTIONMODE.md","ref":"qa/PRODUCTIONMODE.md","articles":[]},"previous":{"title":"How to CI build","level":"6.3","depth":1,"path":"dev/cibuild.md","ref":"dev/cibuild.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"qa/DEVELOPMODE.md","mtime":"2019-03-26T01:03:16.669Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-26T01:28:16.132Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Develop mode","level":"7.1","depth":1,"next":{"title":"Production mode","level":"7.2","depth":1,"path":"qa/PRODUCTIONMODE.md","ref":"qa/PRODUCTIONMODE.md","articles":[]},"previous":{"title":"How to CI build","level":"6.3","depth":1,"path":"dev/cibuild.md","ref":"dev/cibuild.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"qa/DEVELOPMODE.md","mtime":"2022-05-26T07:17:44.123Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-05-26T07:21:07.402Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

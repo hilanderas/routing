@@ -1,10 +1,10 @@
-version=0.0.13
+version=0.0.23
 project=routing
 GITBOOK=$(CURDIR)/gitbook
 DOCS=$(CURDIR)/docs
 DEV=$(CURDIR)/dev
 TESTFLOW=$(project)-testflow
-OS_VERSION=16.04
+OS_VERSION=18.04
 WAN_MODE=dhcp
 ROUTE_NUM=single
 
@@ -44,7 +44,7 @@ build-testflow:
 
 .PHONY: update-gitbook
 update-gitbook: $(GITBOOK)
-	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(version)/g $(CURDIR)/gitbook/testflow/PRODUCTIONMODE.md
+	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(version)/g $(CURDIR)/gitbook/qa/PRODUCTIONMODE.md
 	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(version)/g $(CURDIR)/gitbook/SUMMARY.md
 	sed -Ei s/[0-9]+[.][0-9]+[.][0-9]+/$(version)/g $(CURDIR)/gitbook/quickstart/INSTALL.md
 	grep -R --color=always $(version) $(CURDIR)/gitbook
