@@ -15,11 +15,13 @@ set_ppp:
 	sudo mkdir $(SYS_PPP).routing.bk
 	sudo mv $(SYS_PPP)/* $(SYS_PPP).routing.bk/ || true
 	sudo cp $(CONFIG)/*.nmconnection $(SYS_PPP)/
+	sudo chmod 600 $(SYS_PPP)/*.nmconnection
 	sudo nmcli connection reload
 start:
 	echo "\e[93mStart lan!\e[0m"
-	#sudo netplan apply
-	#sudo nmcli connection up
+	sudo netplan apply
+	sudo nmcli connection up pppoe_home_0
+	sudo nmcli connection up pppoe_home_1
 
 install: set_lan set_ppp start
 test_install:
@@ -38,7 +40,9 @@ test_install:
 .PHONY: stop unset_iface unset_ppp uninstall test_uninstall
 stop:
 	echo -e "\e[93mStop iface on lan!\e[0m"
-	#sudo netplan apply
+	sudo netplan apply
+	sudo nmcli connection down ppp_home_0
+	sudo nmcli connection down ppp_home_1
 
 unset_lan:
 	echo -e "\e[96mUnset iface\e[0m"
