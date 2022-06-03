@@ -12,8 +12,8 @@ Choose one package to download according to your topology
 
 e.g, WAN is dhcp mode for ubuntu 18.04
 ``` 
-wget https://github.com/hilanderas/routing/releases/download/0.0.23/routing-18.04-dhcp-single-0.0.23.zip
-unzip routing-18.04-dhcp-single-0.0.23.zip
+wget https://github.com/hilanderas/routing/releases/download/0.0.24/routing-18.04-dhcp-single-0.0.24.zip
+unzip routing-18.04-dhcp-single-0.0.24.zip
 ```
 
 > Check all available packages in [release page](https://github.com/elespejo/routing/releases).

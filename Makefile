@@ -1,4 +1,4 @@
-version=0.0.23
+version=0.0.24
 project=routing
 GITBOOK=$(CURDIR)/gitbook
 DOCS=$(CURDIR)/docs
