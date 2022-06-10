@@ -94,7 +94,7 @@
                 <a href="../">
             
                     
-                    Introduction routing-0.0.24
+                    Introduction routing-0.0.25
             
                 </a>
             
@@ -499,7 +499,7 @@
                                 <h1 id="dependency">Dependency</h1>
 <h3 id="operating-system">Operating system</h3>
 <p>This project supports <code>ubuntu</code>.</p>
-<h3 id="install-linux-command">Install linux command</h3>
+<h3 id="install-common-used-linux-package">Install common used linux package</h3>
 <p>Use the command <code>sudo apt install [command]</code> to install the command below:</p>
 <ul>
 <li><code>make</code></li>
@@ -509,6 +509,12 @@
 <li><code>python3</code></li>
 <li><code>python3-pip</code></li>
 </ul>
+<h3 id="install-networkmanager-and-config-interface-mangement">Install NetworkManager and config interface mangement</h3>
+<pre><code>sudo apt install network-manager -y
+sudo nmcli device [need_interface] managed yes
+sudo nmcli device
+</code></pre><p>In case that devices/interfaces cannot be set as managed, please refer to <a href="https://askubuntu.com/questions/71159/network-manager-says-device-not-managed" target="_blank">the possible solution here</a>, in which
+both <code>/etc/NetworkManager/NetworkManager.conf</code> and <code>/etc/NetworkManager/conf.d/10-globally-managed-devices.conf</code> are important.</p>
 <h3 id="install-python-package">Install python package</h3>
 <p>Use the command <code>pip3 install [package]</code> to install the package below:</p>
 <ul>
@@ -559,7 +565,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Dependency","level":"4.1","depth":1,"next":{"title":"Install","level":"4.2","depth":1,"path":"quickstart/INSTALL.md","ref":"quickstart/INSTALL.md","articles":[]},"previous":{"title":"PPPoE with load balance","level":"3.3","depth":1,"path":"topology/pppoe_balance.md","ref":"topology/pppoe_balance.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"quickstart/DEPENDENCY.md","mtime":"2022-04-30T04:16:45.869Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-06-03T02:57:49.463Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Dependency","level":"4.1","depth":1,"next":{"title":"Install","level":"4.2","depth":1,"path":"quickstart/INSTALL.md","ref":"quickstart/INSTALL.md","articles":[]},"previous":{"title":"PPPoE with load balance","level":"3.3","depth":1,"path":"topology/pppoe_balance.md","ref":"topology/pppoe_balance.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"quickstart/DEPENDENCY.md","mtime":"2022-06-10T10:01:41.598Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-06-10T10:02:49.103Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
